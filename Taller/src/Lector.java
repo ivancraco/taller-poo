@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 
 public class Lector {
+    
     private String nombre;
     private String apellido;
     private TipoLector tipoLector;
@@ -10,11 +11,14 @@ public class Lector {
     private LocalDate fechaNac;
     private String sexo;
     private String nacionalidad;
+    private Domicilio domicilio;
     private Prestamo prestamoLector;
     private Reserva reservaLector;
 
+    
     public Lector(String nombre, String apellido, TipoLector tipoLector, int documento, String correo, int celular,
-            LocalDate fechaNac, String sexo, String nacionalidad, Prestamo prestamoLector, Reserva reservaLector) {
+            LocalDate fechaNac, String sexo, String nacionalidad, Domicilio domicilio, Prestamo prestamoLector,
+            Reserva reservaLector) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoLector = tipoLector;
@@ -24,6 +28,7 @@ public class Lector {
         this.fechaNac = fechaNac;
         this.sexo = sexo;
         this.nacionalidad = nacionalidad;
+        this.domicilio = domicilio;
         this.prestamoLector = prestamoLector;
         this.reservaLector = reservaLector;
     }
@@ -100,6 +105,14 @@ public class Lector {
         this.nacionalidad = nacionalidad;
     }
 
+    public Domicilio getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(Domicilio domicilio) {
+        this.domicilio = domicilio;
+    } 
+
     public Prestamo getPrestamoLector() {
         return prestamoLector;
     }
@@ -118,11 +131,10 @@ public class Lector {
 
     @Override
     public String toString() {
-        return "Lector [apellido=" + apellido + ", celular=" + celular + ", correo=" + correo + ", documento="
-                + documento + ", fechaNac=" + fechaNac + ", nacionalidad=" + nacionalidad + ", nombre=" + nombre
-                + ", prestamoLector=" + prestamoLector + ", reservaLector=" + reservaLector + ", sexo=" + sexo
-                + ", tipoLector=" + tipoLector + "]";
-    } 
-  
+        return "Lector [nombre=" + nombre + ", apellido=" + apellido + ", tipoLector=" + tipoLector + ", documento="
+                + documento + ", correo=" + correo + ", celular=" + celular + ", fechaNac=" + fechaNac + ", sexo="
+                + sexo + ", nacionalidad=" + nacionalidad + ", domicilio=" + domicilio + ", prestamoLector="
+                + prestamoLector + ", reservaLector=" + reservaLector + "]";
+    }
     
 }

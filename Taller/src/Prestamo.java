@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Prestamo {
+    
     private LocalDate fechaYHoraPrestamo;
     private String funcionario;
     private LocalDate fechaDevolucion;

@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 
 public class Ejemplar {
+    
     private LocalDate fechaAdquisicion;
     private String formaAdquisicion;
     private String areaDeReferencia;
