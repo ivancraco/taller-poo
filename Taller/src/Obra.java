@@ -10,15 +10,15 @@ public class Obra{
     private String tercerAutor;
     private Genero genero;
     private String caracteristica;
-    private int ISBN;
+    private String ISBN;
     private String indice;
     private String idUbicacion;
-    private List<Edicion> edicion;
+    private Edicion edicion;
     private List<Ejemplar> ejemplar;
     
     public Obra(String areaTematica, String titulo, String subTitulo, String primerAutor, String segundoAutor,
-            String tercerAutor, Genero genero, String caracteristica, int iSBN, String indice, String idUbicacion,
-            List<Edicion> edicion, List<Ejemplar> ejemplar) {
+            String tercerAutor, Genero genero, String caracteristica, String iSBN, String indice, String idUbicacion,
+            Edicion edicion, List<Ejemplar> ejemplar) {
         this.areaTematica = areaTematica;
         this.titulo = titulo;
         this.subTitulo = subTitulo;
@@ -98,11 +98,11 @@ public class Obra{
         this.caracteristica = caracteristica;
     }
 
-    public int getISBN() {
+    public String getISBN() {
         return ISBN;
     }
 
-    public void setISBN(int iSBN) {
+    public void setISBN(String iSBN) {
         ISBN = iSBN;
     }
 
@@ -122,11 +122,11 @@ public class Obra{
         this.idUbicacion = idUbicacion;
     }
 
-    public List<Edicion> getEdicion() {
+    public Edicion getEdicion() {
         return edicion;
     }
 
-    public void setEdicion(List<Edicion> edicion) {
+    public void setEdicion(Edicion edicion) {
         this.edicion = edicion;
     }
 

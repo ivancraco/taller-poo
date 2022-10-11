@@ -7,7 +7,7 @@ public class Lector {
     private TipoLector tipoLector;
     private int documento;
     private String correo;
-    private int celular;
+    private String celular;
     private LocalDate fechaNac;
     private String sexo;
     private String nacionalidad;
@@ -15,10 +15,9 @@ public class Lector {
     private Prestamo prestamoLector;
     private Reserva reservaLector;
 
-    
-    public Lector(String nombre, String apellido, TipoLector tipoLector, int documento, String correo, int celular,
-            LocalDate fechaNac, String sexo, String nacionalidad, Domicilio domicilio, Prestamo prestamoLector,
-            Reserva reservaLector) {
+
+    public Lector(String nombre, String apellido, TipoLector tipoLector, int documento, String correo, String celular,
+            LocalDate fechaNac, String sexo, String nacionalidad, Domicilio domicilio) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoLector = tipoLector;
@@ -29,8 +28,6 @@ public class Lector {
         this.sexo = sexo;
         this.nacionalidad = nacionalidad;
         this.domicilio = domicilio;
-        this.prestamoLector = prestamoLector;
-        this.reservaLector = reservaLector;
     }
 
     public String getNombre() {
@@ -73,11 +70,11 @@ public class Lector {
         this.correo = correo;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 

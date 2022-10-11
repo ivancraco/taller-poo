@@ -30,6 +30,35 @@ public class Ejemplar {
         this.reservaEjemplar = reservaEjemplar;
     }
 
+    
+
+    public Ejemplar(LocalDate fechaAdquisicion, String formaAdquisicion, String areaDeReferencia, int iDUbicacion,
+            String item, LocalDate fechaBaja, String motivoBaja, String ubicacionBaja, String codigoDeBarra) {
+        this.fechaAdquisicion = fechaAdquisicion;
+        this.formaAdquisicion = formaAdquisicion;
+        this.areaDeReferencia = areaDeReferencia;
+        IDUbicacion = iDUbicacion;
+        this.item = item;
+        this.fechaBaja = fechaBaja;
+        this.motivoBaja = motivoBaja;
+        this.ubicacionBaja = ubicacionBaja;
+        this.codigoDeBarra = codigoDeBarra;
+    }
+
+    
+
+    public Ejemplar(LocalDate fechaAdquisicion, String formaAdquisicion, String areaDeReferencia, int iDUbicacion,
+            String item, String codigoDeBarra) {
+        this.fechaAdquisicion = fechaAdquisicion;
+        this.formaAdquisicion = formaAdquisicion;
+        this.areaDeReferencia = areaDeReferencia;
+        IDUbicacion = iDUbicacion;
+        this.item = item;
+        this.codigoDeBarra = codigoDeBarra;
+    }
+
+
+
     public LocalDate getFechaAdquisicion() {
         return fechaAdquisicion;
     }

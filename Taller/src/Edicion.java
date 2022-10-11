@@ -25,6 +25,20 @@ public class Edicion {
         this.obra = obra;
     }
 
+    public Edicion(String editorial, String paisEdicion, int numeroEdicion, int anio, int volumenes, int paginas,
+            String idioma, String formato) {
+        this.editorial = editorial;
+        this.paisEdicion = paisEdicion;
+        this.numeroEdicion = numeroEdicion;
+        this.anio = anio;
+        this.volumenes = volumenes;
+        this.paginas = paginas;
+        this.idioma = idioma;
+        this.formato = formato;
+    }
+
+
+
     public String getEditorial() {
         return editorial;
     }
