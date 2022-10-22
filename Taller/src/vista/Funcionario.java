@@ -51,7 +51,7 @@ public class Funcionario extends JFrame implements ActionListener {
         panel2.add(pass);
         panel2.add(confirm);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(250, 300);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -68,8 +68,8 @@ public class Funcionario extends JFrame implements ActionListener {
         String strPass = String.valueOf(pass.getPassword());
 
         if (user.getText().equals(USER) && strPass.equals(PASS)) {
-            new VerificarLector().setVisible(true);
-            this.setVisible(false);
+            // new VerificarLector().setVisible(true);
+            // this.setVisible(false);
         } else
             JOptionPane.showMessageDialog(null,
                     "Datos inválidos", "Error message",

@@ -3,30 +3,32 @@ import java.time.LocalDate;
 
 public class Prestamo {
     
-    private LocalDate fechaYHoraPrestamo;
+    private String fechaYHoraPrestamo;
     private String funcionario;
     private LocalDate fechaDevolucion;
     private int plazoDevolucion;
-    private LugarPrestamo lugarPrestamo;
-    private Ejemplar listaEjemplar;
-    private Lector listaLector;
+    private String lugarPrestamo;
+    private Ejemplar ejemplar;
+    private Lector lector;
 
-    public Prestamo(LocalDate fechaYHoraPrestamo, String funcionario, LocalDate fechaDevolucion, int plazoDevolucion,
-            LugarPrestamo lugarPrestamo, Ejemplar listaEjemplar, Lector listaLector) {
+    public Prestamo(){}
+
+    public Prestamo(String fechaYHoraPrestamo, String funcionario, LocalDate fechaDevolucion, int plazoDevolucion,
+            String lugarPrestamo, Ejemplar listaEjemplar, Lector listaLector) {
         this.fechaYHoraPrestamo = fechaYHoraPrestamo;
         this.funcionario = funcionario;
         this.fechaDevolucion = fechaDevolucion;
         this.plazoDevolucion = plazoDevolucion;
         this.lugarPrestamo = lugarPrestamo;
-        this.listaEjemplar = listaEjemplar;
-        this.listaLector = listaLector;
+        this.ejemplar = listaEjemplar;
+        this.lector = listaLector;
     }
 
-    public LocalDate getFechaYHoraPrestamo() {
+    public String getFechaYHoraPrestamo() {
         return fechaYHoraPrestamo;
     }
 
-    public void setFechaYHoraPrestamo(LocalDate fechaYHoraPrestamo) {
+    public void setFechaYHoraPrestamo(String fechaYHoraPrestamo) {
         this.fechaYHoraPrestamo = fechaYHoraPrestamo;
     }
 
@@ -37,6 +39,7 @@ public class Prestamo {
     public void setFuncionario(String funcionario) {
         this.funcionario = funcionario;
     }
+    
     public LocalDate getFechaDevolucion() {
         return fechaDevolucion;
     }
@@ -53,34 +56,34 @@ public class Prestamo {
         this.plazoDevolucion = plazoDevolucion;
     }
 
-    public LugarPrestamo getLugarPrestamo() {
+    public String getLugarPrestamo() {
         return lugarPrestamo;
     }
 
-    public void setLugarPrestamo(LugarPrestamo lugarPrestamo) {
+    public void setLugarPrestamo(String lugarPrestamo) {
         this.lugarPrestamo = lugarPrestamo;
     }
 
-    public Ejemplar getListaEjemplar() {
-        return listaEjemplar;
+    public Ejemplar getEjemplar() {
+        return ejemplar;
     }
 
-    public void setListaEjemplar(Ejemplar listaEjemplar) {
-        this.listaEjemplar = listaEjemplar;
+    public void setEjemplar(Ejemplar listaEjemplar) {
+        this.ejemplar = listaEjemplar;
     }
 
-    public Lector getListaLector() {
-        return listaLector;
+    public Lector getLector() {
+        return lector;
     }
     
-    public void setListaLector(Lector listaLector) {
-        this.listaLector = listaLector;
+    public void setLector(Lector listaLector) {
+        this.lector = listaLector;
     }
 
     @Override
     public String toString() {
         return "Prestamo [fechaDevolucion=" + fechaDevolucion + ", fechaYHoraPrestamo=" + fechaYHoraPrestamo
-                + ", funcionario=" + funcionario + ", listaEjemplar=" + listaEjemplar + ", listaLector=" + listaLector
+                + ", funcionario=" + funcionario + ", listaEjemplar=" + ejemplar + ", listaLector=" + lector
                 + ", lugarPrestamo=" + lugarPrestamo + ", plazoDevolucion=" + plazoDevolucion + "]";
     }
 

@@ -4,13 +4,15 @@ import java.time.LocalDate;
 public class Reserva {
     
     private LocalDate fechaReserva;
-    private Ejemplar listaEjemplar;
-    private Lector listaLector;
+    private Ejemplar ejemplar;
+    private Lector lector;
+
+    public Reserva(){}
     
-    public Reserva(LocalDate fechaReserva, Ejemplar listaEjemplar, Lector listaLector) {
+    public Reserva(LocalDate fechaReserva, Ejemplar ejemplar, Lector lector) {
         this.fechaReserva = fechaReserva;
-        this.listaEjemplar = listaEjemplar;
-        this.listaLector = listaLector;
+        this.ejemplar = ejemplar;
+        this.lector = lector;
     }
 
     public LocalDate getFechaReserva() {
@@ -21,25 +23,24 @@ public class Reserva {
         this.fechaReserva = fechaReserva;
     }
 
-    public Ejemplar getListaEjemplar() {
-        return listaEjemplar;
+    public Ejemplar getEjemplar() {
+        return ejemplar;
     }
 
-    public void setListaEjemplar(Ejemplar listaEjemplar) {
-        this.listaEjemplar = listaEjemplar;
+    public void setEjemplar(Ejemplar ejemplar) {
+        this.ejemplar = ejemplar;
     }
 
-    public Lector getListaLector() {
-        return listaLector;
+    public Lector getLector() {
+        return lector;
     }
 
-    public void setListaLector(Lector listaLector) {
-        this.listaLector = listaLector;
+    public void setLector(Lector lector) {
+        this.lector = lector;
     }
 
     @Override
     public String toString() {
-        return "Reserva [fechaReserva=" + fechaReserva + ", listaEjemplar=" + listaEjemplar + ", listaLector="
-                + listaLector + "]";
+        return "Reserva [fechaReserva=" + fechaReserva + ", ejemplar=" + ejemplar + ", lector=" + lector + "]";
     }
 }

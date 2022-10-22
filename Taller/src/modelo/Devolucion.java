@@ -1,42 +1,43 @@
 package modelo;
-import java.time.LocalDate;
 
 public class Devolucion {
 
-    private LocalDate fechaYHoraDevolucion;
+    private String fechaYHoraDevolucion;
     private String recibidoPor;
     private Multa multa;
     private Prestamo prestamo;
 
-    public Devolucion(LocalDate fechaYHoraDevolucion, String recibidoPor) {
+    public Devolucion(){}
+
+    public Devolucion(String fechaYHoraDevolucion, String recibidoPor) {
         this.fechaYHoraDevolucion = fechaYHoraDevolucion;
         this.recibidoPor = recibidoPor;
     }
 
-    public Devolucion(LocalDate fechaYHoraDevolucion, String recibidoPor, Multa multa, Prestamo prestamo) {
+    public Devolucion(String fechaYHoraDevolucion, String recibidoPor, Multa multa, Prestamo prestamo) {
         this.fechaYHoraDevolucion = fechaYHoraDevolucion;
         this.recibidoPor = recibidoPor;
         this.multa = multa;
         this.prestamo = prestamo;
     }
 
-    public Devolucion(LocalDate fechaYHoraDevolucion, String recibidoPor, Multa multa) {
+    public Devolucion(String fechaYHoraDevolucion, String recibidoPor, Multa multa) {
         this.fechaYHoraDevolucion = fechaYHoraDevolucion;
         this.recibidoPor = recibidoPor;
         this.multa = multa;
     }
 
-    public Devolucion(LocalDate fechaYHoraDevolucion, String recibidoPor, Prestamo prestamo) {
+    public Devolucion(String fechaYHoraDevolucion, String recibidoPor, Prestamo prestamo) {
         this.fechaYHoraDevolucion = fechaYHoraDevolucion;
         this.recibidoPor = recibidoPor;
         this.prestamo = prestamo;
     }
 
-    public LocalDate getFechaYHoraDevolucion() {
+    public String getFechaYHoraDevolucion() {
         return fechaYHoraDevolucion;
     }
 
-    public void setFechaYHoraDevolucion(LocalDate fechaYHoraDevolucion) {
+    public void setFechaYHoraDevolucion(String fechaYHoraDevolucion) {
         this.fechaYHoraDevolucion = fechaYHoraDevolucion;
     }
 

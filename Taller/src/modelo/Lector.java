@@ -17,6 +17,7 @@ public class Lector {
     private Domicilio domicilio;
     private List<Prestamo> prestamoLector;
     private List<Reserva> reservaLector;
+    private Multa multa;
 
 
     public Lector(String nombre, String apellido, TipoLector tipoLector, String documento, String correo, String celular,
@@ -33,6 +34,7 @@ public class Lector {
         this.domicilio = domicilio;
         prestamoLector = new ArrayList<Prestamo>();
         reservaLector = new ArrayList<Reserva>();
+        multa = new Multa();
     }
 
     public String getNombre() {
@@ -131,12 +133,21 @@ public class Lector {
         this.reservaLector = reservaLector;
     }
 
+    public Multa getMulta() {
+        return multa;
+    }
+
+    public void setMulta(Multa multa) {
+        this.multa = multa;
+    }
+
     @Override
     public String toString() {
         return "Lector [nombre=" + nombre + ", apellido=" + apellido + ", tipoLector=" + tipoLector + ", documento="
                 + documento + ", correo=" + correo + ", celular=" + celular + ", fechaNac=" + fechaNac + ", sexo="
                 + sexo + ", nacionalidad=" + nacionalidad + ", domicilio=" + domicilio + ", prestamoLector="
-                + prestamoLector + ", reservaLector=" + reservaLector + "]";
+                + prestamoLector + ", reservaLector=" + reservaLector + ", multa=" + multa + "]";
     }
+
     
 }

@@ -8,12 +8,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.table.*;
 
 
 import modelo.Biblioteca;
-import modelo.Ejemplar;
 import modelo.ModeloTabla;
+import modelo.Obra;
 import modelo.RenderTabla;
 
 import java.awt.event.*;
@@ -21,31 +20,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
 
-public class Buscador extends JFrame implements ActionListener, ItemListener {
+public class ConsultaObra extends JFrame implements ActionListener, ItemListener {
 
     private JComboBox<String> combo;
     private String seleccionado = "Matemática";
     private JPanel panel1;
-    private JPanel panel2;
     JTextField buscador;
     JButton buscar;
     JTextArea resultado;
     Container c;
     JTable tabla;
-    TableModel mimodelo;
     JTableButtonMouseListener listener;
 
-    /*
-     * private String[] columnas = { "Ejemplar", "Titulo" };
-     * private Object[][] datosFila = {
-     * { "Pepe", "El pepe de la gente" },
-     * { "Pope", "El elegido" }
-     * };
-     */
-
-     
-
-    public Buscador() {
+ 
+    public ConsultaObra() {
 
         buscar = new JButton("Buscar");
 
@@ -54,29 +42,23 @@ public class Buscador extends JFrame implements ActionListener, ItemListener {
         combo.addItem("Programación");
         combo.addItemListener(this);
 
-       // mimodelo = new ModeloTabla(3, 5, "f");
         tabla = new JTable();
+        tabla.setEnabled(false);
 
         panel1 = new JPanel();
-        panel2 = new JPanel();
         panel1.add(combo);
         panel1.add(buscar);
-        panel2.add(tabla);
         add(panel1, BorderLayout.NORTH);
 
         add(new JScrollPane(tabla), BorderLayout.CENTER);
         buscar.addActionListener(this);
         listener = new JTableButtonMouseListener(tabla);
         tabla.addMouseListener(listener);
-        /*
-         * panel = new JPanel();
-         * panel.add(resultado);
-         * add(panel, BorderLayout.CENTER);
-         */
+    
 
         /* Ventana */
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(650, 300);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setSize(800, 300);
         setResizable(false);
         setLocationRelativeTo(null);
 
@@ -85,10 +67,6 @@ public class Buscador extends JFrame implements ActionListener, ItemListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         armarTabla();
-        /*
-         * buscarObra(seleccionado);
-         * panel.repaint();
-         */
     }
 
     @Override
@@ -99,27 +77,40 @@ public class Buscador extends JFrame implements ActionListener, ItemListener {
 
     }
 
-    private List<List<Ejemplar>> ejemplaresDeObra(String areaTematica) {
-        List<List<Ejemplar>> ejemplares = new ArrayList<>();
+    // private List<List<Ejemplar>> ejemplaresDeObra(String areaTematica) {
+    //     List<List<Ejemplar>> ejemplares = new ArrayList<>();
+    //     for (int i = 0; i < Biblioteca.obras().size(); i++) {
+    //         if (Biblioteca.obras().get(i).getAreaTematica().equals(areaTematica)) {
+    //             List<Ejemplar> res = new ArrayList<>();
+    //             res = Biblioteca.obras().get(i).getEjemplar();
+    //             ejemplares.add(res);
+    //             // text.append(Biblioteca.obras().get(i).getEjemplar().get(0).getAreaDeReferencia());
+    //             // resultado.append(Biblioteca.obras().get(i).getEjemplar().get(0).getAreaDeReferencia());
+
+    //         }
+    //     }
+
+    //     return ejemplares;
+    // }
+
+    private List<Obra> buscarObra(String areaTematica) {
+        List<Obra> obras = new ArrayList<>();
         for (int i = 0; i < Biblioteca.obras().size(); i++) {
             if (Biblioteca.obras().get(i).getAreaTematica().equals(areaTematica)) {
-                List<Ejemplar> res = new ArrayList<>();
-                res = Biblioteca.obras().get(i).getEjemplar();
-                ejemplares.add(res);
+                obras.add(Biblioteca.obras().get(i));
                 // text.append(Biblioteca.obras().get(i).getEjemplar().get(0).getAreaDeReferencia());
                 // resultado.append(Biblioteca.obras().get(i).getEjemplar().get(0).getAreaDeReferencia());
 
             }
         }
 
-        return ejemplares;
+        return obras;
     }
    
    
     private void armarTabla() {
-        List<List<Ejemplar>> areas = ejemplaresDeObra(seleccionado);
-        ModeloTabla modelo = new ModeloTabla(areas.size(),areas);
-        // modelo.setValueAt("modelo", 1, 2);
+        List<Obra> areas = buscarObra(seleccionado);
+        ModeloTabla modelo = new ModeloTabla(areas.size(), areas, this);
         tabla.setDefaultRenderer(Object.class, new RenderTabla());
         tabla.setModel(modelo);
         tabla.setRowHeight(30);

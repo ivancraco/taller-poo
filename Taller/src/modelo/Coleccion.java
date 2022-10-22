@@ -1,16 +1,15 @@
 package modelo;
 import java.util.List;
-import java.util.Map;
 
 public class Coleccion extends Obra{
     
     private String nombre;
 
-    public Coleccion(String areaTematica, String titulo, String subTitulo, String primerAutor, String segundoAutor,
-            String tercerAutor, Genero genero, String caracteristica, String iSBN, Map<Integer, String> indice, String idUbicacion,
+    public Coleccion(String areaTematica, String areaDeReferencia, String titulo, String subTitulo, String primerAutor, String segundoAutor,
+            String tercerAutor, Genero genero, String caracteristica, String iSBN, List<String> indices,
             Edicion edicion, List<Ejemplar> ejemplar, String nombre) {
-        super(areaTematica, titulo, subTitulo, primerAutor, segundoAutor, tercerAutor, genero, caracteristica, iSBN,
-                indice, idUbicacion, edicion, ejemplar);
+        super(areaTematica, areaDeReferencia, titulo, subTitulo, primerAutor, segundoAutor, tercerAutor, genero, caracteristica, iSBN,
+                indices, edicion, ejemplar);
         this.nombre = nombre;
     }
 

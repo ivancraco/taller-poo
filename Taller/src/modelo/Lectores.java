@@ -29,6 +29,16 @@ public class Lectores {
                                 new Domicilio("Yrigoyen 25", 3228, "Federación",
                                                 "Chajarí")));
 
+                lectores.get(0).getPrestamoLector().add(new Prestamo());
+                lectores.get(0).getPrestamoLector().get(0).setFechaYHoraPrestamo("10/10/2022");
+                lectores.get(0).getPrestamoLector().get(0).setFuncionario("Roberto Perez");
+                lectores.get(0).getPrestamoLector().get(0).setFechaDevolucion(LocalDate.of(2022, 10, 14));
+                lectores.get(0).getPrestamoLector().get(0).setLugarPrestamo("Domicilio");
+                lectores.get(0).getPrestamoLector().get(0).setLector(lectores.get(0));
+                lectores.get(0).getPrestamoLector().get(0).setEjemplar(Biblioteca.obras().get(0).getEjemplar().get(2));
+                Biblioteca.obras().get(0).getEjemplar().get(2).setPrestamoEjemplar(lectores.get(0).getPrestamoLector().get(0));
+                
+
         }
 
         public List<Lector> getLectores() {

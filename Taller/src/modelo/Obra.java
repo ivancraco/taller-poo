@@ -1,10 +1,10 @@
 package modelo;
 import java.util.List;
-import java.util.Map;
 
 public class Obra{
 
     private String areaTematica;
+    private String areaDeReferencia;
     private String titulo;
     private String subTitulo;
     private String primerAutor;
@@ -13,15 +13,16 @@ public class Obra{
     private Genero genero;
     private String caracteristica;
     private String ISBN;
-    private Map<Integer, String> indice;
-    private String idUbicacion;
+    private List<String> indices;
+    //private String idUbicacion;
     private Edicion edicion;
     private List<Ejemplar> ejemplar;
     
-    public Obra(String areaTematica, String titulo, String subTitulo, String primerAutor, String segundoAutor,
-            String tercerAutor, Genero genero, String caracteristica, String iSBN, Map<Integer, String> indice, String idUbicacion,
+    public Obra(String areaTematica, String areaDeReferencia, String titulo, String subTitulo, String primerAutor, String segundoAutor,
+            String tercerAutor, Genero genero, String caracteristica, String iSBN, List<String> indices,
             Edicion edicion, List<Ejemplar> ejemplar) {
         this.areaTematica = areaTematica;
+        this.areaDeReferencia = areaDeReferencia;
         this.titulo = titulo;
         this.subTitulo = subTitulo;
         this.primerAutor = primerAutor;
@@ -30,8 +31,7 @@ public class Obra{
         this.genero = genero;
         this.caracteristica = caracteristica;
         ISBN = iSBN;
-        this.indice = indice;
-        this.idUbicacion = idUbicacion;
+        this.indices = indices;
         this.edicion = edicion;
         this.ejemplar = ejemplar;
     }
@@ -108,20 +108,12 @@ public class Obra{
         ISBN = iSBN;
     }
 
-    public Map<Integer, String> getIndice() {
-        return indice;
+    public List<String> getIndice() {
+        return indices;
     }
 
-    public void setIndice(Map<Integer, String> indice) {
-        this.indice = indice;
-    }
-
-    public String getIdUbicacion() {
-        return idUbicacion;
-    }
-
-    public void setIdUbicacion(String idUbicacion) {
-        this.idUbicacion = idUbicacion;
+    public void setIndice(List<String> indices) {
+        this.indices = indices;
     }
 
     public Edicion getEdicion() {
@@ -140,12 +132,22 @@ public class Obra{
         this.ejemplar = ejemplar;
     }
 
+    public String getAreaDeReferencia() {
+        return areaDeReferencia;
+    }
+
+    public void setAreaDeReferencia(String areaDeReferencia) {
+        this.areaDeReferencia = areaDeReferencia;
+    }
+
     @Override
     public String toString() {
-        return "Obra [areaTematica=" + areaTematica + ", titulo=" + titulo + ", subTitulo=" + subTitulo
-                + ", primerAutor=" + primerAutor + ", segundoAutor=" + segundoAutor + ", tercerAutor=" + tercerAutor
-                + ", genero=" + genero + ", caracteristica=" + caracteristica + ", ISBN=" + ISBN + ", indice=" + indice
-                + ", idUbicacion=" + idUbicacion + ", edicion=" + edicion + ", ejemplar=" + ejemplar + "]";
+        return "Obra [areaTematica=" + areaTematica + ", areaDeReferencia=" + areaDeReferencia + ", titulo=" + titulo
+                + ", subTitulo=" + subTitulo + ", primerAutor=" + primerAutor + ", segundoAutor=" + segundoAutor
+                + ", tercerAutor=" + tercerAutor + ", genero=" + genero + ", caracteristica=" + caracteristica
+                + ", ISBN=" + ISBN + ", indices=" + indices + ", edicion=" + edicion + ", ejemplar=" + ejemplar + "]";
     }
+
+ 
 
 }

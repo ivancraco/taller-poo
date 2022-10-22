@@ -5,8 +5,7 @@ public class Ejemplar {
     
     private LocalDate fechaAdquisicion;
     private String formaAdquisicion;
-    private String areaDeReferencia;
-    private int IDUbicacion;
+    private String IDUbicacion;
     private String item;
     private LocalDate fechaBaja;
     private String motivoBaja;
@@ -15,12 +14,11 @@ public class Ejemplar {
     private Prestamo prestamoEjemplar;
     private Reserva reservaEjemplar;
 
-    public Ejemplar(LocalDate fechaAdquisicion, String formaAdquisicion, String areaDeReferencia, int iDUbicacion,
+    public Ejemplar(LocalDate fechaAdquisicion, String formaAdquisicion, String iDUbicacion,
             String item, LocalDate fechaBaja, String motivoBaja, String ubicacionBaja, String codigoDeBarra,
             Prestamo prestamoEjemplar, Reserva reservaEjemplar) {
         this.fechaAdquisicion = fechaAdquisicion;
         this.formaAdquisicion = formaAdquisicion;
-        this.areaDeReferencia = areaDeReferencia;
         IDUbicacion = iDUbicacion;
         this.item = item;
         this.fechaBaja = fechaBaja;
@@ -33,11 +31,10 @@ public class Ejemplar {
 
     
 
-    public Ejemplar(LocalDate fechaAdquisicion, String formaAdquisicion, String areaDeReferencia, int iDUbicacion,
+    public Ejemplar(LocalDate fechaAdquisicion, String formaAdquisicion, String iDUbicacion,
             String item, LocalDate fechaBaja, String motivoBaja, String ubicacionBaja, String codigoDeBarra) {
         this.fechaAdquisicion = fechaAdquisicion;
         this.formaAdquisicion = formaAdquisicion;
-        this.areaDeReferencia = areaDeReferencia;
         IDUbicacion = iDUbicacion;
         this.item = item;
         this.fechaBaja = fechaBaja;
@@ -46,14 +43,15 @@ public class Ejemplar {
         this.codigoDeBarra = codigoDeBarra;
     }
 
-    public Ejemplar(LocalDate fechaAdquisicion, String formaAdquisicion, String areaDeReferencia, int iDUbicacion,
+    public Ejemplar(LocalDate fechaAdquisicion, String formaAdquisicion, String iDUbicacion,
             String item, String codigoDeBarra) {
         this.fechaAdquisicion = fechaAdquisicion;
         this.formaAdquisicion = formaAdquisicion;
-        this.areaDeReferencia = areaDeReferencia;
         IDUbicacion = iDUbicacion;
         this.item = item;
         this.codigoDeBarra = codigoDeBarra;
+        this.prestamoEjemplar = null;
+        this.reservaEjemplar = null;
     }
 
 
@@ -74,19 +72,11 @@ public class Ejemplar {
         this.formaAdquisicion = formaAdquisicion;
     }
 
-    public String getAreaDeReferencia() {
-        return areaDeReferencia;
-    }
-
-    public void setAreaDeReferencia(String areaDeReferencia) {
-        this.areaDeReferencia = areaDeReferencia;
-    }
-
-    public int getIDUbicacion() {
+    public String getIDUbicacion() {
         return IDUbicacion;
     }
 
-    public void setIDUbicacion(int iDUbicacion) {
+    public void setIDUbicacion(String iDUbicacion) {
         IDUbicacion = iDUbicacion;
     }
 
@@ -146,14 +136,17 @@ public class Ejemplar {
         this.reservaEjemplar = reservaEjemplar;
     }
 
+
+
     @Override
     public String toString() {
-        return "Ejemplar [IDUbicacion=" + IDUbicacion + ", areaDeReferencia=" + areaDeReferencia + ", codigoDeBarra="
-                + codigoDeBarra + ", fechaAdquisicion=" + fechaAdquisicion + ", fechaBaja=" + fechaBaja
-                + ", formaAdquisicion=" + formaAdquisicion + ", item=" + item + ", motivoBaja=" + motivoBaja
-                + ", prestamoEjemplar=" + prestamoEjemplar + ", reservaEjemplar=" + reservaEjemplar + ", ubicacionBaja="
-                + ubicacionBaja + "]";
+        return "Ejemplar [fechaAdquisicion=" + fechaAdquisicion + ", formaAdquisicion=" + formaAdquisicion
+                + ", IDUbicacion=" + IDUbicacion + ", item=" + item + ", fechaBaja=" + fechaBaja + ", motivoBaja="
+                + motivoBaja + ", ubicacionBaja=" + ubicacionBaja + ", codigoDeBarra=" + codigoDeBarra
+                + ", prestamoEjemplar=" + prestamoEjemplar + ", reservaEjemplar=" + reservaEjemplar + "]";
     }
+
+    
 
     
     

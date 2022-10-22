@@ -3,7 +3,6 @@ package modelo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Obras {
 
@@ -28,27 +27,26 @@ public class Obras {
 
                 List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
 
-                Map<Integer, String> indices = Map.ofEntries(
-                                Map.entry(0, "Ejemplo 1"),
-                                Map.entry(40, "Ejemplo 2"),
-                                Map.entry(110, "Ejemplo 3"));
+                List<String> indices = new ArrayList<String>();
+                indices.add("Sumar");
+                indices.add("Restar");
+                indices.add("Multiplicación");
 
                 Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-03-03"), "Compra",
-                                "Matemática", 1, "", "34-34-34");
+                                 "0103101", "", "384561");
 
                 Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-03-05"), "Compra",
-                                "Matemática", 2, "", "35-35-35");
+                                 "0103102", "", "865492");
 
                 Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-03-05"), "Compra",
-                                "Matemática", 3, "", "36-36-36");
-
+                                "0103103", "", "635012");
                 ejemplares.add(e1);
                 ejemplares.add(e2);
                 ejemplares.add(e3);
 
-                Obra obra = new Obra("Matemática", "Matemáticas para todos", "Matemática de la suerte",
+                Obra obra = new Obra("Matemática", "Matemática", "Matemáticas para todos", "Matemática de la suerte",
                                 "Adrián Paenza", " Guillermo Schavelzon", "", Genero.DIDACTICO, "manuales",
-                                "978-950-07-4039-5", indices, "10-5-3-10", new Edicion("Printing Books S.A",
+                                "978-950-07-4039-5", indices, new Edicion("Printing Books S.A",
                                                 "Argentina", 1, 2012, 50, 349, "Español", "papel"),
                                 ejemplares);
 
@@ -60,23 +58,23 @@ public class Obras {
 
                 List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
 
-                Map<Integer, String> indices = Map.ofEntries(
-                                Map.entry(0, "Ejemplo 1"),
-                                Map.entry(99, "Ejemplo 2"),
-                                Map.entry(320, "Ejemplo 3"));
+                List<String> indices = new ArrayList<String>();
+                indices.add("Tipos de datos");
+                indices.add("Clases e interfaces");
+
 
                 Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-03-03"), "Compra",
-                                "Java", 1, "", "34-34-34");
+                                 "0912038", "", "343434");
 
                 Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-03-05"), "Compra",
-                                "Java", 2, "", "35-35-35");
+                                 "0912032", "", "353535");
 
                 ejemplares.add(e1);
                 ejemplares.add(e2);
 
-                Obra obra = new Obra("Programación", "Programación Inicial", "Todos podemos programar",
+                Obra obra = new Obra("Programación", "Java", "Programación Inicial", "Todos podemos programar",
                                 "Victor Smith", "Ernesto Robles", "Marta Quevedo", Genero.DIDACTICO, "manuales",
-                                "876-592-13-7890-3", indices, "10-7-7-5", new Edicion("Printing Books S.A",
+                                "876-592-13-7890-3", indices, new Edicion("Printing Books S.A",
                                                 "Argentina", 1, 2014, 50, 559, "Español", "papel"),
                                 ejemplares);
 
@@ -88,23 +86,22 @@ public class Obras {
 
                 List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
 
-                Map<Integer, String> indices = Map.ofEntries(
-                                Map.entry(0, "Ejemplo 1"),
-                                Map.entry(120, "Ejemplo 2"),
-                                Map.entry(150, "Ejemplo 3"));
+                List<String> indices = new ArrayList<String>();
+                indices.add("Tipos de datos");
+                indices.add("Variables locales");
 
                 Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-03-03"), "Compra",
-                                "Python", 1, "", "34-34-34");
+                                 "1202034", "", "343434");
 
                 Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-03-05"), "Compra",
-                                "Python", 2, "", "35-35-35");
+                                 "1202033", "", "353535");
 
                 ejemplares.add(e1);
                 ejemplares.add(e2);
 
-                Obra obra = new Obra("Programación", "Programación Inicial", "Todos podemos programar",
+                Obra obra = new Obra("Programación", "Python", "Programación Inicial", "Todos podemos programar",
                                 "Michael Rockefeller", "Ana Montero", "Isaias Montenegro", Genero.DIDACTICO, "manuales",
-                                "876-592-13-7890-3", indices, "10-7-7-5", new Edicion("Printing Books S.A",
+                                "876-592-13-7890-3", indices, new Edicion("Printing Books S.A",
                                                 "Argentina", 1, 2014, 50, 559, "Español", "papel"),
                                 ejemplares);
 
