@@ -17,6 +17,8 @@ public class Obra{
     //private String idUbicacion;
     private Edicion edicion;
     private List<Ejemplar> ejemplar;
+    private Integer solicitadasAlumnosDocentes;
+    private Integer solicitadasPublicoGeneral;
     
     public Obra(String areaTematica, String areaDeReferencia, String titulo, String subTitulo, String primerAutor, String segundoAutor,
             String tercerAutor, Genero genero, String caracteristica, String iSBN, List<String> indices,
@@ -34,6 +36,9 @@ public class Obra{
         this.indices = indices;
         this.edicion = edicion;
         this.ejemplar = ejemplar;
+        this.solicitadasAlumnosDocentes = 0;
+        this.solicitadasPublicoGeneral = 0;
+
     }
 
     public String getAreaTematica() {
@@ -140,14 +145,40 @@ public class Obra{
         this.areaDeReferencia = areaDeReferencia;
     }
 
+    public List<String> getIndices() {
+        return indices;
+    }
+
+    public void setIndices(List<String> indices) {
+        this.indices = indices;
+    }
+
+
+    public Integer getSolicitadasAlumnosDocentes() {
+        return solicitadasAlumnosDocentes;
+    }
+
+    public void setSolicitadasAlumnosDocentes(Integer solicitadasAlumnosDocentes) {
+        this.solicitadasAlumnosDocentes = solicitadasAlumnosDocentes;
+    }
+
+    public Integer getSolicitadasPublicoGeneral() {
+        return solicitadasPublicoGeneral;
+    }
+
+    public void setSolicitadasPublicoGeneral(Integer solicitadasPublicoGeneral) {
+        this.solicitadasPublicoGeneral = solicitadasPublicoGeneral;
+    }
+
     @Override
     public String toString() {
         return "Obra [areaTematica=" + areaTematica + ", areaDeReferencia=" + areaDeReferencia + ", titulo=" + titulo
                 + ", subTitulo=" + subTitulo + ", primerAutor=" + primerAutor + ", segundoAutor=" + segundoAutor
                 + ", tercerAutor=" + tercerAutor + ", genero=" + genero + ", caracteristica=" + caracteristica
-                + ", ISBN=" + ISBN + ", indices=" + indices + ", edicion=" + edicion + ", ejemplar=" + ejemplar + "]";
+                + ", ISBN=" + ISBN + ", indices=" + indices + ", edicion=" + edicion + ", ejemplar=" + ejemplar
+                + ", solicitadasAlumnosDocentes=" + solicitadasAlumnosDocentes + ", solicitadasPublicoGeneral="
+                + solicitadasPublicoGeneral + "]";
     }
 
- 
-
+    
 }

@@ -7,7 +7,7 @@ import modelo.Biblioteca;
 import modelo.CodigoDeBarra;
 import vista.Accion;
 // import vista.ConsultaObra;
-//import vista.VerificarLector;
+// import vista.VerificarLector;
 
 public class Main {
     public static void main(String[] args) {

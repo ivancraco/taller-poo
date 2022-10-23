@@ -13,6 +13,7 @@ public class Ejemplar {
     private String codigoDeBarra;
     private Prestamo prestamoEjemplar;
     private Reserva reservaEjemplar;
+    private Obra obra;
 
     public Ejemplar(LocalDate fechaAdquisicion, String formaAdquisicion, String iDUbicacion,
             String item, LocalDate fechaBaja, String motivoBaja, String ubicacionBaja, String codigoDeBarra,
@@ -28,8 +29,6 @@ public class Ejemplar {
         this.prestamoEjemplar = prestamoEjemplar;
         this.reservaEjemplar = reservaEjemplar;
     }
-
-    
 
     public Ejemplar(LocalDate fechaAdquisicion, String formaAdquisicion, String iDUbicacion,
             String item, LocalDate fechaBaja, String motivoBaja, String ubicacionBaja, String codigoDeBarra) {
@@ -137,13 +136,21 @@ public class Ejemplar {
     }
 
 
+    public Obra getObra() {
+        return obra;
+    }
+
+    public void setObra(Obra obra) {
+        this.obra = obra;
+    }
 
     @Override
     public String toString() {
         return "Ejemplar [fechaAdquisicion=" + fechaAdquisicion + ", formaAdquisicion=" + formaAdquisicion
                 + ", IDUbicacion=" + IDUbicacion + ", item=" + item + ", fechaBaja=" + fechaBaja + ", motivoBaja="
                 + motivoBaja + ", ubicacionBaja=" + ubicacionBaja + ", codigoDeBarra=" + codigoDeBarra
-                + ", prestamoEjemplar=" + prestamoEjemplar + ", reservaEjemplar=" + reservaEjemplar + "]";
+                + ", prestamoEjemplar=" + prestamoEjemplar + ", reservaEjemplar=" + reservaEjemplar + ", obra=" + obra
+                + "]";
     }
 
     

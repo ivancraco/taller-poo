@@ -1,5 +1,8 @@
 package modelo;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import vista.Funcionario;
@@ -12,6 +15,19 @@ public class Biblioteca {
        
         public Biblioteca() {
                 funcionario = new Funcionario();
+        }
+
+        public static LocalDate parsearFecha(String fecha) {
+                LocalDate local = LocalDate.parse(fecha);
+                return local;
+            }
+
+        public static String formatearFecha(String fecha, int plazo) {
+                LocalDate local = parsearFecha(fecha);
+                local = local.plusDays(plazo);
+                DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                String form = local.format(formato);
+                return form;
         }
 
         public void setVisible() {
@@ -33,5 +49,7 @@ public class Biblioteca {
         public void setFuncionario(Funcionario funcionario) {
                 this.funcionario = funcionario;
         }
+
+
 
 }

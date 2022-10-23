@@ -68,7 +68,7 @@ public class TablaDeudor extends JFrame implements ActionListener {
 
     public void tablaDeuda() {
         ModeloTablaDeuda modelo = new ModeloTablaDeuda(deudores().size(), deudores());
-        tabla.setDefaultRenderer(Object.class, new RenderTabla());
+        tabla.setDefaultRenderer(Object.class, new RenderTabla(deudores()));
         tabla.setModel(modelo);
         tabla.setRowHeight(30);
         validate();

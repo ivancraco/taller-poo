@@ -10,6 +10,7 @@ public class Prestamo {
     private String lugarPrestamo;
     private Ejemplar ejemplar;
     private Lector lector;
+    private Devolucion devolucion;
 
     public Prestamo(){}
 
@@ -80,11 +81,21 @@ public class Prestamo {
         this.lector = listaLector;
     }
 
+    
+
     @Override
     public String toString() {
         return "Prestamo [fechaDevolucion=" + fechaDevolucion + ", fechaYHoraPrestamo=" + fechaYHoraPrestamo
                 + ", funcionario=" + funcionario + ", listaEjemplar=" + ejemplar + ", listaLector=" + lector
                 + ", lugarPrestamo=" + lugarPrestamo + ", plazoDevolucion=" + plazoDevolucion + "]";
+    }
+
+    public Devolucion getDevolucion() {
+        return devolucion;
+    }
+
+    public void setDevolucion(Devolucion devolucion) {
+        this.devolucion = devolucion;
     }
 
 }

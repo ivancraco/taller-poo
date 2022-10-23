@@ -1,6 +1,10 @@
 package modelo;
 
 import java.awt.Component;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -10,8 +14,40 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class RenderTabla extends DefaultTableCellRenderer {
 
+    private List<Lector> lectores;
+
     public RenderTabla() {
         setHorizontalAlignment(SwingConstants.CENTER);
+    }
+
+    public RenderTabla(List<Lector> lectores) {
+        this.lectores = lectores;
+        setHorizontalAlignment(SwingConstants.CENTER);
+    }    
+
+    public JComboBox<String> crearComboBox(Lector lector){
+        JComboBox<String> combo = new JComboBox<>();
+        for(int i = 0; i < lector.getPrestamoLector().size(); i++){
+            if(fechaActual().isAfter(lector.getPrestamoLector().get(i).getFechaDevolucion())){
+                combo.addItem(lector.getPrestamoLector().get(i).getEjemplar().getObra().getTitulo());
+            }
+        }
+        return combo;
+    }
+
+    public LocalDate fechaActual() {
+        String fecha = fechaYHoraActual();
+        String str = fecha.substring(0, 10);
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fechaParseada = LocalDate.parse(str, formato);
+        return fechaParseada;
+    }
+
+    public String fechaYHoraActual() {
+        LocalDateTime fechaActual = LocalDateTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm a");
+        String nuevoFormato = fechaActual.format(formato);
+        return nuevoFormato;
     }
 
     @Override
@@ -23,9 +59,7 @@ public class RenderTabla extends DefaultTableCellRenderer {
         }
 
         if(value instanceof JComboBox){
-            JComboBox<String> combo = new JComboBox<String>();
-            // combo.addItem((String)value);
-            return combo;
+            return crearComboBox(lectores.get(row));
         }
 
         return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);

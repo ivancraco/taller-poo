@@ -43,13 +43,18 @@ public class Obras {
                 ejemplares.add(e1);
                 ejemplares.add(e2);
                 ejemplares.add(e3);
-
+                
                 Obra obra = new Obra("Matemática", "Matemática", "Matemáticas para todos", "Matemática de la suerte",
-                                "Adrián Paenza", " Guillermo Schavelzon", "", Genero.DIDACTICO, "manuales",
-                                "978-950-07-4039-5", indices, new Edicion("Printing Books S.A",
-                                                "Argentina", 1, 2012, 50, 349, "Español", "papel"),
-                                ejemplares);
+                "Adrián Paenza", " Guillermo Schavelzon", "", Genero.DIDACTICO, "manuales",
+                "978-950-07-4039-5", indices, new Edicion("Printing Books S.A",
+                "Argentina", 1, 2012, 50, 349, "Español", "papel"),
+                ejemplares);
 
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
                 return obra;
 
         }
@@ -78,6 +83,9 @@ public class Obras {
                                                 "Argentina", 1, 2014, 50, 559, "Español", "papel"),
                                 ejemplares);
 
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+
                 return obra;
 
         }
@@ -105,8 +113,25 @@ public class Obras {
                                                 "Argentina", 1, 2014, 50, 559, "Español", "papel"),
                                 ejemplares);
 
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);               
+
                 return obra;
 
         }
+
+        public static void ordenarLista1() {
+               Biblioteca.obras().sort(((o1, o2) -> o2.getSolicitadasAlumnosDocentes()
+               .compareTo(o1.getSolicitadasAlumnosDocentes())));
+        }
+
+        public static void ordenarLista2() {
+                Biblioteca.obras().sort(((o1, o2) -> o2.getSolicitadasPublicoGeneral()
+                .compareTo(o1.getSolicitadasPublicoGeneral())));
+        }
+
+        
+
+
 
 }

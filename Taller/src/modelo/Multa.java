@@ -4,6 +4,7 @@ public class Multa {
     
     private int plazo;
     private int cantidad;
+    private String multadoHasta;
     private Devolucion devolucion;
 
     public Multa(int plazo) {
@@ -43,9 +44,19 @@ public class Multa {
         this.cantidad = cantidad;
     }
 
+
+
     @Override
     public String toString() {
         return "Multa [plazo=" + plazo + ", devolucion=" + devolucion + ", cantidad=" + cantidad + "]";
+    }
+
+    public String getMultadoHasta() {
+        return multadoHasta;
+    }
+
+    public void setMultadoHasta(String multadoHasta) {
+        this.multadoHasta = multadoHasta;
     }
 
     

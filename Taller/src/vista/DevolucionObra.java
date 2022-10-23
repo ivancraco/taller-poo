@@ -23,30 +23,59 @@ public class DevolucionObra extends JFrame implements ActionListener {
     private JTextField codigo;
     private Lector lector;
     private JButton conf;
+    private JLabel $funcionario;
+    private JTextField funcionario;
 
     public DevolucionObra(Lector lector) {
 
         this.lector = lector;
         $codigo = new JLabel("Código de barra: ");
         codigo = new JTextField(20);
-        conf = new JButton("Mono");
+        $funcionario = new JLabel("Funcionario: ");
+        funcionario = new JTextField(15);
+        // funcionario.setText("");
+        conf = new JButton("Confirmar");
         conf.addActionListener(this);
+
+        codigo.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    leerCodigo(codigo.getText());
+                    
+                }
+            }
+        });
 
         /* Ventana */
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(800, 300);
+        setSize(250, 450);
         setResizable(false);
         setLocationRelativeTo(null);
 
         setLayout(new FlowLayout());
         add($codigo);
         add(codigo);
-        add(conf);
+        // add(conf);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        leerCodigo(codigo.getText());
+        // Pattern p = Pattern.compile("[a-zA-Z]");
+        // Matcher m = p.
+        if (funcionario.getText().matches("[a-zA-Z]{4,}")){
+            this.dispose();
+            JOptionPane.showMessageDialog(null,
+                    "¡ Devolución realizada con éxito !",
+                    null,
+                    JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null,
+                    "¡ datos incorrectos !",
+                    null,
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+         
 
     }
 
@@ -58,22 +87,20 @@ public class DevolucionObra extends JFrame implements ActionListener {
                 String ubicacion = prestamo.getEjemplar().getIDUbicacion();
                 String id = prestamo.getEjemplar().getCodigoDeBarra();
                 String res = ubicacion + id;
-                System.out.println(res);
                 if (res.equals(codigo)) {
                     devolucion.setFechaYHoraDevolucion(fechaYHoraActual());
                     if (fechaActual().isAfter(prestamo.getFechaDevolucion())) {
                         multarLector(lector);
-                        lector.getPrestamoLector().get(i).getEjemplar().setPrestamoEjemplar(null);
-                        lector.getPrestamoLector().remove(i);
                     }
+                    lector.getPrestamoLector().get(i).getEjemplar().setPrestamoEjemplar(null);
+                    lector.getPrestamoLector().remove(i);
+                    add($funcionario);
+                    add(funcionario);
+                    add(conf);
+                    validate();
                     break;
                 }
             }
-            this.dispose();
-            JOptionPane.showMessageDialog(null,
-            "¡ Wao !",
-            null,
-            JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -95,7 +122,7 @@ public class DevolucionObra extends JFrame implements ActionListener {
     public void multarLector(Lector lector) {
         lector.getMulta().setCantidad(lector.getMulta().getCantidad() + 1);
         lector.getMulta().setPlazo(15);
-        lector.getMulta().setDevolucion(devolucion);           
+        lector.getMulta().setDevolucion(devolucion);
     }
 
 }

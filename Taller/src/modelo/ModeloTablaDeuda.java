@@ -14,7 +14,7 @@ public class ModeloTablaDeuda extends AbstractTableModel {
             "Nombre", "Apellido", "Tipo", "DNI", "Teléfono", "Ejemplares" };
 
     private static final Class<?>[] TIPO_COLUMNAS = new Class<?>[] {
-            String.class, String.class, String.class, String.class, String.class, JComboBox.class };
+            String.class, String.class, String.class, String.class, String.class, Object.class };
 
     private Integer filas;
     private List<Lector> lectores;

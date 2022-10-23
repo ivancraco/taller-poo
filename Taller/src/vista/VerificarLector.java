@@ -38,7 +38,7 @@ public class VerificarLector extends JFrame implements ActionListener {
 
         /* Ventana */
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(450, 320);
+        setSize(250, 300);
         setResizable(false);
         setLocationRelativeTo(null);
 

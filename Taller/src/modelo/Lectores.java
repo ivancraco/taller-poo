@@ -37,8 +37,6 @@ public class Lectores {
                 lectores.get(0).getPrestamoLector().get(0).setLector(lectores.get(0));
                 lectores.get(0).getPrestamoLector().get(0).setEjemplar(Biblioteca.obras().get(0).getEjemplar().get(2));
                 Biblioteca.obras().get(0).getEjemplar().get(2).setPrestamoEjemplar(lectores.get(0).getPrestamoLector().get(0));
-                
-
         }
 
         public List<Lector> getLectores() {

@@ -15,6 +15,8 @@ public class Accion extends JFrame {
     JButton consultaIndice;
     JButton devolucion;
     JButton sindevolver;
+    JButton masSolicitadosAD;
+    JButton masSolicitadosPG;
 
     public Accion() {
 
@@ -25,6 +27,8 @@ public class Accion extends JFrame {
         devolucion = new JButton("Devolución");
         devolucion.setFocusPainted(false);
         sindevolver = new JButton("Sin devolver");
+        masSolicitadosAD = new JButton("Mono");
+        masSolicitadosPG = new JButton("Solicitados por P.General");
 
         /* Ventana */
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -60,12 +64,27 @@ public class Accion extends JFrame {
             }
         });
 
+        masSolicitadosAD.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                TablaObraPopularAD o = new TablaObraPopularAD("AD");
+                o.setVisible(true);
+            }
+        });
+
+        masSolicitadosPG.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                TablaObraPopularAD o = new TablaObraPopularAD("PG");
+                o.setVisible(true);
+            }
+        });
+
         Container container = getContentPane();
         container.setLayout(new FlowLayout());
         container.add(consultaObra);
         container.add(consultaIndice);
         container.add(devolucion);
         container.add(sindevolver);
+        container.add(masSolicitadosAD);
 
     }
 }
