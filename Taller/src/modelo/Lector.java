@@ -34,7 +34,7 @@ public class Lector {
         this.domicilio = domicilio;
         prestamoLector = new ArrayList<Prestamo>();
         reservaLector = new ArrayList<Reserva>();
-        multa = new Multa();
+        // multa = new Multa();
     }
 
     public String getNombre() {

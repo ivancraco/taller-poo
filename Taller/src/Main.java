@@ -8,12 +8,11 @@ import modelo.CodigoDeBarra;
 import vista.Accion;
 // import vista.ConsultaObra;
 // import vista.VerificarLector;
+import vista.Login;
 
 public class Main {
     public static void main(String[] args) {
-        // CodigoDeBarra code = new CodigoDeBarra();
-        // code.generarCodigo(Biblioteca.obras());
-        Accion biblioteca = new Accion();
+        Login biblioteca = new Login();
         biblioteca.setVisible(true);
     }
 }

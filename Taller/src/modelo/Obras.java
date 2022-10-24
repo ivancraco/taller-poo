@@ -79,7 +79,7 @@ public class Obras {
 
                 Obra obra = new Obra("Programación", "Java", "Programación Inicial", "Todos podemos programar",
                                 "Victor Smith", "Ernesto Robles", "Marta Quevedo", Genero.DIDACTICO, "manuales",
-                                "876-592-13-7890-3", indices, new Edicion("Printing Books S.A",
+                                "876-592-13-7890-3", indices, new Edicion("Libro",
                                                 "Argentina", 1, 2014, 50, 559, "Español", "papel"),
                                 ejemplares);
 
@@ -109,7 +109,7 @@ public class Obras {
 
                 Obra obra = new Obra("Programación", "Python", "Programación Inicial", "Todos podemos programar",
                                 "Michael Rockefeller", "Ana Montero", "Isaias Montenegro", Genero.DIDACTICO, "manuales",
-                                "876-592-13-7890-3", indices, new Edicion("Printing Books S.A",
+                                "876-592-13-7890-3", indices, new Edicion("Ejemplo",
                                                 "Argentina", 1, 2014, 50, 559, "Español", "papel"),
                                 ejemplares);
 

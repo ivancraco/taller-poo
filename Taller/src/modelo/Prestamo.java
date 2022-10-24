@@ -1,8 +1,9 @@
 package modelo;
+
 import java.time.LocalDate;
 
 public class Prestamo {
-    
+
     private String fechaYHoraPrestamo;
     private String funcionario;
     private LocalDate fechaDevolucion;
@@ -12,7 +13,8 @@ public class Prestamo {
     private Lector lector;
     private Devolucion devolucion;
 
-    public Prestamo(){}
+    public Prestamo() {
+    }
 
     public Prestamo(String fechaYHoraPrestamo, String funcionario, LocalDate fechaDevolucion, int plazoDevolucion,
             String lugarPrestamo, Ejemplar listaEjemplar, Lector listaLector) {
@@ -20,6 +22,16 @@ public class Prestamo {
         this.funcionario = funcionario;
         this.fechaDevolucion = fechaDevolucion;
         this.plazoDevolucion = plazoDevolucion;
+        this.lugarPrestamo = lugarPrestamo;
+        this.ejemplar = listaEjemplar;
+        this.lector = listaLector;
+    }
+
+    public Prestamo(String fechaYHoraPrestamo, String funcionario, LocalDate fechaDevolucion,
+            String lugarPrestamo, Ejemplar listaEjemplar, Lector listaLector) {
+        this.fechaYHoraPrestamo = fechaYHoraPrestamo;
+        this.funcionario = funcionario;
+        this.fechaDevolucion = fechaDevolucion;
         this.lugarPrestamo = lugarPrestamo;
         this.ejemplar = listaEjemplar;
         this.lector = listaLector;
@@ -40,7 +52,7 @@ public class Prestamo {
     public void setFuncionario(String funcionario) {
         this.funcionario = funcionario;
     }
-    
+
     public LocalDate getFechaDevolucion() {
         return fechaDevolucion;
     }
@@ -76,12 +88,10 @@ public class Prestamo {
     public Lector getLector() {
         return lector;
     }
-    
+
     public void setLector(Lector listaLector) {
         this.lector = listaLector;
     }
-
-    
 
     @Override
     public String toString() {

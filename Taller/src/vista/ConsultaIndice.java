@@ -52,6 +52,7 @@ public class ConsultaIndice extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(!indice.getText().matches("[a-zA-Z0-9]{3,}")) return;
         armarTabla();
     }
 

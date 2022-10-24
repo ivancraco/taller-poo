@@ -13,16 +13,16 @@ import modelo.Obra;
 import modelo.Obras;
 import modelo.RenderTabla;
 
-public class TablaObraPopularAD extends JFrame {
+public class TablaObraPopulares extends JFrame {
 
     private JTable tabla;
     private String valor;
     // private List<Obra> obras;
 
-    public TablaObraPopularAD(String valor) {
+    public TablaObraPopulares(String valor) {
 
         tabla = new JTable();
-        valor = this.valor;
+        this.valor = valor;
         add(new JScrollPane(tabla));
 
         /* Ventana */

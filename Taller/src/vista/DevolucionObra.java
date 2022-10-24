@@ -6,13 +6,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import modelo.Biblioteca;
 import modelo.Devolucion;
 import modelo.Lector;
+import modelo.Multa;
 import modelo.Prestamo;
 
 import java.awt.event.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.awt.*;
 
@@ -33,7 +34,6 @@ public class DevolucionObra extends JFrame implements ActionListener {
         codigo = new JTextField(20);
         $funcionario = new JLabel("Funcionario: ");
         funcionario = new JTextField(15);
-        // funcionario.setText("");
         conf = new JButton("Confirmar");
         conf.addActionListener(this);
 
@@ -56,13 +56,10 @@ public class DevolucionObra extends JFrame implements ActionListener {
         setLayout(new FlowLayout());
         add($codigo);
         add(codigo);
-        // add(conf);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Pattern p = Pattern.compile("[a-zA-Z]");
-        // Matcher m = p.
         if (funcionario.getText().matches("[a-zA-Z]{4,}")){
             this.dispose();
             JOptionPane.showMessageDialog(null,
@@ -88,7 +85,7 @@ public class DevolucionObra extends JFrame implements ActionListener {
                 String id = prestamo.getEjemplar().getCodigoDeBarra();
                 String res = ubicacion + id;
                 if (res.equals(codigo)) {
-                    devolucion.setFechaYHoraDevolucion(fechaYHoraActual());
+                    devolucion.setFechaYHoraDevolucion(Biblioteca.fechaYHoraActual());
                     if (fechaActual().isAfter(prestamo.getFechaDevolucion())) {
                         multarLector(lector);
                     }
@@ -105,24 +102,27 @@ public class DevolucionObra extends JFrame implements ActionListener {
     }
 
     public LocalDate fechaActual() {
-        String fecha = fechaYHoraActual();
+        String fecha = Biblioteca.fechaYHoraActual();
         String str = fecha.substring(0, 10);
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate fechaParseada = LocalDate.parse(str, formato);
         return fechaParseada;
     }
 
-    public String fechaYHoraActual() {
-        LocalDateTime fechaActual = LocalDateTime.now();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm a");
-        String nuevoFormato = fechaActual.format(formato);
-        return nuevoFormato;
-    }
+    // public String fechaYHoraActual() {
+    //     LocalDateTime fechaActual = LocalDateTime.now();
+    //     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm a");
+    //     String nuevoFormato = fechaActual.format(formato);
+    //     return nuevoFormato;
+    // }
 
     public void multarLector(Lector lector) {
-        lector.getMulta().setCantidad(lector.getMulta().getCantidad() + 1);
-        lector.getMulta().setPlazo(15);
-        lector.getMulta().setDevolucion(devolucion);
+        int cant = 0;
+        if(lector.getMulta() != null) {
+            cant = lector.getMulta().getCantidad();
+        }
+        lector.setMulta(new Multa(15, devolucion));
+        lector.getMulta().setCantidad(cant + 1);
     }
 
 }

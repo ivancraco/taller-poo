@@ -43,13 +43,11 @@ public class ConsultaObra extends JFrame implements ActionListener, ItemListener
         combo.addItemListener(this);
 
         tabla = new JTable();
-        tabla.setEnabled(false);
 
         panel1 = new JPanel();
         panel1.add(combo);
         panel1.add(buscar);
         add(panel1, BorderLayout.NORTH);
-
         add(new JScrollPane(tabla), BorderLayout.CENTER);
         buscar.addActionListener(this);
         listener = new JTableButtonMouseListener(tabla);

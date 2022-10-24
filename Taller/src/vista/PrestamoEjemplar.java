@@ -132,7 +132,6 @@ public class PrestamoEjemplar extends JFrame implements ActionListener, ItemList
         if(prestamo.getLector().getTipoLector().equals(TipoLector.PUBLICO_GENERAL)){
             prestamo.getEjemplar().getObra().setSolicitadasPublicoGeneral(
             prestamo.getEjemplar().getObra().getSolicitadasPublicoGeneral() + 1);
-            System.out.println("elpepe");
         }else {
             prestamo.getEjemplar().getObra().setSolicitadasAlumnosDocentes(
             prestamo.getEjemplar().getObra().getSolicitadasAlumnosDocentes() + 1);

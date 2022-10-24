@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import modelo.Biblioteca;
 import modelo.Ejemplar;
 import modelo.Lector;
 import modelo.Reserva;
@@ -13,7 +14,6 @@ import modelo.Reserva;
 import java.awt.event.*;
 import java.awt.*;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class ReservaEjemplar extends JFrame implements ActionListener {
 
@@ -44,16 +44,18 @@ public class ReservaEjemplar extends JFrame implements ActionListener {
 
     }
 
-    public LocalDate fechaReserva() {
-        String fecha = fec.getText();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fechaParseada = LocalDate.parse(fecha, formato);
-        return fechaParseada;
-    }
+    // public String fechaReserva() {
+    // String fecha = fec.getText();
+    // DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    // LocalDate fechaParseada = LocalDate.parse(fecha, formato);
+    // String nuevoFormato = fechaParseada.format(formato);
+    // return nuevoFormato;
+    // }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        reserva.setFechaReserva(fechaReserva());
+        reserva.setFechaReserva(Biblioteca.fechaString(reserva.getEjemplar()
+                .getPrestamoEjemplar().getFechaDevolucion()));
         reserva.getLector().getReservaLector().add(reserva);
         reserva.getEjemplar().setReservaEjemplar(reserva);
 

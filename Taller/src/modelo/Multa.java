@@ -3,7 +3,8 @@ package modelo;
 public class Multa {
     
     private int plazo;
-    private int cantidad;
+    private Integer cantidad;
+    private boolean multado;
     private String multadoHasta;
     private Devolucion devolucion;
 
@@ -12,12 +13,14 @@ public class Multa {
     }
 
     public Multa() {
-    
+       cantidad = 0;
     }
 
     public Multa(int plazo, Devolucion devolucion) {
         this.plazo = plazo;
         this.devolucion = devolucion;
+        this.multado = true;
+        cantidad = 0;
     }
 
     public int getPlazo() {
@@ -36,19 +39,12 @@ public class Multa {
         this.devolucion = devolucion;
     }
 
-    public int getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "Multa [plazo=" + plazo + ", devolucion=" + devolucion + ", cantidad=" + cantidad + "]";
     }
 
     public String getMultadoHasta() {
@@ -59,6 +55,18 @@ public class Multa {
         this.multadoHasta = multadoHasta;
     }
 
-    
-    
+    public boolean isMultado() {
+        return multado;
+    }
+
+    public void setMultado(boolean multado) {
+        this.multado = multado;
+    }
+
+    @Override
+    public String toString() {
+        return "Multa [plazo=" + plazo + ", cantidad=" + cantidad + ", multado=" + multado + ", multadoHasta="
+                + multadoHasta + ", devolucion=" + devolucion + "]";
+    }
+
 }

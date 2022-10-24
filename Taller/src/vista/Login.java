@@ -1,4 +1,5 @@
 package vista;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,7 +13,7 @@ import javax.swing.JTextField;
 import java.awt.event.*;
 import java.awt.*;
 
-public class Funcionario extends JFrame implements ActionListener {
+public class Login extends JFrame implements ActionListener {
     private final String USER = "admin";
     private final String PASS = "123456";
     private JTextField user;
@@ -25,7 +26,7 @@ public class Funcionario extends JFrame implements ActionListener {
     private JPanel panel1;
     private JPanel panel2;
 
-    public Funcionario() {
+    public Login() {
         Container c = getContentPane();
         user = new JTextField(18);
         pass = new JPasswordField(18);
@@ -68,8 +69,8 @@ public class Funcionario extends JFrame implements ActionListener {
         String strPass = String.valueOf(pass.getPassword());
 
         if (user.getText().equals(USER) && strPass.equals(PASS)) {
-            // new VerificarLector().setVisible(true);
-            // this.setVisible(false);
+            new Accion().setVisible(true);
+            this.dispose();
         } else
             JOptionPane.showMessageDialog(null,
                     "Datos inválidos", "Error message",

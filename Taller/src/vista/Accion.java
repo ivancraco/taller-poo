@@ -17,6 +17,10 @@ public class Accion extends JFrame {
     JButton sindevolver;
     JButton masSolicitadosAD;
     JButton masSolicitadosPG;
+    JButton reservados;
+    JButton obraEditorial;
+    JButton periodoMulta;
+    JButton rankingMulta;
 
     public Accion() {
 
@@ -27,8 +31,12 @@ public class Accion extends JFrame {
         devolucion = new JButton("Devolución");
         devolucion.setFocusPainted(false);
         sindevolver = new JButton("Sin devolver");
-        masSolicitadosAD = new JButton("Mono");
+        masSolicitadosAD = new JButton("Solicitados por Alumnos y Docentes");
         masSolicitadosPG = new JButton("Solicitados por P.General");
+        reservados = new JButton("reservados");
+        obraEditorial = new JButton("Obras de editorial");
+        periodoMulta = new JButton("Periodo Multa");
+        rankingMulta = new JButton("Ranking Multa");
 
         /* Ventana */
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -66,14 +74,42 @@ public class Accion extends JFrame {
 
         masSolicitadosAD.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                TablaObraPopularAD o = new TablaObraPopularAD("AD");
+                TablaObraPopulares o = new TablaObraPopulares("AD");
                 o.setVisible(true);
             }
         });
 
         masSolicitadosPG.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                TablaObraPopularAD o = new TablaObraPopularAD("PG");
+                TablaObraPopulares o = new TablaObraPopulares("PG");
+                o.setVisible(true);
+            }
+        });
+
+        reservados.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ObrasReservadas o = new ObrasReservadas();
+                o.setVisible(true);
+            }
+        });
+
+        obraEditorial.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                TablaObraEditorial o = new TablaObraEditorial();
+                o.setVisible(true);
+            }
+        });
+
+        periodoMulta.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                PeriodoMulta o = new PeriodoMulta();
+                o.setVisible(true);
+            }
+        });
+        
+        rankingMulta.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                RankingMulta o = new RankingMulta();
                 o.setVisible(true);
             }
         });
@@ -85,6 +121,11 @@ public class Accion extends JFrame {
         container.add(devolucion);
         container.add(sindevolver);
         container.add(masSolicitadosAD);
+        container.add(masSolicitadosPG);
+        container.add(reservados);
+        container.add(obraEditorial);
+        container.add(periodoMulta);
+        container.add(rankingMulta);
 
     }
 }

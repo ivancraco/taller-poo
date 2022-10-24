@@ -1,25 +1,24 @@
 package modelo;
-import java.time.LocalDate;
 
 public class Reserva {
     
-    private LocalDate fechaReserva;
+    private String fechaReserva;
     private Ejemplar ejemplar;
     private Lector lector;
 
     public Reserva(){}
     
-    public Reserva(LocalDate fechaReserva, Ejemplar ejemplar, Lector lector) {
+    public Reserva(String fechaReserva, Ejemplar ejemplar, Lector lector) {
         this.fechaReserva = fechaReserva;
         this.ejemplar = ejemplar;
         this.lector = lector;
     }
 
-    public LocalDate getFechaReserva() {
+    public String getFechaReserva() {
         return fechaReserva;
     }
 
-    public void setFechaReserva(LocalDate fechaReserva) {
+    public void setFechaReserva(String fechaReserva) {
         this.fechaReserva = fechaReserva;
     }
 

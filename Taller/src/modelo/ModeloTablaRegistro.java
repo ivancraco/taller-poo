@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import vista.TablaRegistro;
@@ -95,10 +96,17 @@ public class ModeloTablaRegistro extends AbstractTableModel {
 
         if (ejemplares.get(indice).getPrestamoEjemplar() != null &&
                 accion.equals(ModeloTabla.PRESTAMO)) {
-            button.setText("Prestado");
+            button.setText("En Préstamo");
         } else if (ejemplares.get(indice).getReservaEjemplar() != null &&
                 accion.equals(ModeloTabla.RESERVA)) {
             button.setText("Reservado");
+            button.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent arg0) {
+                    JOptionPane.showMessageDialog(null,
+                    "Reservado para "+ejemplares.get(indice).getReservaEjemplar().getFechaReserva(), "",
+                    JOptionPane.ERROR_MESSAGE);   
+                }
+            });
         } else {
             button.setText("Confirmar");
             button.addActionListener(new ActionListener() {

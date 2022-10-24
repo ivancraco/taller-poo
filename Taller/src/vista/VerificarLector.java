@@ -11,6 +11,7 @@ import modelo.Biblioteca;
 import modelo.Ejemplar;
 import modelo.Lector;
 import modelo.ModeloTabla;
+import modelo.Reserva;
 
 import java.awt.Container;
 import java.awt.event.*;
@@ -61,9 +62,17 @@ public class VerificarLector extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Lector lector = existeLector(Biblioteca.lectores(), dni.getText());
         if (lector != null) {
+            if (tieneMultas(lector)) {
+                JOptionPane.showMessageDialog(null,
+                        "El lector debe libros", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+
+                this.dispose();
+                return;
+            }
             if (tieneMultas(lector) && !accion.equals(ModeloTabla.DEVOLUCION)) {
                 JOptionPane.showMessageDialog(null,
-                        "Lector multado hasta "+multas(lector), "Error",
+                        "Lector multado hasta " + multas(lector), "Error",
                         JOptionPane.ERROR_MESSAGE);
                 this.dispose();
                 return;
@@ -74,8 +83,16 @@ public class VerificarLector extends JFrame implements ActionListener {
                 this.dispose();
             }
             if (accion.equals(ModeloTabla.RESERVA)) {
-                ReservaEjemplar registrar = new ReservaEjemplar(lector, ejemplar);
-                registrar.setVisible(true);
+                Reserva reserva = new Reserva();
+                reserva.setLector(lector);
+                reserva.setEjemplar(ejemplar);
+                reserva.setFechaReserva(Biblioteca.fechaString(reserva.getEjemplar()
+                        .getPrestamoEjemplar().getFechaDevolucion()));
+                reserva.getLector().getReservaLector().add(reserva);
+                reserva.getEjemplar().setReservaEjemplar(reserva);
+                JOptionPane.showMessageDialog(null,
+                    " wao ", "Error",
+                    JOptionPane.ERROR_MESSAGE);
                 this.dispose();
             }
             if (accion.equals(ModeloTabla.DEVOLUCION)) {
@@ -98,8 +115,11 @@ public class VerificarLector extends JFrame implements ActionListener {
         }
         return null;
     }
+
     public boolean tieneMultas(Lector lector) {
-        return lector.getMulta().getCantidad() > 0;
+        if (lector.getMulta() == null)
+            return false;
+        return lector.getMulta().isMultado();
     }
 
     public String multas(Lector lector) {
@@ -117,7 +137,5 @@ public class VerificarLector extends JFrame implements ActionListener {
         LocalDate fechaParseada = LocalDate.parse(str, formato);
         return fechaParseada;
     }
-
-
 
 }

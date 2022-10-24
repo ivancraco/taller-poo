@@ -9,6 +9,7 @@ import vista.ConsultaObra;
 import vista.TablaRegistro;
 
 import java.awt.event.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,8 +90,10 @@ public class ModeloTabla extends AbstractTableModel {
                                     obras.get(rowIndex).getEjemplar(),
                                     ModeloTabla.PRESTAMO);
                             t.setVisible(true);
-                            if(o != null) o.dispose();
-                            if(i != null) i.dispose();
+                            if (o != null)
+                                o.dispose();
+                            if (i != null)
+                                i.dispose();
                         } else {
                             JOptionPane.showMessageDialog(null,
                                     "¡ Operación no disponible !",
@@ -110,8 +113,10 @@ public class ModeloTabla extends AbstractTableModel {
                                     ejemplaresParaReserva(obras.get(rowIndex).getEjemplar()),
                                     ModeloTabla.RESERVA);
                             t.setVisible(true);
-                            if(o != null) o.dispose();
-                            if(i != null) i.dispose();
+                            if (o != null)
+                                o.dispose();
+                            if (i != null)
+                                i.dispose();
                         } else {
                             JOptionPane.showMessageDialog(null,
                                     "¡ No hay ejemplares prestados !",
@@ -142,27 +147,43 @@ public class ModeloTabla extends AbstractTableModel {
     public List<Ejemplar> ejemplaresParaPrestamo(List<Ejemplar> ejemplares) {
         // List<Ejemplar> res = new ArrayList<>();
         // for (int i = 0; i < ejemplares.size(); i++) {
-        //     if (ejemplares.get(i).getPrestamoEjemplar() == null) {
-        //         res.add(ejemplares.get(i));
-        //     }
+        // if (ejemplares.get(i).getPrestamoEjemplar() == null) {
+        // res.add(ejemplares.get(i));
+        // }
         // }
         return ejemplares;
     }
 
     public List<Ejemplar> ejemplaresParaReserva(List<Ejemplar> ejemplares) {
         List<Ejemplar> res = new ArrayList<>();
+        LocalDate local;
         for (int i = 0; i < ejemplares.size(); i++) {
             if (ejemplares.get(i).getPrestamoEjemplar() != null) {
-                res.add(ejemplares.get(i));
+                local = ejemplares.get(i).getPrestamoEjemplar().getFechaDevolucion();
+                String fechaYHoraActual = Biblioteca.fechaYHoraActual();
+                String fechaActual = fechaYHoraActual.substring(0, 10);
+                LocalDate fechaActualParseada = Biblioteca.parsearFecha(fechaActual);
+                if (local.isAfter(fechaActualParseada) || local.isEqual(fechaActualParseada)) {
+                    res.add(ejemplares.get(i));
+                }
             }
         }
         return res;
     }
 
     public boolean paraReservar(List<Ejemplar> ejemplares) {
-        if(ejemplares == null) return false;
+        if (ejemplares == null)
+            return false;
+        LocalDate local;
         for (int i = 0; i < ejemplares.size(); i++) {
             if (ejemplares.get(i).getPrestamoEjemplar() != null) {
+                local = ejemplares.get(i).getPrestamoEjemplar().getFechaDevolucion();
+                String fechaYHoraActual = Biblioteca.fechaYHoraActual();
+                String fechaActual = fechaYHoraActual.substring(0, 10);
+                LocalDate fechaActualParseada = Biblioteca.parsearFecha(fechaActual);
+                if (local.isBefore(fechaActualParseada)) {
+                    return false;
+                }
                 return true;
             }
         }
@@ -170,7 +191,8 @@ public class ModeloTabla extends AbstractTableModel {
     }
 
     public boolean paraPrestar(List<Ejemplar> ejemplares) {
-        if(ejemplares == null) return false;
+        if (ejemplares == null)
+            return false;
         for (int i = 0; i < ejemplares.size(); i++) {
             if (ejemplares.get(i).getPrestamoEjemplar() == null) {
                 return true;
