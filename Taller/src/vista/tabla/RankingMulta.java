@@ -1,4 +1,4 @@
-package vista;
+package vista.tabla;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -13,12 +13,14 @@ import javax.swing.JTable;
 import modelo.Biblioteca;
 import modelo.Lector;
 import modelo.Lectores;
-import modelo.ModeloTablaPeriodoMulta;
-import modelo.RenderTabla;
+import modelo.ModeloTablaMulta;
+import modelo.RenderizarTabla;
 
 import java.awt.*;
 
 public class RankingMulta extends JFrame {
+
+    private ModeloTablaMulta modelo;
     private JTable tabla;
     private JPanel panel;
     private JLabel titulo;
@@ -57,9 +59,9 @@ public class RankingMulta extends JFrame {
     }
 
     public void armarTabla(){
-        ModeloTablaPeriodoMulta modelo = new ModeloTablaPeriodoMulta(RankingLectoresMultados().size(),
-        RankingLectoresMultados(), ModeloTablaPeriodoMulta.RANKING_MULTA);
-        tabla.setDefaultRenderer(Object.class, new RenderTabla());
+        modelo = new ModeloTablaMulta(RankingLectoresMultados().size(),
+        RankingLectoresMultados(), ModeloTablaMulta.RANKING_MULTA);
+        tabla.setDefaultRenderer(Object.class, new RenderizarTabla());
         tabla.setModel(modelo);
         tabla.setRowHeight(30);
         validate();

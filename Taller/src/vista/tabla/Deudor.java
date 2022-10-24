@@ -1,4 +1,4 @@
-package vista;
+package vista.tabla;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -7,21 +7,21 @@ import javax.swing.JTable;
 import modelo.Biblioteca;
 import modelo.Lector;
 import modelo.ModeloTablaDeuda;
-import modelo.RenderTabla;
+import modelo.RenderizarTabla;
 
 import java.awt.BorderLayout;
-import java.awt.event.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TablaDeudor extends JFrame implements ActionListener {
+public class Deudor extends JFrame{
 
+    private ModeloTablaDeuda modelo;
     private JTable tabla;
 
-    public TablaDeudor() {
+    public Deudor() {
 
         tabla = new JTable();
         
@@ -67,18 +67,11 @@ public class TablaDeudor extends JFrame implements ActionListener {
     }
 
     public void tablaDeuda() {
-        ModeloTablaDeuda modelo = new ModeloTablaDeuda(deudores().size(), deudores());
-        tabla.setDefaultRenderer(Object.class, new RenderTabla(deudores()));
+        modelo = new ModeloTablaDeuda(deudores().size(), deudores());
+        tabla.setDefaultRenderer(Object.class, new RenderizarTabla(deudores()));
         tabla.setModel(modelo);
         tabla.setRowHeight(30);
         validate();
         repaint();
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-
-    }
-
 }

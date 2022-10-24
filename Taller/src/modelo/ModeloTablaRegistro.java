@@ -9,8 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
-import vista.TablaRegistro;
+import vista.BajaEjemplar;
 import vista.VerificarLector;
+import vista.tabla.Registro;
 
 public class ModeloTablaRegistro extends AbstractTableModel {
 
@@ -23,9 +24,9 @@ public class ModeloTablaRegistro extends AbstractTableModel {
     private Integer filas;
     private List<Ejemplar> ejemplares;
     private String accion;
-    private TablaRegistro t;
+    private Registro t;
 
-    public ModeloTablaRegistro(Integer filas, List<Ejemplar> ejemplares, String accion, TablaRegistro t) {
+    public ModeloTablaRegistro(Integer filas, List<Ejemplar> ejemplares, String accion, Registro t) {
         this.filas = filas;
         this.ejemplares = ejemplares;
         this.accion = accion;
@@ -39,10 +40,7 @@ public class ModeloTablaRegistro extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        if (accion.equals(ModeloTabla.PRESTAMO))
-            return NOMBRE_COLUMNAS.length - 1;
-        else
-            return NOMBRE_COLUMNAS.length;
+        return NOMBRE_COLUMNAS.length;
     }
 
     @Override
@@ -55,6 +53,8 @@ public class ModeloTablaRegistro extends AbstractTableModel {
         if (accion.equals(ModeloTabla.PRESTAMO)) {
             if (c == 5)
                 return accion;
+            if (c == 6)
+                return "Dar de Baja";
         } else if (accion.equals(ModeloTabla.RESERVA)) {
             if (c == 5)
                 return "Fecha Devolución";
@@ -85,7 +85,11 @@ public class ModeloTablaRegistro extends AbstractTableModel {
                     return fechasEjemplaresPrestados(rowIndex);
                 }
             case 6:
-                return crearBoton(rowIndex, accion);
+                if (accion.equals(ModeloTabla.PRESTAMO)) {
+                    return btnBaja(rowIndex);
+                } else {
+                    return crearBoton(rowIndex, accion);
+                }
             default:
                 return "";
         }
@@ -103,12 +107,12 @@ public class ModeloTablaRegistro extends AbstractTableModel {
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent arg0) {
                     JOptionPane.showMessageDialog(null,
-                    "Reservado para "+ejemplares.get(indice).getReservaEjemplar().getFechaReserva(), "",
-                    JOptionPane.ERROR_MESSAGE);   
+                            "Reservado para " + ejemplares.get(indice).getReservaEjemplar().getFechaReserva(), "",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             });
         } else {
-            button.setText("Confirmar");
+            button.setText("Registrar");
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent arg0) {
                     VerificarLector verificar = new VerificarLector(ejemplares.get(indice), accion);
@@ -132,6 +136,25 @@ public class ModeloTablaRegistro extends AbstractTableModel {
         return "";
     }
 
+    public JButton btnBaja(int indice) {
+        JButton button = new JButton("Aceptar");
+        button.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(ejemplares.get(indice).getPrestamoEjemplar() == null){
+                    BajaEjemplar be = new BajaEjemplar(ejemplares, indice);
+                    be.setVisible(true);
+                    t.dispose();
+                }else {
+                    JOptionPane.showMessageDialog(null,
+                            "El ejemplar está en préstamo", "",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
 
+        });
+
+        return button;
+    }
 
 }

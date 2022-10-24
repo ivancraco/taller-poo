@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import modelo.Biblioteca;
@@ -22,13 +21,13 @@ import java.awt.*;
 
 public class VerificarLector extends JFrame implements ActionListener {
 
-    JLabel tituloDni;
-    JTextField dni;
-    JButton confirmar;
-    JButton consultaObra;
-    JButton consultaIndice;
-    JButton devolucion;
-    JPanel acciones;
+    private JLabel tituloDni;
+    private JTextField dni;
+    private JButton confirmar;
+    // private JButton consultaObra;
+    // private JButton consultaIndice;
+    // private JButton devolucion;
+    // private JPanel acciones;
     private Ejemplar ejemplar;
     private String accion;
 

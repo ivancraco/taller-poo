@@ -4,6 +4,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import modelo.ModeloTabla;
+import vista.tabla.ConsultaIndice;
+import vista.tabla.ConsultaObra;
+import vista.tabla.ObraReservada;
+import vista.tabla.PeriodoMulta;
+import vista.tabla.RankingMulta;
+import vista.tabla.Deudor;
+import vista.tabla.ObraEditorial;
+import vista.tabla.ObraPopular;
 
 import java.awt.Container;
 import java.awt.*;
@@ -11,16 +19,16 @@ import java.awt.event.*;
 
 public class Accion extends JFrame {
 
-    JButton consultaObra;
-    JButton consultaIndice;
-    JButton devolucion;
-    JButton sindevolver;
-    JButton masSolicitadosAD;
-    JButton masSolicitadosPG;
-    JButton reservados;
-    JButton obraEditorial;
-    JButton periodoMulta;
-    JButton rankingMulta;
+    private JButton consultaObra;
+    private JButton consultaIndice;
+    private JButton devolucion;
+    private JButton sindevolver;
+    private JButton masSolicitadosAD;
+    private JButton masSolicitadosPG;
+    private JButton reservados;
+    private JButton obraEditorial;
+    private JButton periodoMulta;
+    private JButton rankingMulta;
 
     public Accion() {
 
@@ -67,35 +75,35 @@ public class Accion extends JFrame {
 
         sindevolver.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                TablaDeudor o = new TablaDeudor();
+                Deudor o = new Deudor();
                 o.setVisible(true);
             }
         });
 
         masSolicitadosAD.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                TablaObraPopulares o = new TablaObraPopulares("AD");
+                ObraPopular o = new ObraPopular("AD");
                 o.setVisible(true);
             }
         });
 
         masSolicitadosPG.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                TablaObraPopulares o = new TablaObraPopulares("PG");
+                ObraPopular o = new ObraPopular("PG");
                 o.setVisible(true);
             }
         });
 
         reservados.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ObrasReservadas o = new ObrasReservadas();
+                ObraReservada o = new ObraReservada();
                 o.setVisible(true);
             }
         });
 
         obraEditorial.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                TablaObraEditorial o = new TablaObraEditorial();
+                ObraEditorial o = new ObraEditorial();
                 o.setVisible(true);
             }
         });

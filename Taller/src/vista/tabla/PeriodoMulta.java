@@ -1,4 +1,4 @@
-package vista;
+package vista.tabla;
 
 import java.awt.BorderLayout;
 
@@ -12,8 +12,8 @@ import javax.swing.JTextField;
 
 import modelo.Biblioteca;
 import modelo.Lector;
-import modelo.ModeloTablaPeriodoMulta;
-import modelo.RenderTabla;
+import modelo.ModeloTablaMulta;
+import modelo.RenderizarTabla;
 
 import java.awt.event.*;
 import java.time.LocalDate;
@@ -22,6 +22,7 @@ import java.util.List;
 
 public class PeriodoMulta extends JFrame {
 
+    private ModeloTablaMulta modelo;
     private JTable tabla;
     private JLabel $desde;
     private JTextField desde;
@@ -85,9 +86,9 @@ public class PeriodoMulta extends JFrame {
     }
 
     public void armarTabla() {
-        ModeloTablaPeriodoMulta modelo = new ModeloTablaPeriodoMulta(lectoresMultadosPorPeriodo().size(), lectoresMultadosPorPeriodo(), ModeloTablaPeriodoMulta.PERIODO_MULTA);
+        modelo = new ModeloTablaMulta(lectoresMultadosPorPeriodo().size(), lectoresMultadosPorPeriodo(), ModeloTablaMulta.PERIODO_MULTA);
         tabla.setModel(modelo);
-        tabla.setDefaultRenderer(Object.class, new RenderTabla());
+        tabla.setDefaultRenderer(Object.class, new RenderizarTabla());
         tabla.setRowHeight(30);
         validate();
         repaint();

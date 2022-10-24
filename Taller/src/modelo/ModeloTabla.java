@@ -4,9 +4,10 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
-import vista.ConsultaIndice;
-import vista.ConsultaObra;
-import vista.TablaRegistro;
+import vista.AltaEjemplar;
+import vista.tabla.ConsultaIndice;
+import vista.tabla.ConsultaObra;
+import vista.tabla.Registro;
 
 import java.awt.event.*;
 import java.time.LocalDate;
@@ -15,10 +16,10 @@ import java.util.List;
 
 public class ModeloTabla extends AbstractTableModel {
     private static final String[] NOMBRE_COLUMNAS = new String[] {
-            "Título", "Temática", "Ejemplares Disponibles", "Préstamo", "Reserva" };
+            "Título", "Temática", "Ejemplares Disponibles", "Préstamo", "Reserva", "Nuevo" };
 
     private static final Class<?>[] TIPO_COLUMNAS = new Class<?>[] {
-            String.class, String.class, String.class, JButton.class, JButton.class };
+            String.class, String.class, String.class, JButton.class, JButton.class, JButton.class };
 
     private int filas;
     private int columnas;
@@ -82,11 +83,11 @@ public class ModeloTabla extends AbstractTableModel {
             case 2:
                 return ejemplaresDisponibles(obras.get(rowIndex).getEjemplar());
             case 3:
-                final JButton button = new JButton("Préstamo");
+                final JButton button = new JButton("Confirmar");
                 button.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent arg0) {
                         if (paraPrestar(obras.get(rowIndex).getEjemplar())) {
-                            TablaRegistro t = new TablaRegistro(
+                            Registro t = new Registro(
                                     obras.get(rowIndex).getEjemplar(),
                                     ModeloTabla.PRESTAMO);
                             t.setVisible(true);
@@ -105,11 +106,11 @@ public class ModeloTabla extends AbstractTableModel {
                 });
                 return button;
             case 4:
-                final JButton button2 = new JButton("Reserva");
+                final JButton button2 = new JButton("Confirmar");
                 button2.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent arg0) {
                         if (paraReservar(obras.get(rowIndex).getEjemplar())) {
-                            TablaRegistro t = new TablaRegistro(
+                            Registro t = new Registro(
                                     ejemplaresParaReserva(obras.get(rowIndex).getEjemplar()),
                                     ModeloTabla.RESERVA);
                             t.setVisible(true);
@@ -127,6 +128,21 @@ public class ModeloTabla extends AbstractTableModel {
                     }
                 });
                 return button2;
+            case 5:
+                final JButton btn = new JButton("Agregar");
+                btn.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        AltaEjemplar ae = new AltaEjemplar(obras.get(rowIndex).getEjemplar());
+                        ae.setVisible(true);
+                        if (o != null)
+                            o.dispose();
+                        if (i != null)
+                            i.dispose();
+                    }
+
+                });
+                return btn;
             default:
                 return "";
         }

@@ -1,4 +1,4 @@
-package vista;
+package vista.tabla;
 
 import java.util.List;
 
@@ -9,16 +9,17 @@ import java.awt.event.*;
 
 import modelo.Ejemplar;
 import modelo.ModeloTablaRegistro;
-import modelo.RenderTabla;
+import modelo.RenderizarTabla;
 
-public class TablaRegistro extends JFrame {
+public class Registro extends JFrame {
 
+    ModeloTablaRegistro modelo;
     private List<Ejemplar> ejemplares;
     private String accion;
     private JTable tabla;
     private JTableButtonMouseListener listener;
 
-    public TablaRegistro(List<Ejemplar> ejemplares, String accion) {
+    public Registro(List<Ejemplar> ejemplares, String accion) {
 
         this.ejemplares = ejemplares;
         this.accion = accion;
@@ -49,33 +50,14 @@ public class TablaRegistro extends JFrame {
     }
 
     private void armarTabla() {
-
-        ModeloTablaRegistro modelo = new ModeloTablaRegistro(ejemplares.size(), ejemplares, accion, this);
-        tabla.setDefaultRenderer(Object.class, new RenderTabla());
+        modelo = new ModeloTablaRegistro(ejemplares.size(), ejemplares, accion, this);
+        tabla.setDefaultRenderer(Object.class, new RenderizarTabla());
         tabla.setModel(modelo);
         tabla.setRowHeight(30);
         validate();
         repaint();
 
     }
-
-    // private void armarTabla2() {
-
-    //     for (Ejemplar ejemplar : ejemplares) {
-    //         if(ejemplar.getPrestamoEjemplar() != null) {
-    //             copia.add(ejemplar);
-    //         }
-    //     }
-
-    //     ModeloTablaPrestamo modelo = new ModeloTablaPrestamo(copia.size(), copia, index, this);
-    //     tabla.setDefaultRenderer(Object.class, new RenderTabla());
-    //     tabla.setModel(modelo);
-    //     tabla.setRowHeight(30);
-    //     validate();
-    //     repaint();
-
-    // }
-
 }
 
 class JTableButtonMouseListener extends MouseAdapter {

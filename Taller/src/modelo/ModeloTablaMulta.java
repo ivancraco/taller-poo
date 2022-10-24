@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-public class ModeloTablaPeriodoMulta extends AbstractTableModel {
+public class ModeloTablaMulta extends AbstractTableModel {
 
     private static final String[] NOMBRE_COLUMNAS = new String[] {
             "Nombre", "Apellido", "DNI", "Correo", ""};
@@ -19,7 +19,7 @@ public class ModeloTablaPeriodoMulta extends AbstractTableModel {
     public static final String RANKING_MULTA = "RankingMulta";
 
 
-    public ModeloTablaPeriodoMulta(int filas, List<Lector> lectores, String accion) {
+    public ModeloTablaMulta(int filas, List<Lector> lectores, String accion) {
         this.filas = filas;
         this.lectores = lectores;
         this.accion = accion;
@@ -32,9 +32,9 @@ public class ModeloTablaPeriodoMulta extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        if(accion.equals(ModeloTablaPeriodoMulta.PERIODO_MULTA)){
+        if(accion.equals(ModeloTablaMulta.PERIODO_MULTA)){
             return NOMBRE_COLUMNAS.length - 1;
-        }else if(accion.equals(ModeloTablaPeriodoMulta.RANKING_MULTA)){
+        }else if(accion.equals(ModeloTablaMulta.RANKING_MULTA)){
             return NOMBRE_COLUMNAS.length;
         }else{
             return 0;

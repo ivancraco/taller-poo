@@ -1,4 +1,4 @@
-package vista;
+package vista.tabla;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -19,23 +20,29 @@ import modelo.Biblioteca;
 import modelo.Ejemplar;
 import modelo.ModeloTablaObraReservada;
 
-public class ObrasReservadas extends JFrame {
+public class ObraReservada extends JFrame {
 
+    private ModeloTablaObraReservada modelo;
     private JLabel $fecha;
     private JTextField fecha;
     private JTable tabla;
     private JButton confirmar;
+    private JPanel panel;
 
-    public ObrasReservadas() {
+    public ObraReservada() {
 
         $fecha = new JLabel("Fecha:");
         fecha = new JTextField(15);
         tabla = new JTable();
         confirmar = new JButton("Confirmar");
+        panel = new JPanel();
+        panel.add($fecha);
+        panel.add(fecha);
+        panel.add(confirmar);
 
         /* Ventana */
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(600, 300);
+        setSize(950, 300);
         setResizable(false);
         setLocationRelativeTo(null);
 
@@ -46,10 +53,8 @@ public class ObrasReservadas extends JFrame {
         });
 
         setLayout(new FlowLayout());
-        add($fecha);
-        add(fecha);
-        add(confirmar);
-        add(new JScrollPane(tabla));
+        add(panel, BorderLayout.NORTH);
+        add(new JScrollPane(tabla), BorderLayout.CENTER);
     }
 
     public List<Ejemplar> ejemplaresReservados() {
@@ -79,7 +84,7 @@ public class ObrasReservadas extends JFrame {
     }
 
     public void armarTabla() {
-        ModeloTablaObraReservada modelo = new ModeloTablaObraReservada(ejemplaresReservados().size(), ejemplaresReservados());
+        modelo = new ModeloTablaObraReservada(ejemplaresReservados().size(), ejemplaresReservados());
         tabla.setModel(modelo);
         tabla.setRowHeight(30);
         validate();

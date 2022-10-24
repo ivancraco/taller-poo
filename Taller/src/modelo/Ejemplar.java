@@ -15,6 +15,9 @@ public class Ejemplar {
     private Reserva reservaEjemplar;
     private Obra obra;
 
+
+    public Ejemplar(){}
+
     public Ejemplar(LocalDate fechaAdquisicion, String formaAdquisicion, String iDUbicacion,
             String item, LocalDate fechaBaja, String motivoBaja, String ubicacionBaja, String codigoDeBarra,
             Prestamo prestamoEjemplar, Reserva reservaEjemplar) {

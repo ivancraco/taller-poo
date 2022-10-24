@@ -1,4 +1,4 @@
-package vista;
+package vista.tabla;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +11,16 @@ import modelo.Biblioteca;
 import modelo.ModeloTablaObraPopular;
 import modelo.Obra;
 import modelo.Obras;
-import modelo.RenderTabla;
+import modelo.RenderizarTabla;
 
-public class TablaObraPopulares extends JFrame {
+public class ObraPopular extends JFrame {
 
+    ModeloTablaObraPopular modelo;
     private JTable tabla;
     private String valor;
     // private List<Obra> obras;
 
-    public TablaObraPopulares(String valor) {
+    public ObraPopular(String valor) {
 
         tabla = new JTable();
         this.valor = valor;
@@ -57,8 +58,8 @@ public class TablaObraPopulares extends JFrame {
     }
 
     public void armarTabla() {
-        ModeloTablaObraPopular modelo = new ModeloTablaObraPopular(masSolicitadas().size(), masSolicitadas());
-        tabla.setDefaultRenderer(Object.class, new RenderTabla());
+        modelo = new ModeloTablaObraPopular(masSolicitadas().size(), masSolicitadas());
+        tabla.setDefaultRenderer(Object.class, new RenderizarTabla());
         tabla.setModel(modelo);
         tabla.setRowHeight(30);
         validate();

@@ -12,15 +12,15 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class RenderTabla extends DefaultTableCellRenderer {
+public class RenderizarTabla extends DefaultTableCellRenderer {
 
     private List<Lector> lectores;
 
-    public RenderTabla() {
+    public RenderizarTabla() {
         setHorizontalAlignment(SwingConstants.CENTER);
     }
 
-    public RenderTabla(List<Lector> lectores) {
+    public RenderizarTabla(List<Lector> lectores) {
         this.lectores = lectores;
         setHorizontalAlignment(SwingConstants.CENTER);
     }    

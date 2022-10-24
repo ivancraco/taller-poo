@@ -1,4 +1,4 @@
-package vista;
+package vista.tabla;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,21 +10,22 @@ import javax.swing.JTextField;
 import modelo.Biblioteca;
 import modelo.ModeloTablaObraEditorial;
 import modelo.Obra;
-import modelo.RenderTabla;
+import modelo.RenderizarTabla;
 
 import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TablaObraEditorial extends JFrame {
+public class ObraEditorial extends JFrame {
 
+    private ModeloTablaObraEditorial modelo;
     private JTable tabla;
     private JLabel $editorial;
     private JTextField editorial;
     private JButton confirmar;
 
-    public TablaObraEditorial() {
+    public ObraEditorial() {
 
         tabla = new JTable();
         $editorial = new JLabel("Editorial: ");
@@ -68,10 +69,10 @@ public class TablaObraEditorial extends JFrame {
     }
 
     public void armarTabla() {
-        ModeloTablaObraEditorial modelo = new ModeloTablaObraEditorial(ejemplaresEditorial().size(),
+        modelo = new ModeloTablaObraEditorial(ejemplaresEditorial().size(),
                 ejemplaresEditorial());
         tabla.setModel(modelo);
-        tabla.setDefaultRenderer(Object.class, new RenderTabla());
+        tabla.setDefaultRenderer(Object.class, new RenderizarTabla());
 
         tabla.setRowHeight(30);
         validate();

@@ -12,7 +12,7 @@ import vista.Login;
 
 public class Main {
     public static void main(String[] args) {
-        Login biblioteca = new Login();
+        Accion biblioteca = new Accion();
         biblioteca.setVisible(true);
     }
 }
