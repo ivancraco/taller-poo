@@ -266,9 +266,9 @@ public class Lectores {
                                 "Roberto Perez",
                                 LocalDate.of(2022, 9, 9),
                                 "Domicilio",
-                                Biblioteca.obras().get(0).getEjemplar().get(2),
+                                Biblioteca.obras().get(0).getEjemplares().get(2),
                                 lectores.get(0)));
-                Biblioteca.obras().get(0).getEjemplar().get(2)
+                Biblioteca.obras().get(0).getEjemplares().get(2)
                                 .setPrestamoEjemplar(lectores.get(0).getPrestamoLector().get(0));
 
 
@@ -281,8 +281,8 @@ public class Lectores {
                 lectores.get(0).getMulta().setCantidad(17);
 
                 lectores.get(1).getReservaLector().add(new Reserva("14/10/2022",
-                Biblioteca.obras().get(0).getEjemplar().get(2),lectores.get(1)));
-                Biblioteca.obras().get(0).getEjemplar().get(2).setReservaEjemplar(lectores.get(1).getReservaLector().get(0));
+                Biblioteca.obras().get(0).getEjemplares().get(2),lectores.get(1)));
+                Biblioteca.obras().get(0).getEjemplares().get(2).setReservaEjemplar(lectores.get(1).getReservaLector().get(0));
         
                 lectores.get(1).setMulta(new Multa(15, new Devolucion("10/09/2022", "Javier Perez")));
                 String fec2 = Biblioteca.formatearFecha(

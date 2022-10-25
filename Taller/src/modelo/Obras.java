@@ -4,10 +4,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que mantiene en una lista la cantidad
+ * de obras disponibles en la biblioteca.
+ * 
+ * @author Ivan Craco
+ */
 public class Obras {
 
         private List<Obra> obras;
 
+        /**
+         * Constructor que inicializa una lista y almacena todas las obras
+         */
         public Obras() {
                 obras = new ArrayList<Obra>();
                 obras.add(obra1());

@@ -1,7 +1,6 @@
 package vista.tabla;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -9,26 +8,36 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import modelo.Biblioteca;
-import modelo.ModeloTabla;
+import modelo.BotonAdapter;
+import modelo.TablaRegistro;
 import modelo.Obra;
-import modelo.RenderizarTabla;
 
 import java.awt.BorderLayout;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clas que perimte consultar obras por indice y muestra
+ * la informacion en un JTable.
+ * 
+ * @author Ivan Craco
+ */
 public class ConsultaIndice extends VentanaTabla implements ActionListener {
 
-    private ModeloTabla modelo;
+    private TablaRegistro modelo;
     private List<Obra> areas;
     private JLabel $indice;
     private JTextField indice;
     private JButton buscar;
     private JPanel panel;
     private JTable tabla;
-    private JTableButtonMouseListener listener;
+    private BotonAdapter listener;
 
+    /**
+     * Constructor sin Parametros.
+     * Crea la venta e iniciliza los atributos de la clase.
+     */
     public ConsultaIndice() {
         super.crearVentana();
 
@@ -40,7 +49,7 @@ public class ConsultaIndice extends VentanaTabla implements ActionListener {
         panel.add(indice);
         panel.add(buscar);
         tabla = new JTable();
-        listener = new JTableButtonMouseListener(tabla);
+        listener = new BotonAdapter(tabla);
         tabla.addMouseListener(listener);
         buscar.addActionListener(this);
 
@@ -55,6 +64,13 @@ public class ConsultaIndice extends VentanaTabla implements ActionListener {
         armarTabla();
     }
 
+    /**
+     * Retorna un listado de obras que coinciden con el indice 
+     * ingresado en el JTextField.
+     * 
+     * @param indice String texto ingresado en un JTextField
+     * @return listado de obras
+     */
     private List<Obra> buscarObra(String indice) {
         List<Obra> obras = new ArrayList<Obra>();
         for (int i = 0; i < Biblioteca.obras().size(); i++) {
@@ -69,34 +85,15 @@ public class ConsultaIndice extends VentanaTabla implements ActionListener {
         return obras;
     }
 
+    /**
+     * Busca las obras y arma la tabla con la informacion que encuentra
+     */
     private void armarTabla() {
         areas = buscarObra(indice.getText());
-        modelo = new ModeloTabla(areas.size(), areas, this);
+        modelo = new TablaRegistro(areas.size(), areas, this);
         tabla.setModel(modelo);
-        listener = new JTableButtonMouseListener(tabla);
+        listener = new BotonAdapter(tabla);
         super.armarTabla(tabla);
     }
 
-}
-
-class JTableButtonMouseListener extends MouseAdapter {
-    private final JTable table;
-
-    public JTableButtonMouseListener(JTable table) {
-        this.table = table;
-    }
-
-    public void mouseClicked(MouseEvent e) {
-        int column = table.getColumnModel().getColumnIndexAtX(e.getX()); // get the coloum of the button
-        int row = e.getY() / table.getRowHeight(); // get the row of the button
-
-        /* Checking the row or column is valid or not */
-        if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
-            Object value = table.getValueAt(row, column);
-            if (value instanceof JButton) {
-                /* perform a click event */
-                ((JButton) value).doClick();
-            }
-        }
-    }
 }

@@ -20,7 +20,7 @@ import java.util.List;
  * 
  * @author Ivan craco
  */
-public class ModeloTabla extends AbstractTableModel {
+public class TablaRegistro extends AbstractTableModel {
 
     /**
      * Array de nombres de las columnas de la tabla
@@ -50,10 +50,10 @@ public class ModeloTabla extends AbstractTableModel {
      * @param columnas columnas de la tabla
      * @param obras    lista de obras
      */
-    public ModeloTabla(int filas, int columnas, List<Obra> obras) {
+    public TablaRegistro(int filas, int columnas, List<Obra> obras) {
         this.filas = filas;
         this.columnas = columnas;
-        ModeloTabla.obras = obras;
+        TablaRegistro.obras = obras;
     }
 
     /**
@@ -61,11 +61,11 @@ public class ModeloTabla extends AbstractTableModel {
      * 
      * @param filas filas de la tabla
      * @param obras lista de obras
-     * @param o     objeto de tipo ventana y que representa una tabla
+     * @param o objeto de tipo ventana y que representa una tabla
      */
-    public ModeloTabla(int filas, List<Obra> obras, ConsultaObra o) {
+    public TablaRegistro(int filas, List<Obra> obras, ConsultaObra o) {
         this.filas = filas;
-        ModeloTabla.obras = obras;
+        TablaRegistro.obras = obras;
         this.o = o;
     }
 
@@ -76,9 +76,9 @@ public class ModeloTabla extends AbstractTableModel {
      * @param obras lista de obras
      * @param i     objeto de tipo ventana y que representa una tabla
      */
-    public ModeloTabla(int filas, List<Obra> obras, ConsultaIndice i) {
+    public TablaRegistro(int filas, List<Obra> obras, ConsultaIndice i) {
         this.filas = filas;
-        ModeloTabla.obras = obras;
+        TablaRegistro.obras = obras;
         this.i = i;
     }
 
@@ -88,7 +88,7 @@ public class ModeloTabla extends AbstractTableModel {
      * @param filas    filas de la tabla
      * @param columnas columnas de la tabla
      */
-    public ModeloTabla(int filas, int columnas) {
+    public TablaRegistro(int filas, int columnas) {
         this.filas = filas;
         this.columnas = columnas;
     }
@@ -98,7 +98,7 @@ public class ModeloTabla extends AbstractTableModel {
      * 
      * @param filas filas de la tabla
      */
-    public ModeloTabla(int filas) {
+    public TablaRegistro(int filas) {
         this.filas = filas;
     }
 
@@ -131,15 +131,15 @@ public class ModeloTabla extends AbstractTableModel {
             case 1:
                 return obras.get(rowIndex).getAreaDeReferencia();
             case 2:
-                return ejemplaresDisponibles(obras.get(rowIndex).getEjemplar());
+                return ejemplaresDisponibles(obras.get(rowIndex).getEjemplares());
             case 3:
                 final JButton button = new JButton("Confirmar");
                 button.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent arg0) {
-                        if (paraPrestar(obras.get(rowIndex).getEjemplar())) {
+                        if (paraPrestar(obras.get(rowIndex).getEjemplares())) {
                             Registro t = new Registro(
-                                    obras.get(rowIndex).getEjemplar(),
-                                    ModeloTabla.PRESTAMO);
+                                    obras.get(rowIndex).getEjemplares(),
+                                    TablaRegistro.PRESTAMO);
                             t.setVisible(true);
                             if (o != null)
                                 o.dispose();
@@ -159,10 +159,10 @@ public class ModeloTabla extends AbstractTableModel {
                 final JButton button2 = new JButton("Confirmar");
                 button2.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent arg0) {
-                        if (paraReservar(obras.get(rowIndex).getEjemplar())) {
+                        if (paraReservar(obras.get(rowIndex).getEjemplares())) {
                             Registro t = new Registro(
-                                    ejemplaresParaReserva(obras.get(rowIndex).getEjemplar()),
-                                    ModeloTabla.RESERVA);
+                                    ejemplaresParaReserva(obras.get(rowIndex).getEjemplares()),
+                                    TablaRegistro.RESERVA);
                             t.setVisible(true);
                             if (o != null)
                                 o.dispose();
@@ -183,7 +183,7 @@ public class ModeloTabla extends AbstractTableModel {
                 btn.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        AltaEjemplar ae = new AltaEjemplar(obras.get(rowIndex).getEjemplar());
+                        AltaEjemplar ae = new AltaEjemplar(obras.get(rowIndex).getEjemplares());
                         ae.setVisible(true);
                         if (o != null)
                             o.dispose();

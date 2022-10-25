@@ -1,8 +1,6 @@
 package vista.tabla;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -10,24 +8,33 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import modelo.Biblioteca;
-import modelo.ModeloTablaObraEditorial;
+import modelo.TablaObraEditorial;
 import modelo.Obra;
-import modelo.RenderizarTabla;
 
 import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que permite mostrar en un JTable las obras dada
+ * una editorial.
+ * 
+ * @author Ivan Craco
+ */
 public class ObraEditorial extends VentanaTabla {
 
-    private ModeloTablaObraEditorial modelo;
+    private TablaObraEditorial modelo;
     private JTable tabla;
     private JLabel $editorial;
     private JTextField editorial;
     private JButton confirmar;
     private JPanel panel;
 
+    /**
+     * Constructor sin parametros
+     * Crea la venta e inicializa atributos.
+     */
     public ObraEditorial() {
         super.crearVentana();
 
@@ -53,6 +60,12 @@ public class ObraEditorial extends VentanaTabla {
 
     }
 
+    /**
+     * Retorna una lista de obras que forman parte de una
+     * editorial que se ingresa en un JTexField.
+     * 
+     * @return listado de obras
+     */
     public List<Obra> ejemplaresEditorial() {
         List<Obra> ejemplares = new ArrayList<>();
 
@@ -67,10 +80,13 @@ public class ObraEditorial extends VentanaTabla {
         return ejemplares;
     }
 
+    /**
+     * Arma la tabla y rellena la informacion con los valores 
+     * encontrados.
+     */
     public void armarTabla() {
-        modelo = new ModeloTablaObraEditorial(ejemplaresEditorial().size(), ejemplaresEditorial());
+        modelo = new TablaObraEditorial(ejemplaresEditorial().size(), ejemplaresEditorial());
         tabla.setModel(modelo);
         super.armarTabla(tabla);
     }
-
 }

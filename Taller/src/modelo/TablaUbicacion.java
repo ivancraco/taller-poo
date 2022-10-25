@@ -19,7 +19,7 @@ import vista.tabla.Registro;
  * 
  * @author Ivan Craco
  */
-public class ModeloTablaRegistro extends AbstractTableModel {
+public class TablaUbicacion extends AbstractTableModel {
 
     /**
      * Array de nombres de las columnas de la tabla
@@ -45,7 +45,7 @@ public class ModeloTablaRegistro extends AbstractTableModel {
      * @param accion String accion a realizar
      * @param t objeto Registro
      */
-    public ModeloTablaRegistro(int filas, List<Ejemplar> ejemplares, String accion, Registro registo) {
+    public TablaUbicacion(int filas, List<Ejemplar> ejemplares, String accion, Registro registo) {
         this.filas = filas;
         this.ejemplares = ejemplares;
         this.accion = accion;
@@ -69,12 +69,12 @@ public class ModeloTablaRegistro extends AbstractTableModel {
 
     @Override
     public String getColumnName(int c) {
-        if (accion.equals(ModeloTabla.PRESTAMO)) {
+        if (accion.equals(TablaRegistro.PRESTAMO)) {
             if (c == 5)
                 return accion;
             if (c == 6)
                 return "Dar de Baja";
-        } else if (accion.equals(ModeloTabla.RESERVA)) {
+        } else if (accion.equals(TablaRegistro.RESERVA)) {
             if (c == 5)
                 return "Fecha Devolución";
             if (c == 6)
@@ -98,13 +98,13 @@ public class ModeloTablaRegistro extends AbstractTableModel {
             case 4:
                 return str.substring(6);
             case 5:
-                if (accion.equals(ModeloTabla.PRESTAMO)) {
+                if (accion.equals(TablaRegistro.PRESTAMO)) {
                     return crearBoton(rowIndex, accion);
                 } else {
-                    return fechasEjemplaresPrestados(rowIndex);
+                    return fechasEjemplarPrestado(rowIndex);
                 }
             case 6:
-                if (accion.equals(ModeloTabla.PRESTAMO)) {
+                if (accion.equals(TablaRegistro.PRESTAMO)) {
                     return btnBaja(rowIndex);
                 } else {
                     return crearBoton(rowIndex, accion);
@@ -114,14 +114,24 @@ public class ModeloTablaRegistro extends AbstractTableModel {
         }
     }
 
-    public JButton crearBoton(Integer indice, String accion) {
+    /**
+     * Retorna un JButton que se le asigna a una fila e implementa
+     * actionListener dependiendo de la accion y permite establecer
+     * el texto del boton si el ejemplar al que hace referencia ya se ha
+     * prestado o reservado.
+     * 
+     * @param indice representa la posicion actual de la fila
+     * @param accion String accion correspondiente
+     * @return boton que se renderiza en la fila correspondiente
+     */
+    public JButton crearBoton(int indice, String accion) {
         JButton button = new JButton("");
 
         if (ejemplares.get(indice).getPrestamoEjemplar() != null &&
-                accion.equals(ModeloTabla.PRESTAMO)) {
+                accion.equals(TablaRegistro.PRESTAMO)) {
             button.setText("En Préstamo");
         } else if (ejemplares.get(indice).getReservaEjemplar() != null &&
-                accion.equals(ModeloTabla.RESERVA)) {
+                accion.equals(TablaRegistro.RESERVA)) {
             button.setText("Reservado");
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent arg0) {
@@ -145,7 +155,14 @@ public class ModeloTablaRegistro extends AbstractTableModel {
 
     }
 
-    public String fechasEjemplaresPrestados(Integer indice) {
+    /**
+     * Retorna la fecha de devolucion en la que el ejemplar ha sido
+     * prestado si el prestamo no es nulo.
+     * 
+     * @param indice entero que hace referencia a la fila actual
+     * @return fecha de devolucion en formato cadena si el ejemplar se ha prestado
+     */
+    public String fechasEjemplarPrestado(int indice) {
         LocalDate local;
         if (ejemplares.get(indice).getPrestamoEjemplar() != null) {
             local = ejemplares.get(indice).getPrestamoEjemplar().getFechaDevolucion();
@@ -155,6 +172,13 @@ public class ModeloTablaRegistro extends AbstractTableModel {
         return "";
     }
 
+    /**
+     * Retorna un JButton con un actionListener que permite
+     * abrir una ventana y dar de baja el ejemplar correspondiente.
+     *   
+     * @param indice posicion actual de la fila de la tabla
+     * @return boton con actionListener implementado
+     */
     public JButton btnBaja(int indice) {
         JButton button = new JButton("Aceptar");
         button.addActionListener(new ActionListener() {

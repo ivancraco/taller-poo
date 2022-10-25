@@ -1,11 +1,7 @@
 package modelo;
 
 import java.util.List;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
-import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  * Clase modelo de una ventana que representa una tabla y muestra
@@ -13,7 +9,7 @@ import javax.swing.table.TableColumn;
  * 
  * @author Ivan Craco
  */
-public class ModeloTablaDeuda extends AbstractTableModel {
+public class TablaDeuda extends AbstractTableModel {
 
     /**
      * Array de nombres de las columnas de la tabla
@@ -25,11 +21,10 @@ public class ModeloTablaDeuda extends AbstractTableModel {
      * Array de objetos que representa el tipo de objeto de cada columna
      */
     private static final Class<?>[] TIPO_COLUMNAS = new Class<?>[] {
-            String.class, String.class, String.class, String.class, String.class, Object.class };
+            String.class, String.class, String.class, String.class, String.class, String[].class };
 
     private int filas;
     private List<Lector> lectores;
-    private JTable tabla;
 
     /**
      * Constructor parametrizado
@@ -38,11 +33,9 @@ public class ModeloTablaDeuda extends AbstractTableModel {
      * @param lectores lista de lectores
      * @param tabla objeto Jtable
      */
-    public ModeloTablaDeuda(int filas, List<Lector> lectores, JTable tabla) {
+    public TablaDeuda(int filas, List<Lector> lectores) {
         this.filas = filas;
         this.lectores = lectores;
-        this.tabla = tabla;
-
     }
 
     @Override
@@ -79,9 +72,7 @@ public class ModeloTablaDeuda extends AbstractTableModel {
             case 4:
                 return lectores.get(rowIndex).getCelular();
             case 5:
-            TableColumn t = tabla.getColumnModel().getColumn(columnIndex);
-                t.setCellEditor(new DefaultCellEditor(crearComboBox(lectores.get(rowIndex))));   
-                return t.getCellEditor();
+                return crearLista(lectores.get(rowIndex));
             default: return ""; 
         }
     }
@@ -93,13 +84,31 @@ public class ModeloTablaDeuda extends AbstractTableModel {
      * @param lector un objeto lector
      * @return objeto JComboBox con la informacion correspondiente
      */
-    public JComboBox<String> crearComboBox(Lector lector){
-        JComboBox<String> combo = new JComboBox<>();
+    public String[] crearLista(Lector lector){
+        int contador =  contarPrestamos(lector);
+        String[] combo = new String[contador];
         for(int i = 0; i < lector.getPrestamoLector().size(); i++){
             if(Biblioteca.fechaActual().isAfter(lector.getPrestamoLector().get(i).getFechaDevolucion())){
-                combo.addItem(lector.getPrestamoLector().get(i).getEjemplar().getIDUbicacion());
+                combo[i] = lector.getPrestamoLector().get(i).getEjemplar().getCodigoDeBarra();
             }
         }
         return combo;
+    }
+
+    /**
+     * Retorna un entero que identifica la cantidad de obras
+     * que debe un lector
+     * 
+     * @param lector lector en deuda
+     * @return int cantidad de obras que debe el lector
+     */
+    public int contarPrestamos(Lector lector) {
+        int contador = 0;
+        for(int i = 0; i < lector.getPrestamoLector().size(); i++){
+            if(Biblioteca.fechaActual().isAfter(lector.getPrestamoLector().get(i).getFechaDevolucion())){
+                contador++;
+            }
+        }
+        return contador;
     }
 }

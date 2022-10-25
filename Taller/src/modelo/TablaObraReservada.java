@@ -4,36 +4,36 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
- * Clase que representa un modelo de tabla para mostrar informacion de
- * obras populares.
+ * Clase que representa el modelo de tabla para mostrar informacion
+ * referida a obras que se encuentran reservadas.
  * 
- * @author Ivan craco
+ * @author Ivan Craco
  */
-public class ModeloTablaObraPopular extends AbstractTableModel {
+public class TablaObraReservada extends AbstractTableModel {
 
     /**
      * Array de nombres de las columnas de la tabla
      */
     private static final String[] NOMBRE_COLUMNAS = new String[] {
-            "Autor", "Titulo", "ISBN" };
+            "Autor", "Titulo", "Fecha Reserva" };
 
     /**
      * Array de objetos que representa el tipo de objeto de cada columna
-     */    
+     */
     private static final Class<?>[] TIPO_COLUMNAS = new Class<?>[] {
             String.class, String.class, String.class };
 
     private int filas;
-    private List<Obra> obras;
+    private List<Ejemplar> ejemplares;
 
     /**
      * Constructor parametrizado
      * @param filas cantidad de filas de la tabla
-     * @param obras listado de obras
+     * @param ejemplares listado de ejemplares
      */
-    public ModeloTablaObraPopular(int filas, List<Obra> obras) {
+    public TablaObraReservada(int filas, List<Ejemplar> ejemplares) {
         this.filas = filas;
-        this.obras = obras;
+        this.ejemplares = ejemplares;
     }
 
     @Override
@@ -47,27 +47,28 @@ public class ModeloTablaObraPopular extends AbstractTableModel {
     }
 
     @Override
-    public String getColumnName(int c) {
-        return NOMBRE_COLUMNAS[c];
+    public Class<?> getColumnClass(int columnIndex) {
+        return TIPO_COLUMNAS[columnIndex];
     }
 
     @Override
-    public Class<?> getColumnClass(int columnIndex) {
-        return TIPO_COLUMNAS[columnIndex];
+    public String getColumnName(int c) {
+        return NOMBRE_COLUMNAS[c];
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return obras.get(rowIndex).getPrimerAutor();
+                return ejemplares.get(rowIndex).getObra().getPrimerAutor();
             case 1:
-                return obras.get(rowIndex).getTitulo();
+                return ejemplares.get(rowIndex).getObra().getTitulo();
             case 2:
-                return obras.get(rowIndex).getISBN();
+                return ejemplares.get(rowIndex).getReservaEjemplar().getFechaReserva();
             default:
                 return "";
         }
+
     }
 
 }

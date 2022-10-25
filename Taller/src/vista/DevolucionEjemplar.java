@@ -13,11 +13,15 @@ import modelo.Multa;
 import modelo.Prestamo;
 
 import java.awt.event.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.awt.*;
 
-public class DevolucionObra extends JFrame implements ActionListener {
+/**
+ * Clase que permite registrar la devolucion de un ejemplar
+ * por interfaz de usuario.
+ * 
+ * @author Ivan Craco
+ */
+public class DevolucionEjemplar extends JFrame implements ActionListener {
 
     private Devolucion devolucion = new Devolucion();
     private JLabel $codigo;
@@ -27,7 +31,12 @@ public class DevolucionObra extends JFrame implements ActionListener {
     private JLabel $funcionario;
     private JTextField funcionario;
 
-    public DevolucionObra(Lector lector) {
+    /**
+     * Constructor parametrizado.
+     * 
+     * @param lector lector que devuelve el ejemplar.
+     */
+    public DevolucionEjemplar(Lector lector) {
 
         this.lector = lector;
         $codigo = new JLabel("Código de barra: ");
@@ -49,7 +58,7 @@ public class DevolucionObra extends JFrame implements ActionListener {
 
         /* Ventana */
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(250, 450);
+        setSize(250, 300);
         setResizable(false);
         setLocationRelativeTo(null);
 
@@ -76,6 +85,12 @@ public class DevolucionObra extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Permite registrar la devolucion del ejemplar por lectura
+     * de codigo de barra.
+     * 
+     * @param codigo String codigo de barra.
+     */
     public void leerCodigo(String codigo) {
         if (lector.getPrestamoLector().size() > 0) {
             Prestamo prestamo;
@@ -86,7 +101,7 @@ public class DevolucionObra extends JFrame implements ActionListener {
                 String res = ubicacion + id;
                 if (res.equals(codigo)) {
                     devolucion.setFechaYHoraDevolucion(Biblioteca.fechaYHoraActual());
-                    if (fechaActual().isAfter(prestamo.getFechaDevolucion())) {
+                    if (Biblioteca.fechaActual().isAfter(prestamo.getFechaDevolucion())) {
                         multarLector(lector);
                     }
                     lector.getPrestamoLector().get(i).getEjemplar().setPrestamoEjemplar(null);
@@ -101,21 +116,12 @@ public class DevolucionObra extends JFrame implements ActionListener {
         }
     }
 
-    public LocalDate fechaActual() {
-        String fecha = Biblioteca.fechaYHoraActual();
-        String str = fecha.substring(0, 10);
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fechaParseada = LocalDate.parse(str, formato);
-        return fechaParseada;
-    }
-
-    // public String fechaYHoraActual() {
-    //     LocalDateTime fechaActual = LocalDateTime.now();
-    //     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm a");
-    //     String nuevoFormato = fechaActual.format(formato);
-    //     return nuevoFormato;
-    // }
-
+    /**
+     * Permite registrar una multa al lector si
+     * la devolucion pasa la fecha estipulada.
+     * 
+     * @param lector lector que devuelve el ejemplar.
+     */
     public void multarLector(Lector lector) {
         int cant = 0;
         if(lector.getMulta() != null) {

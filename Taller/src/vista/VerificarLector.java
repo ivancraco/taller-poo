@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import modelo.Biblioteca;
 import modelo.Ejemplar;
 import modelo.Lector;
-import modelo.ModeloTabla;
+import modelo.TablaRegistro;
 import modelo.Reserva;
 
 import java.awt.Container;
@@ -61,8 +61,8 @@ public class VerificarLector extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Lector lector = existeLector(Biblioteca.lectores(), dni.getText());
         if (lector != null) {
-            if (accion.equals(ModeloTabla.DEVOLUCION)) {
-                DevolucionObra dev = new DevolucionObra(lector);
+            if (accion.equals(TablaRegistro.DEVOLUCION)) {
+                DevolucionEjemplar dev = new DevolucionEjemplar(lector);
                 dev.setVisible(true);
                 this.dispose();
                 return;
@@ -75,20 +75,20 @@ public class VerificarLector extends JFrame implements ActionListener {
                 this.dispose();
                 return;
             }
-            if (tieneMultas(lector) && !accion.equals(ModeloTabla.DEVOLUCION)) {
+            if (tieneMultas(lector) && !accion.equals(TablaRegistro.DEVOLUCION)) {
                 JOptionPane.showMessageDialog(null,
                         "Lector multado hasta " + multas(lector), "Error",
                         JOptionPane.ERROR_MESSAGE);
                 this.dispose();
                 return;
             }
-            if (accion.equals(ModeloTabla.PRESTAMO)) {
+            if (accion.equals(TablaRegistro.PRESTAMO)) {
                 PrestamoEjemplar registrar = new PrestamoEjemplar(lector, ejemplar);
                 registrar.setVisible(true);
                 this.dispose();
                 return;
             }
-            if (accion.equals(ModeloTabla.RESERVA)) {
+            if (accion.equals(TablaRegistro.RESERVA)) {
                 realizarReserva(lector);
                 return;
             }

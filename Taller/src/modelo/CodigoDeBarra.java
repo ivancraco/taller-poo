@@ -36,10 +36,10 @@ public class CodigoDeBarra {
             doc.open();
 
             for (int i = 0; i < obras.size(); i++) {
-                for (int j = 0; j < obras.get(i).getEjemplar().size(); j++) {
+                for (int j = 0; j < obras.get(i).getEjemplares().size(); j++) {
                     Barcode128 codigo = new Barcode128();
-                    String IdEjemplar = (obras.get(i).getEjemplar().get(j).getIDUbicacion());
-                    String codigoDeBarra = (obras.get(i).getEjemplar().get(j).getCodigoDeBarra());
+                    String IdEjemplar = (obras.get(i).getEjemplares().get(j).getIDUbicacion());
+                    String codigoDeBarra = (obras.get(i).getEjemplares().get(j).getCodigoDeBarra());
                     codigo.setCode(IdEjemplar + codigoDeBarra);
                     Image img = codigo.createImageWithBarcode(pdf.getDirectContent(), BaseColor.BLACK, BaseColor.BLACK);
                     img.scalePercent(200);

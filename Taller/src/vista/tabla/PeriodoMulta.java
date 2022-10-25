@@ -3,7 +3,6 @@ package vista.tabla;
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -12,17 +11,22 @@ import javax.swing.JTextField;
 
 import modelo.Biblioteca;
 import modelo.Lector;
-import modelo.ModeloTablaMulta;
-import modelo.RenderizarTabla;
+import modelo.TablaMulta;
 
 import java.awt.event.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que permite buscar entre dos fechas que lectores se encuentran
+ * multados.
+ * 
+ * @author Ivan Craco
+ */
 public class PeriodoMulta extends VentanaTabla {
 
-    private ModeloTablaMulta modelo;
+    private TablaMulta modelo;
     private JTable tabla;
     private JLabel $desde;
     private JTextField desde;
@@ -31,6 +35,10 @@ public class PeriodoMulta extends VentanaTabla {
     private JPanel panel;
     private JButton btnBuscar;
 
+    /**
+     * Crea la ventana, inicializa atributos
+     * y agrega evento al boton
+     */
     public PeriodoMulta() {
         super.crearVentana();
 
@@ -59,6 +67,12 @@ public class PeriodoMulta extends VentanaTabla {
 
     }
 
+    /**
+     * Retorna una lista de lectores que se encuentran multados
+     * entre dos fechas que se ingresa por interfaz de usuario.
+     * 
+     * @return listado de lectores
+     */
     public List<Lector> lectoresMultadosPorPeriodo() {
         List<Lector> lectores = new ArrayList<Lector>();
 
@@ -82,8 +96,11 @@ public class PeriodoMulta extends VentanaTabla {
         return lectores;
     }
 
+    /**
+     * Arma la tabla los valores del listado de lectores
+     */
     public void armarTabla() {
-        modelo = new ModeloTablaMulta(lectoresMultadosPorPeriodo().size(), lectoresMultadosPorPeriodo(), ModeloTablaMulta.PERIODO_MULTA);
+        modelo = new TablaMulta(lectoresMultadosPorPeriodo().size(), lectoresMultadosPorPeriodo(), TablaMulta.PERIODO_MULTA);
         tabla.setModel(modelo);
         super.armarTabla(tabla);
     }

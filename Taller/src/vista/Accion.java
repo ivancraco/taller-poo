@@ -3,7 +3,7 @@ package vista;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import modelo.ModeloTabla;
+import modelo.TablaRegistro;
 import vista.tabla.ConsultaIndice;
 import vista.tabla.ConsultaObra;
 import vista.tabla.ObraReservada;
@@ -68,7 +68,7 @@ public class Accion extends JFrame {
 
         devolucion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                VerificarLector o = new VerificarLector(null, ModeloTabla.DEVOLUCION);
+                VerificarLector o = new VerificarLector(null, TablaRegistro.DEVOLUCION);
                 o.setVisible(true);
             }
         });

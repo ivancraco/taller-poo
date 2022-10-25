@@ -4,35 +4,34 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
- * Clase modelo que representa una tabla y muestra ingormacion de
- * obras dada una editorial
+ * Clase que representa un modelo de tabla para mostrar informacion de
+ * obras populares.
  * 
  * @author Ivan craco
  */
-public class ModeloTablaObraEditorial extends AbstractTableModel {
+public class TablaObraPopular extends AbstractTableModel {
 
     /**
      * Array de nombres de las columnas de la tabla
      */
     private static final String[] NOMBRE_COLUMNAS = new String[] {
-            "Autor", "Título", "Pais", "Edición", "Año", "Idioma" };
+            "Autor", "Titulo", "ISBN" };
 
     /**
      * Array de objetos que representa el tipo de objeto de cada columna
-     */
+     */    
     private static final Class<?>[] TIPO_COLUMNAS = new Class<?>[] {
-            String.class, String.class, String.class, String.class, String.class, String.class };
+            String.class, String.class, String.class };
 
     private int filas;
     private List<Obra> obras;
 
     /**
      * Constructor parametrizado
-     * 
      * @param filas cantidad de filas de la tabla
-     * @param obras lista de obras
+     * @param obras listado de obras
      */
-    public ModeloTablaObraEditorial(int filas, List<Obra> obras) {
+    public TablaObraPopular(int filas, List<Obra> obras) {
         this.filas = filas;
         this.obras = obras;
     }
@@ -65,13 +64,7 @@ public class ModeloTablaObraEditorial extends AbstractTableModel {
             case 1:
                 return obras.get(rowIndex).getTitulo();
             case 2:
-                return obras.get(rowIndex).getEdicion().getPaisEdicion();
-            case 3:
-                return obras.get(rowIndex).getEdicion().getNumeroEdicion();
-            case 4:
-                return obras.get(rowIndex).getEdicion().getAnio();
-            case 5:
-                return obras.get(rowIndex).getEdicion().getIdioma();
+                return obras.get(rowIndex).getISBN();
             default:
                 return "";
         }

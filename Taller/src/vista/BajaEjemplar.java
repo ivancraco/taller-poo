@@ -14,6 +14,11 @@ import java.time.LocalDate;
 import modelo.Biblioteca;
 import modelo.Ejemplar;
 
+/**
+ * Clase que permite dar de baja un ejemplar.
+ * 
+ * @author Ivan Craco
+ */
 public class BajaEjemplar extends JFrame {
 
     private List<Ejemplar> ejemplares;
@@ -24,6 +29,12 @@ public class BajaEjemplar extends JFrame {
     private JTextField ubicacionBaja;
     private JButton btnBaja;
 
+    /**
+     * Constructor parametrizado.
+     * 
+     * @param ejemplares listado de ejemplares de una obra.
+     * @param indice posicion del ejemplar en la lista.
+     */
     public BajaEjemplar(List<Ejemplar> ejemplares, int indice) {
 
         this.ejemplares = ejemplares;
@@ -56,6 +67,10 @@ public class BajaEjemplar extends JFrame {
         add(btnBaja);
     }
 
+    /**
+     * Metodo que permite dar de baja un ejemplar de una
+     * obra en particular
+     */
     public void bajaEjemplar() {
         String fechaActual = Biblioteca.fechaYHoraActual();
         String str = fechaActual.substring(0, 10);

@@ -14,6 +14,11 @@ import java.awt.event.*;
 import modelo.Biblioteca;
 import modelo.Ejemplar;
 
+/**
+ * Clase que permite dar de alta un ejemplar.
+ * 
+ * @author Ivan Craco
+ */
 public class AltaEjemplar extends JFrame {
 
     private Ejemplar ejemplar = new Ejemplar();
@@ -29,6 +34,12 @@ public class AltaEjemplar extends JFrame {
     private JTextField item;
     private JTextField codBarra;
 
+    /**
+     * Constructor parametrizado.
+     * 
+     * @param ejemplares listado de ejemplares de una obra 
+     * en particular.
+     */
     public AltaEjemplar(List<Ejemplar> ejemplares) {
 
         this.ejemplares = ejemplares;
@@ -71,6 +82,10 @@ public class AltaEjemplar extends JFrame {
 
     }
 
+    /**
+     * Metodo que crea un nuevo ejemplar y lo agrega a la lista de
+     * ejemplares de la obra correspondiente.
+     */
     public void altaEjemplar() {
         if (formaAdquisicion.getText().matches("[a-zA-Z0-9]{6,}") &&
                 IDUbicacion.getText().matches("[0-9]{7,}") &&
@@ -99,10 +114,17 @@ public class AltaEjemplar extends JFrame {
         }
     }
 
+    /**
+     * @return listado de ejemplares.
+     */
     public List<Ejemplar> getEjemplares() {
         return ejemplares;
     }
 
+    /**
+     * @param ejemplares establece una nueva lista de
+     * ejemplares.
+     */
     public void setEjemplares(List<Ejemplar> ejemplares) {
         this.ejemplares = ejemplares;
     }

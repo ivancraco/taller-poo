@@ -9,37 +9,41 @@ import javax.swing.JTextField;
 import java.awt.*;
 import java.awt.event.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+import modelo.Biblioteca;
 import modelo.Ejemplar;
 import modelo.Lector;
 import modelo.Prestamo;
 import modelo.TipoLector;
 
+/**
+ * Clase que permite registrar un prestamo por interfaz de usuario.
+ * 
+ * @author Ivan Craco
+ */
 public class PrestamoEjemplar extends JFrame implements ActionListener, ItemListener {
 
-    // private Lector lector;
-    // private Ejemplar ejemplar;
-    private String seleccionado = "";
     private Prestamo prestamo = new Prestamo();
-    private JTextField funcionario;
-    private JLabel $funcionario;
-    // private JTextField fechaDevolucion;
-    // private JLabel $fechaDevolucion;
     private JComboBox<String> lugarPrestamo;
-    private JTextField plazo;
+    private String seleccionado = "";
+    private JLabel $funcionario;
+    private JTextField funcionario;
     private JLabel $plazo;
+    private JTextField plazo;
     private JLabel $codigo;
     private JTextField codigo;
     private JButton confirmar;
 
+    /**
+     * Constructor parametrizado.
+     * 
+     * @param lector lector que se lleva el ejemplar.
+     * @param ejemplar ejemplar a prestar.
+     */
     public PrestamoEjemplar(Lector lector, Ejemplar ejemplar) {
 
         prestamo.setLector(lector);
         prestamo.setEjemplar(ejemplar);
-        // this.lector = lector;
-        // this.ejemplar = ejemplar;
 
         /* Ventana */
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -49,8 +53,6 @@ public class PrestamoEjemplar extends JFrame implements ActionListener, ItemList
 
         $funcionario = new JLabel("Funcionario: ");
         funcionario = new JTextField(15);
-        // $fechaDevolucion = new JLabel("Fecha Devolución DD/MM/YYYY: ");
-        // fechaDevolucion = new JTextField(15);
         lugarPrestamo = new JComboBox<String>();
         lugarPrestamo.addItem("Sala");
         lugarPrestamo.addItem("Domicilio");
@@ -64,6 +66,7 @@ public class PrestamoEjemplar extends JFrame implements ActionListener, ItemList
         confirmar = new JButton("Confirmar");
         confirmar.addActionListener(this);
 
+        // Evento Enter
         codigo.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -76,15 +79,14 @@ public class PrestamoEjemplar extends JFrame implements ActionListener, ItemList
         setLayout(new FlowLayout());
         add($codigo);
         add(codigo);
-        // add($funcionario);
-        // add(funcionario);
-        // add($fechaDevolucion);
-        // add(fechaDevolucion);
-        // add(lugarPrestamo);
-        // add(confirmar);
-
     }
 
+    /**
+     * Retorna el codigo de barra del ejemplar que consta de
+     * concatenar su id unico mas el codigo.
+     * 
+     * @return String codigo de barra
+     */
     public String cargarCodigo() {
         String idUbicacion = prestamo.getEjemplar().getIDUbicacion();
         String cod = prestamo.getEjemplar().getCodigoDeBarra();
@@ -92,10 +94,14 @@ public class PrestamoEjemplar extends JFrame implements ActionListener, ItemList
         return codigoBarra;
     }
 
+    /**
+     * Metodo que valida que el codigo de barra del ejemplar
+     * coincida con el cargado en el JTextField.
+     * 
+     * @param codigo codigo de barra del ejemplar
+     */
     public void leerCodigo(String codigo) {
-        String idUbicacion = prestamo.getEjemplar().getIDUbicacion();
-        String cod = prestamo.getEjemplar().getCodigoDeBarra();
-        String codigoBarra = idUbicacion + cod;
+        String codigoBarra = cargarCodigo();
         if (codigo.equals(codigoBarra)) {
             add($funcionario);
             add(funcionario);
@@ -107,7 +113,7 @@ public class PrestamoEjemplar extends JFrame implements ActionListener, ItemList
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (!plazo.getText().matches("[0-4]{1}")){
+        if (!plazo.getText().matches("[1-"+Prestamo.PLAZOMAXIMO+"]{1}")){
             JOptionPane.showMessageDialog(null,
                     "¡ Se espera un número del 1 al 4 !",
                     null,
@@ -115,7 +121,8 @@ public class PrestamoEjemplar extends JFrame implements ActionListener, ItemList
             return;
         }
 
-        prestamo.setFechaYHoraPrestamo(fechaYHoraActual());
+        // Registra el presatamo
+        prestamo.setFechaYHoraPrestamo(Biblioteca.fechaYHoraActual());
         prestamo.setFuncionario(funcionario.getText());
         prestamo.setPlazoDevolucion(Integer.parseInt(plazo.getText()));
         prestamo.setFechaDevolucion(fechaDevolucion());
@@ -129,12 +136,7 @@ public class PrestamoEjemplar extends JFrame implements ActionListener, ItemList
             prestamo.getEjemplar().getObra().setSolicitadasAlumnosDocentes(
             prestamo.getEjemplar().getObra().getSolicitadasAlumnosDocentes() + 1);
         }
-           
-        
-        // prestamo.setLector(lector);
-        // prestamo.setEjemplar(ejemplar);
-        // ejemplar.setPrestamoEjemplar(prestamo);
-        // lector.getPrestamoLector().add(prestamo);
+             
         dispose();
         JOptionPane.showMessageDialog(null,
                 "Préstamo realizado con éxito", "Operación exitosa",
@@ -142,24 +144,15 @@ public class PrestamoEjemplar extends JFrame implements ActionListener, ItemList
 
     }
 
-    public String fechaYHoraActual() {
-        LocalDateTime fechaActual = LocalDateTime.now();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm a");
-        String nuevoFormato = fechaActual.format(formato);
-        return nuevoFormato;
-    }
-
+    /**
+     * @return LocalDate fecha devolucion del ejemplar
+     */
     public LocalDate fechaDevolucion() {
-        String fecha = fechaYHoraActual();
-        String str = fecha.substring(0, 10);
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fechaParseada = LocalDate.parse(str, formato);
+        LocalDate fechaParseada = Biblioteca.fechaActual();
         if (prestamo.getPlazoDevolucion() > 0) {
             fechaParseada = fechaParseada.plusDays(prestamo.getPlazoDevolucion());
-            return fechaParseada;
-        } else {
-            return fechaParseada;
-        }
+        } 
+        return fechaParseada;
     }
 
     @Override

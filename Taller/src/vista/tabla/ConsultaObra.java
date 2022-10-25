@@ -2,34 +2,44 @@ package vista.tabla;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 
 import modelo.Biblioteca;
-import modelo.ModeloTabla;
+import modelo.BotonAdapter;
+import modelo.TablaRegistro;
 import modelo.Obra;
-import modelo.RenderizarTabla;
 
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
 
+/**
+ * Clase que permite consultar obras por area tematica y muestra la informacion
+ * en un JTable con los valores que encuentra.
+ * 
+ * @author Ivan Craco
+ */
 public class ConsultaObra extends VentanaTabla implements ActionListener, ItemListener {
 
     private List<Obra> areas;
-    private ModeloTabla modelo;   
+    private TablaRegistro modelo;   
     private JComboBox<String> combo;
     private String seleccionado = "Matemática";
     private JPanel panel1;
     private JButton buscar;
     private JTable tabla;
-    private JTableButtonMouseListener listener;
+    private BotonAdapter listener;
 
- 
+
+    /**
+     * Constructor sin parametros.
+     * Crea la venta, inicializa atributos, agrega items al JComboBox
+     * y agrega los componentes a la ventan.
+     */
     public ConsultaObra() {
         super.crearVentana();
 
@@ -57,12 +67,8 @@ public class ConsultaObra extends VentanaTabla implements ActionListener, ItemLi
         add(panel1, BorderLayout.NORTH);
         add(new JScrollPane(tabla), BorderLayout.CENTER);
         buscar.addActionListener(this);
-        listener = new JTableButtonMouseListener(tabla);
+        listener = new BotonAdapter(tabla);
         tabla.addMouseListener(listener);
-    
-
-    
-
     }
 
     @Override
@@ -78,6 +84,13 @@ public class ConsultaObra extends VentanaTabla implements ActionListener, ItemLi
 
     }
 
+    /**
+     * Retorna un listado de obras que coinciden con el
+     * area tematica seleccionada del JComboBox.
+     * 
+     * @param areaTematica item seleccionado del JComboBox
+     * @return listado de obras
+     */
     private List<Obra> buscarObra(String areaTematica) {
         List<Obra> obras = new ArrayList<>();
         for (int i = 0; i < Biblioteca.obras().size(); i++) {
@@ -89,35 +102,17 @@ public class ConsultaObra extends VentanaTabla implements ActionListener, ItemLi
         return obras;
     }
    
-   
+
+    /**
+     * Arma la tabla con los valores correspondientes
+     * a la busqueda.
+     */
     private void armarTabla() {
         areas = buscarObra(seleccionado);
-        modelo = new ModeloTabla(areas.size(), areas, this);
+        modelo = new TablaRegistro(areas.size(), areas, this);
         tabla.setModel(modelo);
-        listener = new JTableButtonMouseListener(tabla);
+        listener = new BotonAdapter(tabla);
         super.armarTabla(tabla);
     }
 
-}
-
-class JTableButtonMouseListener extends MouseAdapter {
-    private final JTable table;
-    
-    public JTableButtonMouseListener(JTable table) {
-        this.table = table;
-    }
-
-    public void mouseClicked(MouseEvent e) {
-        int column = table.getColumnModel().getColumnIndexAtX(e.getX()); // get the coloum of the button
-        int row    = e.getY()/table.getRowHeight(); //get the row of the button
-
-        /*Checking the row or column is valid or not*/
-        if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
-            Object value = table.getValueAt(row, column);
-            if (value instanceof JButton) {
-                /*perform a click event*/
-                ((JButton)value).doClick();
-            }
-        }
-    }
 }

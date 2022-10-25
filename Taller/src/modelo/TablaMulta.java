@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
  * 
  * @author ivan Craco
  */
-public class ModeloTablaMulta extends AbstractTableModel {
+public class TablaMulta extends AbstractTableModel {
 
     /**
      * Array de nombres de las columnas de la tabla
@@ -36,7 +36,7 @@ public class ModeloTablaMulta extends AbstractTableModel {
      * @param lectores lista de lectores
      * @param accion accion a realizar
      */
-    public ModeloTablaMulta(int filas, List<Lector> lectores, String accion) {
+    public TablaMulta(int filas, List<Lector> lectores, String accion) {
         this.filas = filas;
         this.lectores = lectores;
         this.accion = accion;
@@ -49,9 +49,9 @@ public class ModeloTablaMulta extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        if (accion.equals(ModeloTablaMulta.PERIODO_MULTA)) {
+        if (accion.equals(TablaMulta.PERIODO_MULTA)) {
             return NOMBRE_COLUMNAS.length - 1;
-        } else if (accion.equals(ModeloTablaMulta.RANKING_MULTA)) {
+        } else if (accion.equals(TablaMulta.RANKING_MULTA)) {
             return NOMBRE_COLUMNAS.length;
         } else {
             return 0;

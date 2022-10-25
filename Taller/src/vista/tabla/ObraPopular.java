@@ -3,38 +3,53 @@ package vista.tabla;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import modelo.Biblioteca;
-import modelo.ModeloTablaObraPopular;
+import modelo.TablaObraPopular;
 import modelo.Obra;
 import modelo.Obras;
-import modelo.RenderizarTabla;
 
+/**
+ * Clase que permite mostrar en un JTable las obras mas 
+ * solicitadas por alumnos y docentes y publico en general.
+ * 
+ * @author Ivan Craco
+ */
 public class ObraPopular extends VentanaTabla {
 
-    ModeloTablaObraPopular modelo;
+    TablaObraPopular modelo;
     private JTable tabla;
-    private String valor;
-    // private List<Obra> obras;
+    private String accion;
 
-    public ObraPopular(String valor) {
+    /**
+     * Constructor parametrizado.
+     * 
+     * @param accion arma una tabla u otra 
+     * dependiendo la accion.
+     */
+    public ObraPopular(String accion) {
         super.crearVentana();
 
         tabla = new JTable();
-        this.valor = valor;
+        this.accion = accion;
         add(new JScrollPane(tabla));
-
         armarTabla();
 
     }
 
-    
+
+    /**
+     * Retorna una lista ordenada de mayor a menor de 
+     * las obras mas solicitadas por alumnos y docentes o
+     * por publico en general.
+     * 
+     * @return listado de obras
+     */
     public List<Obra> masSolicitadas() {
           List<Obra> obras = new ArrayList<Obra>();
-          if(valor.equals("AD")){
+          if(accion.equals("AD")){
               Obras.ordenarLista1();
               for(int i = 0; i < 5; i++){
                 if(Biblioteca.obras().get(i).getSolicitadasAlumnosDocentes() > 0){
@@ -52,8 +67,11 @@ public class ObraPopular extends VentanaTabla {
           return obras;
     }
 
+    /**
+     * Arma la tabla con la informacion del listado de obras.
+     */
     public void armarTabla() {
-        modelo = new ModeloTablaObraPopular(masSolicitadas().size(), masSolicitadas());
+        modelo = new TablaObraPopular(masSolicitadas().size(), masSolicitadas());
         tabla.setModel(modelo);
         super.armarTabla(tabla);
     }

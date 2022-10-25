@@ -5,27 +5,38 @@ import java.util.List;
 import javax.swing.*;
 
 import java.awt.BorderLayout;
-import java.awt.event.*;
 
+import modelo.BotonAdapter;
 import modelo.Ejemplar;
-import modelo.ModeloTablaRegistro;
-import modelo.RenderizarTabla;
+import modelo.TablaUbicacion;
 
+/**
+ * Clase que permite mostrar informacion de las obras y poder
+ * realizar un prestamo, una reserva, o dar de baja un ejemplar.
+ * 
+ * @author Ivan Craco
+ */
 public class Registro extends VentanaTabla {
 
-    ModeloTablaRegistro modelo;
+    TablaUbicacion modelo;
     private List<Ejemplar> ejemplares;
     private String accion;
     private JTable tabla;
-    private JTableButtonMouseListener listener;
+    private BotonAdapter listener;
 
+    /**
+     * Constructor parametrizado.
+     * 
+     * @param ejemplares listado de ejemplares
+     * @param accion String accion a realizar
+     */
     public Registro(List<Ejemplar> ejemplares, String accion) {
         super.crearVentana();
 
         this.ejemplares = ejemplares;
         this.accion = accion;
         tabla = new JTable();
-        listener = new JTableButtonMouseListener(tabla);
+        listener = new BotonAdapter(tabla);
         tabla.addMouseListener(listener);
 
         
@@ -42,42 +53,27 @@ public class Registro extends VentanaTabla {
 
     }
 
+    /**
+     * @return lista de ejemplares
+     */
     public List<Ejemplar> getEjemplares() {
         return ejemplares;
     }
 
+    /**
+     * @param ejemplares establece una nueva lista de
+     * ejemplares
+     */
     public void setEjemplares(List<Ejemplar> ejemplares) {
         this.ejemplares = ejemplares;
     }
 
+    /**
+     * Arma la tabla con los valores del listado de ejemplares.
+     */
     private void armarTabla() {
-        modelo = new ModeloTablaRegistro(ejemplares.size(), ejemplares, accion, this);
+        modelo = new TablaUbicacion(ejemplares.size(), ejemplares, accion, this);
         tabla.setModel(modelo);
         super.armarTabla(tabla);
-    }
-}
-
-class JTableButtonMouseListener extends MouseAdapter {
-    private final JTable table;
-    
-    public JTableButtonMouseListener(JTable table) {
-        this.table = table;
-    }
-
-    /**
-     * @param e
-     */
-    public void mouseClicked(MouseEvent e) {
-        int column = table.getColumnModel().getColumnIndexAtX(e.getX()); // get the coloum of the button
-        int row    = e.getY()/table.getRowHeight(); //get the row of the button
-
-        /*Checking the row or column is valid or not*/
-        if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
-            Object value = table.getValueAt(row, column);
-            if (value instanceof JButton) {
-                /*perform a click event*/
-                ((JButton)value).doClick();
-            }
-        }
     }
 }
