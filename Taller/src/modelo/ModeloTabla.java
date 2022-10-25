@@ -14,10 +14,23 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que representa el modelo de tabla para las ventanas
+ * de consulta por area tematica y por indice de obra.
+ * 
+ * @author Ivan craco
+ */
 public class ModeloTabla extends AbstractTableModel {
+
+    /**
+     * Array de nombres de las columnas de la tabla
+     */
     private static final String[] NOMBRE_COLUMNAS = new String[] {
             "Título", "Temática", "Ejemplares Disponibles", "Préstamo", "Reserva", "Nuevo" };
 
+    /**
+     * Array de objetos que representa el tipo de objeto de cada columna
+     */
     private static final Class<?>[] TIPO_COLUMNAS = new Class<?>[] {
             String.class, String.class, String.class, JButton.class, JButton.class, JButton.class };
 
@@ -30,29 +43,61 @@ public class ModeloTabla extends AbstractTableModel {
     private ConsultaObra o;
     private ConsultaIndice i;
 
+    /**
+     * Constructor parametrizado
+     * 
+     * @param filas    filas de la tabla
+     * @param columnas columnas de la tabla
+     * @param obras    lista de obras
+     */
     public ModeloTabla(int filas, int columnas, List<Obra> obras) {
         this.filas = filas;
         this.columnas = columnas;
         ModeloTabla.obras = obras;
     }
 
+    /**
+     * Constructor parametrizado
+     * 
+     * @param filas filas de la tabla
+     * @param obras lista de obras
+     * @param o     objeto de tipo ventana y que representa una tabla
+     */
     public ModeloTabla(int filas, List<Obra> obras, ConsultaObra o) {
         this.filas = filas;
         ModeloTabla.obras = obras;
         this.o = o;
     }
 
+    /**
+     * Constructor parametrizado
+     * 
+     * @param filas filas de la tabla
+     * @param obras lista de obras
+     * @param i     objeto de tipo ventana y que representa una tabla
+     */
     public ModeloTabla(int filas, List<Obra> obras, ConsultaIndice i) {
         this.filas = filas;
         ModeloTabla.obras = obras;
         this.i = i;
     }
 
+    /**
+     * Constructor parametrizado
+     * 
+     * @param filas    filas de la tabla
+     * @param columnas columnas de la tabla
+     */
     public ModeloTabla(int filas, int columnas) {
         this.filas = filas;
         this.columnas = columnas;
     }
 
+    /**
+     * Constructor parametrizado
+     * 
+     * @param filas filas de la tabla
+     */
     public ModeloTabla(int filas) {
         this.filas = filas;
     }
@@ -70,6 +115,11 @@ public class ModeloTabla extends AbstractTableModel {
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         return TIPO_COLUMNAS[columnIndex];
+    }
+
+    @Override
+    public String getColumnName(int c) {
+        return NOMBRE_COLUMNAS[c];
     }
 
     @Override
@@ -148,10 +198,17 @@ public class ModeloTabla extends AbstractTableModel {
         }
     }
 
-    public Integer ejemplaresDisponibles(List<Ejemplar> ejemplares) {
+    /**
+     * Retorna la cantidad de ejemplares disponibles evaluando
+     * el atributo prestamo de cada ejemplar de la lista.
+     * 
+     * @param ejemplares lista de ejemplares
+     * @return cantidad de ejemplares disponibles
+     */
+    public int ejemplaresDisponibles(List<Ejemplar> ejemplares) {
         if (ejemplares == null)
             return 0;
-        Integer res = 0;
+        int res = 0;
         for (int i = 0; i < ejemplares.size(); i++) {
             if (ejemplares.get(i).getPrestamoEjemplar() == null) {
                 res++;
@@ -160,16 +217,14 @@ public class ModeloTabla extends AbstractTableModel {
         return res;
     }
 
-    public List<Ejemplar> ejemplaresParaPrestamo(List<Ejemplar> ejemplares) {
-        // List<Ejemplar> res = new ArrayList<>();
-        // for (int i = 0; i < ejemplares.size(); i++) {
-        // if (ejemplares.get(i).getPrestamoEjemplar() == null) {
-        // res.add(ejemplares.get(i));
-        // }
-        // }
-        return ejemplares;
-    }
-
+    /**
+     * Retorna los ejemplares de la biblioteca que estan disponibles para
+     * reservar cuando la fecha de devolucion del prestamo es mayor o
+     * igual a la fecha actual del sistema.
+     * 
+     * @param ejemplares lista de ejemplares
+     * @return lista de ejemplares que cumplen con la condicion
+     */
     public List<Ejemplar> ejemplaresParaReserva(List<Ejemplar> ejemplares) {
         List<Ejemplar> res = new ArrayList<>();
         LocalDate local;
@@ -187,6 +242,13 @@ public class ModeloTabla extends AbstractTableModel {
         return res;
     }
 
+    /**
+     * Retorna un condicional para saber si un ejemplar en particular
+     * esta disponible para reservar.
+     * 
+     * @param ejemplares lista de ejemplares
+     * @return condicional con la informacion correspondiente
+     */
     public boolean paraReservar(List<Ejemplar> ejemplares) {
         if (ejemplares == null)
             return false;
@@ -206,6 +268,12 @@ public class ModeloTabla extends AbstractTableModel {
         return false;
     }
 
+    /**
+     * Retorna verdadero si hay un ejemplar para realizar un prestamo.
+     * 
+     * @param ejemplares lista de ejemplares
+     * @return condicional con la informacion correspondiente
+     */
     public boolean paraPrestar(List<Ejemplar> ejemplares) {
         if (ejemplares == null)
             return false;
@@ -217,23 +285,36 @@ public class ModeloTabla extends AbstractTableModel {
         return false;
     }
 
-    @Override
-    public String getColumnName(int c) {
-        return NOMBRE_COLUMNAS[c];
-    }
-
+    /**
+     * 
+     * @return int filas de la tabla
+     */
     public int getFilas() {
         return filas;
     }
 
+    /**
+     * 
+     * @param filas establece una nueva cantidad de filas
+     *              de tipo int
+     */
     public void setFilas(int filas) {
         this.filas = filas;
     }
 
+    /**
+     * 
+     * @return int cantidad de columnas de la tabla
+     */
     public int getColumnas() {
         return columnas;
     }
 
+    /**
+     * 
+     * @param columnas establece una nueva cantidad
+     *                 de columnas de tipo int;
+     */
     public void setColumnas(int columnas) {
         this.columnas = columnas;
     }

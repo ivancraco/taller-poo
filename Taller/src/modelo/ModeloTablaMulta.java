@@ -1,14 +1,26 @@
 package modelo;
 
 import java.util.List;
-
 import javax.swing.table.AbstractTableModel;
 
+/**
+ * Clase modelo de una ventana que representa una tabla y 
+ * muestra informacion relacionada con la multas de una lista
+ * de lectores
+ * 
+ * @author ivan Craco
+ */
 public class ModeloTablaMulta extends AbstractTableModel {
 
+    /**
+     * Array de nombres de las columnas de la tabla
+     */
     private static final String[] NOMBRE_COLUMNAS = new String[] {
-            "Nombre", "Apellido", "DNI", "Correo", ""};
+            "Nombre", "Apellido", "DNI", "Correo", "" };
 
+    /**
+     * Array de objetos que representa el tipo de objeto de cada columna
+     */
     private static final Class<?>[] TIPO_COLUMNAS = new Class<?>[] {
             String.class, String.class, String.class, String.class, String.class };
 
@@ -18,7 +30,12 @@ public class ModeloTablaMulta extends AbstractTableModel {
     public static final String PERIODO_MULTA = "PeriodoMulta";
     public static final String RANKING_MULTA = "RankingMulta";
 
-
+    /**
+     * Constructor parametrizado
+     * @param filas cantidad de filas de la tabla
+     * @param lectores lista de lectores
+     * @param accion accion a realizar
+     */
     public ModeloTablaMulta(int filas, List<Lector> lectores, String accion) {
         this.filas = filas;
         this.lectores = lectores;
@@ -32,11 +49,11 @@ public class ModeloTablaMulta extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        if(accion.equals(ModeloTablaMulta.PERIODO_MULTA)){
+        if (accion.equals(ModeloTablaMulta.PERIODO_MULTA)) {
             return NOMBRE_COLUMNAS.length - 1;
-        }else if(accion.equals(ModeloTablaMulta.RANKING_MULTA)){
+        } else if (accion.equals(ModeloTablaMulta.RANKING_MULTA)) {
             return NOMBRE_COLUMNAS.length;
-        }else{
+        } else {
             return 0;
         }
     }
@@ -48,7 +65,7 @@ public class ModeloTablaMulta extends AbstractTableModel {
 
     @Override
     public String getColumnName(int c) {
-        if(c == 4) {
+        if (c == 4) {
             return "Cantidad";
         }
         return NOMBRE_COLUMNAS[c];
@@ -67,8 +84,9 @@ public class ModeloTablaMulta extends AbstractTableModel {
             case 3:
                 return lectores.get(rowIndex).getCorreo();
             case 4:
-                return lectores.get(rowIndex).getMulta().getCantidad();   
-            default: return "";    
+                return lectores.get(rowIndex).getMulta().getCantidad();
+            default:
+                return "";
         }
     }
 

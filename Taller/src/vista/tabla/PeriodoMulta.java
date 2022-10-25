@@ -20,7 +20,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PeriodoMulta extends JFrame {
+public class PeriodoMulta extends VentanaTabla {
 
     private ModeloTablaMulta modelo;
     private JTable tabla;
@@ -32,6 +32,7 @@ public class PeriodoMulta extends JFrame {
     private JButton btnBuscar;
 
     public PeriodoMulta() {
+        super.crearVentana();
 
         tabla = new JTable();
         $desde = new JLabel("Desde: ");
@@ -47,12 +48,6 @@ public class PeriodoMulta extends JFrame {
         panel.add(btnBuscar);
         add(panel, BorderLayout.NORTH);
         add(new JScrollPane(tabla), BorderLayout.CENTER);
-
-        /* Ventana */
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(800, 300);
-        setResizable(false);
-        setLocationRelativeTo(null);
 
         btnBuscar.addActionListener(new ActionListener() {
             @Override
@@ -73,9 +68,11 @@ public class PeriodoMulta extends JFrame {
                 LocalDate fechaParseda = Biblioteca.parsearFecha(fecha);
                 LocalDate fechamax = Biblioteca.parsearFecha(Biblioteca.lectores().get(i).getMulta().getMultadoHasta());
 
-                if (Biblioteca.parsearFecha(desde.getText()).isAfter(fechaParseda) 
-                        && Biblioteca.parsearFecha(desde.getText()).isBefore(fechamax) 
+                if (Biblioteca.parsearFecha(desde.getText()).isAfter(fechaParseda)
+                        ||  Biblioteca.parsearFecha(desde.getText()).isEqual(fechaParseda)
+                        && Biblioteca.parsearFecha(desde.getText()).isBefore(fechamax)
                         && Biblioteca.parsearFecha(hasta.getText()).isBefore(fechamax) 
+                        || Biblioteca.parsearFecha(hasta.getText()).isEqual(fechamax)
                         && Biblioteca.parsearFecha(hasta.getText()).isAfter(fechaParseda)) {
                     lectores.add(Biblioteca.lectores().get(i));
                 }
@@ -88,9 +85,6 @@ public class PeriodoMulta extends JFrame {
     public void armarTabla() {
         modelo = new ModeloTablaMulta(lectoresMultadosPorPeriodo().size(), lectoresMultadosPorPeriodo(), ModeloTablaMulta.PERIODO_MULTA);
         tabla.setModel(modelo);
-        tabla.setDefaultRenderer(Object.class, new RenderizarTabla());
-        tabla.setRowHeight(30);
-        validate();
-        repaint();
+        super.armarTabla(tabla);
     }
 }

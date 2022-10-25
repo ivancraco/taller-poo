@@ -1,7 +1,14 @@
 package modelo;
+
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Clase que hereda de la clase Lector y representa
+ * un tipo de lector por parte de la biblioteca.
+ * 
+ * @author Ivan Craco
+ */
 public class Docente extends Lector{
     
     private List<String> carrera;
@@ -12,10 +19,20 @@ public class Docente extends Lector{
         this.carrera = carrera;
     }
 
+    /**
+     * 
+     * @return lista de objeto String con las carreras
+     * del docente
+     */
     public List<String> getCarrera() {
         return carrera;
     }
 
+    /**
+     * 
+     * @param carrera establece una nueva lista
+     * de carreras
+     */
     public void setCarrera(List<String> carrera) {
         this.carrera = carrera;
     }

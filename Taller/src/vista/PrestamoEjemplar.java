@@ -107,16 +107,9 @@ public class PrestamoEjemplar extends JFrame implements ActionListener, ItemList
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (!funcionario.getText().matches("[a-zA-Z]{4,}")) {
+        if (!plazo.getText().matches("[0-4]{1}")){
             JOptionPane.showMessageDialog(null,
-                    "¡ Se espera al menos 4 letras para el nombre del funcionario !",
-                    null,
-                    JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        if (!plazo.getText().matches("[0-4]*")){
-            JOptionPane.showMessageDialog(null,
-                    "¡ No es número !",
+                    "¡ Se espera un número del 1 al 4 !",
                     null,
                     JOptionPane.INFORMATION_MESSAGE);
             return;

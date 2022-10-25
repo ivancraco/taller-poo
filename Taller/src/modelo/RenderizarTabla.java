@@ -27,11 +27,18 @@ public class RenderizarTabla extends DefaultTableCellRenderer {
 
     public JComboBox<String> crearComboBox(Lector lector){
         JComboBox<String> combo = new JComboBox<>();
-        for(int i = 0; i < lector.getPrestamoLector().size(); i++){
-            if(fechaActual().isAfter(lector.getPrestamoLector().get(i).getFechaDevolucion())){
-                combo.addItem(lector.getPrestamoLector().get(i).getEjemplar().getObra().getTitulo());
-            }
-        }
+
+          
+                for(int i = 0; i < lector.getPrestamoLector().size(); i++){
+                    if(fechaActual().isAfter(lector.getPrestamoLector().get(i).getFechaDevolucion())){
+                        combo.addItem(lector.getPrestamoLector().get(i).getEjemplar().getObra().getTitulo());
+                        combo.addItem("pepe");
+                    }
+                }
+            
+
+       
+        
         return combo;
     }
 
@@ -56,6 +63,12 @@ public class RenderizarTabla extends DefaultTableCellRenderer {
         if(value instanceof JButton){
             JButton boton = (JButton) value;
             return boton;
+        }
+
+        if(isSelected){
+
+            setFocusable(true);
+            setValue(value);
         }
 
         if(value instanceof JComboBox){

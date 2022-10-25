@@ -1,28 +1,47 @@
 package modelo;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-
+import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
+import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableColumn;
 
+/**
+ * Clase modelo de una ventana que representa una tabla y muestra
+ * la informacion de los lectores en deuda
+ * 
+ * @author Ivan Craco
+ */
 public class ModeloTablaDeuda extends AbstractTableModel {
 
+    /**
+     * Array de nombres de las columnas de la tabla
+     */
     private static final String[] NOMBRE_COLUMNAS = new String[] {
             "Nombre", "Apellido", "Tipo", "DNI", "Teléfono", "Ejemplares" };
 
+    /**
+     * Array de objetos que representa el tipo de objeto de cada columna
+     */
     private static final Class<?>[] TIPO_COLUMNAS = new Class<?>[] {
             String.class, String.class, String.class, String.class, String.class, Object.class };
 
-    private Integer filas;
+    private int filas;
     private List<Lector> lectores;
+    private JTable tabla;
 
-    public ModeloTablaDeuda(Integer filas, List<Lector> lectores) {
-
+    /**
+     * Constructor parametrizado
+     * 
+     * @param filas cantidad de filas
+     * @param lectores lista de lectores
+     * @param tabla objeto Jtable
+     */
+    public ModeloTablaDeuda(int filas, List<Lector> lectores, JTable tabla) {
         this.filas = filas;
         this.lectores = lectores;
+        this.tabla = tabla;
 
     }
 
@@ -60,35 +79,27 @@ public class ModeloTablaDeuda extends AbstractTableModel {
             case 4:
                 return lectores.get(rowIndex).getCelular();
             case 5:
-                return crearComboBox(lectores.get(rowIndex));   
+            TableColumn t = tabla.getColumnModel().getColumn(columnIndex);
+                t.setCellEditor(new DefaultCellEditor(crearComboBox(lectores.get(rowIndex))));   
+                return t.getCellEditor();
             default: return ""; 
         }
     }
 
+    /**
+     * Retorna un JComboBox para cada lector con informacion de los ejemplares
+     * que aun no ha devuelto.
+     * 
+     * @param lector un objeto lector
+     * @return objeto JComboBox con la informacion correspondiente
+     */
     public JComboBox<String> crearComboBox(Lector lector){
         JComboBox<String> combo = new JComboBox<>();
         for(int i = 0; i < lector.getPrestamoLector().size(); i++){
-            if(fechaActual().isAfter(lector.getPrestamoLector().get(i).getFechaDevolucion())){
+            if(Biblioteca.fechaActual().isAfter(lector.getPrestamoLector().get(i).getFechaDevolucion())){
                 combo.addItem(lector.getPrestamoLector().get(i).getEjemplar().getIDUbicacion());
             }
         }
-
         return combo;
     }
-
-    public LocalDate fechaActual() {
-        String fecha = fechaYHoraActual();
-        String str = fecha.substring(0, 10);
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fechaParseada = LocalDate.parse(str, formato);
-        return fechaParseada;
-    }
-
-    public String fechaYHoraActual() {
-        LocalDateTime fechaActual = LocalDateTime.now();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm a");
-        String nuevoFormato = fechaActual.format(formato);
-        return nuevoFormato;
-    }
-
 }

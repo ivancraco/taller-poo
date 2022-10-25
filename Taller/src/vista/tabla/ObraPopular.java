@@ -13,7 +13,7 @@ import modelo.Obra;
 import modelo.Obras;
 import modelo.RenderizarTabla;
 
-public class ObraPopular extends JFrame {
+public class ObraPopular extends VentanaTabla {
 
     ModeloTablaObraPopular modelo;
     private JTable tabla;
@@ -21,16 +21,11 @@ public class ObraPopular extends JFrame {
     // private List<Obra> obras;
 
     public ObraPopular(String valor) {
+        super.crearVentana();
 
         tabla = new JTable();
         this.valor = valor;
         add(new JScrollPane(tabla));
-
-        /* Ventana */
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(950, 300);
-        setResizable(false);
-        setLocationRelativeTo(null);
 
         armarTabla();
 
@@ -41,14 +36,14 @@ public class ObraPopular extends JFrame {
           List<Obra> obras = new ArrayList<Obra>();
           if(valor.equals("AD")){
               Obras.ordenarLista1();
-              for(int i = 0; i < 2; i++){
+              for(int i = 0; i < 5; i++){
                 if(Biblioteca.obras().get(i).getSolicitadasAlumnosDocentes() > 0){
                     obras.add(Biblioteca.obras().get(i));
                 }
              }
           }else {
               Obras.ordenarLista2();
-              for(int i = 0; i < 2; i++){
+              for(int i = 0; i < 5; i++){
                 if(Biblioteca.obras().get(i).getSolicitadasPublicoGeneral() > 0){
                     obras.add(Biblioteca.obras().get(i));
                 }
@@ -59,11 +54,8 @@ public class ObraPopular extends JFrame {
 
     public void armarTabla() {
         modelo = new ModeloTablaObraPopular(masSolicitadas().size(), masSolicitadas());
-        tabla.setDefaultRenderer(Object.class, new RenderizarTabla());
         tabla.setModel(modelo);
-        tabla.setRowHeight(30);
-        validate();
-        repaint();
+        super.armarTabla(tabla);
     }
 
 }

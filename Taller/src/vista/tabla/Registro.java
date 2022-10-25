@@ -11,7 +11,7 @@ import modelo.Ejemplar;
 import modelo.ModeloTablaRegistro;
 import modelo.RenderizarTabla;
 
-public class Registro extends JFrame {
+public class Registro extends VentanaTabla {
 
     ModeloTablaRegistro modelo;
     private List<Ejemplar> ejemplares;
@@ -20,6 +20,7 @@ public class Registro extends JFrame {
     private JTableButtonMouseListener listener;
 
     public Registro(List<Ejemplar> ejemplares, String accion) {
+        super.crearVentana();
 
         this.ejemplares = ejemplares;
         this.accion = accion;
@@ -51,12 +52,8 @@ public class Registro extends JFrame {
 
     private void armarTabla() {
         modelo = new ModeloTablaRegistro(ejemplares.size(), ejemplares, accion, this);
-        tabla.setDefaultRenderer(Object.class, new RenderizarTabla());
         tabla.setModel(modelo);
-        tabla.setRowHeight(30);
-        validate();
-        repaint();
-
+        super.armarTabla(tabla);
     }
 }
 

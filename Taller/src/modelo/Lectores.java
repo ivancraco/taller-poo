@@ -4,9 +4,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que almacena la información de los lectores
+ * 
+ * @author Ivan Craco
+ */
 public class Lectores {
+
         private List<Lector> lectores;
 
+        /**
+         * Constructor que crea una lista y almacena en la misma
+         * los lectores que se encuentran registrados en la biblioteca
+         */
         public Lectores() {
 
                 lectores = new ArrayList<Lector>();
@@ -262,22 +272,96 @@ public class Lectores {
                                 .setPrestamoEjemplar(lectores.get(0).getPrestamoLector().get(0));
 
 
-                lectores.get(0).setMulta(new Multa(15, new Devolucion("14/09/2022", "pepe")));
-                String fec = Biblioteca.formatearFecha(
+                lectores.get(0).setMulta(new Multa(15, new Devolucion("14/09/2022", "Javier Perez")));
+                String fec1 = Biblioteca.formatearFecha(
                                 lectores.get(0).getMulta().getDevolucion().getFechaYHoraDevolucion(),
                                 lectores.get(0).getMulta().getPlazo());
-                lectores.get(0).getMulta().setMultadoHasta(fec);
+                lectores.get(0).getMulta().setMultadoHasta(fec1);
                 lectores.get(0).getMulta().setMultado(false);
-                lectores.get(0).getMulta().setCantidad(5);
+                lectores.get(0).getMulta().setCantidad(17);
 
                 lectores.get(1).getReservaLector().add(new Reserva("14/10/2022",
                 Biblioteca.obras().get(0).getEjemplar().get(2),lectores.get(1)));
-                // reserva.getLector().getReservaLector().add(reserva);
-                // reserva.getEjemplar().setReservaEjemplar(reserva);
+                Biblioteca.obras().get(0).getEjemplar().get(2).setReservaEjemplar(lectores.get(1).getReservaLector().get(0));
         
+                lectores.get(1).setMulta(new Multa(15, new Devolucion("10/09/2022", "Javier Perez")));
+                String fec2 = Biblioteca.formatearFecha(
+                                lectores.get(1).getMulta().getDevolucion().getFechaYHoraDevolucion(),
+                                lectores.get(1).getMulta().getPlazo());
+                lectores.get(1).getMulta().setMultadoHasta(fec2);
+                lectores.get(1).getMulta().setMultado(false);
+                lectores.get(1).getMulta().setCantidad(15);
+
+                lectores.get(10).setMulta(new Multa(15, new Devolucion("14/09/2022", "Javier Perez")));
+                String fec3 = Biblioteca.formatearFecha(
+                                lectores.get(10).getMulta().getDevolucion().getFechaYHoraDevolucion(),
+                                lectores.get(10).getMulta().getPlazo());
+                lectores.get(10).getMulta().setMultadoHasta(fec3);
+                lectores.get(10).getMulta().setMultado(false);
+                lectores.get(10).getMulta().setCantidad(12);
+
+                lectores.get(4).setMulta(new Multa(15, new Devolucion("14/09/2022", "Javier Perez")));
+                String fec4 = Biblioteca.formatearFecha(
+                                lectores.get(4).getMulta().getDevolucion().getFechaYHoraDevolucion(),
+                                lectores.get(4).getMulta().getPlazo());
+                lectores.get(4).getMulta().setMultadoHasta(fec4);
+                lectores.get(4).getMulta().setMultado(false);
+                lectores.get(4).getMulta().setCantidad(10);
+
+                lectores.get(3).setMulta(new Multa(15, new Devolucion("14/09/2022", "Javier Perez")));
+                String fec5 = Biblioteca.formatearFecha(
+                                lectores.get(3).getMulta().getDevolucion().getFechaYHoraDevolucion(),
+                                lectores.get(3).getMulta().getPlazo());
+                lectores.get(3).getMulta().setMultadoHasta(fec5);
+                lectores.get(3).getMulta().setMultado(false);
+                lectores.get(3).getMulta().setCantidad(11);
+
+                lectores.get(9).setMulta(new Multa(15, new Devolucion("14/09/2022", "Javier Perez")));
+                String fec6 = Biblioteca.formatearFecha(
+                                lectores.get(9).getMulta().getDevolucion().getFechaYHoraDevolucion(),
+                                lectores.get(9).getMulta().getPlazo());
+                lectores.get(9).getMulta().setMultadoHasta(fec6);
+                lectores.get(9).getMulta().setMultado(false);
+                lectores.get(9).getMulta().setCantidad(6);
+
+                lectores.get(5).setMulta(new Multa(15, new Devolucion("14/09/2022", "Javier Perez")));
+                String fec7 = Biblioteca.formatearFecha(
+                                lectores.get(5).getMulta().getDevolucion().getFechaYHoraDevolucion(),
+                                lectores.get(5).getMulta().getPlazo());
+                lectores.get(5).getMulta().setMultadoHasta(fec7);
+                lectores.get(5).getMulta().setMultado(false);
+                lectores.get(5).getMulta().setCantidad(3);
+
+                lectores.get(2).setMulta(new Multa(15, new Devolucion("14/09/2022", "Javier Perez")));
+                String fec8= Biblioteca.formatearFecha(
+                                lectores.get(2).getMulta().getDevolucion().getFechaYHoraDevolucion(),
+                                lectores.get(2).getMulta().getPlazo());
+                lectores.get(2).getMulta().setMultadoHasta(fec8);
+                lectores.get(2).getMulta().setMultado(false);
+                lectores.get(2).getMulta().setCantidad(9);
+
+                lectores.get(11).setMulta(new Multa(15, new Devolucion("14/09/2022", "Javier Perez")));
+                String fec9 = Biblioteca.formatearFecha(
+                                lectores.get(11).getMulta().getDevolucion().getFechaYHoraDevolucion(),
+                                lectores.get(11).getMulta().getPlazo());
+                lectores.get(11).getMulta().setMultadoHasta(fec9);
+                lectores.get(11).getMulta().setMultado(false);
+                lectores.get(11).getMulta().setCantidad(2);
+
+                lectores.get(8).setMulta(new Multa(15, new Devolucion("14/09/2022", "Javier Perez")));
+                String fec10 = Biblioteca.formatearFecha(
+                                lectores.get(8).getMulta().getDevolucion().getFechaYHoraDevolucion(),
+                                lectores.get(8).getMulta().getPlazo());
+                lectores.get(8).getMulta().setMultadoHasta(fec10);
+                lectores.get(8).getMulta().setMultado(false);
+                lectores.get(8).getMulta().setCantidad(8);
 
         }
 
+        /**
+         * Ordena la lista de lectores de mayor a menor
+         * por cantidad de multas aplicadas
+         */
         public static void ordenar(){
                 Biblioteca.lectores().sort((o1, o2) -> {
                         if(o2.getMulta() != null && o1.getMulta() != null){
@@ -285,14 +369,20 @@ public class Lectores {
                         }
                         return 0;
                 });
-                
-                // o2.getMulta().getCantidad().compareTo(o1.getMulta().getCantidad()));
         }
 
+        /**
+         * 
+         * @return lista de lectores
+         */
         public List<Lector> getLectores() {
                 return lectores;
         }
 
+        /**
+         * 
+         * @param lectores establece una nueva lista de lectores
+         */
         public void setLectores(List<Lector> lectores) {
                 this.lectores = lectores;
         }

@@ -20,7 +20,7 @@ import modelo.Biblioteca;
 import modelo.Ejemplar;
 import modelo.ModeloTablaObraReservada;
 
-public class ObraReservada extends JFrame {
+public class ObraReservada extends VentanaTabla {
 
     private ModeloTablaObraReservada modelo;
     private JLabel $fecha;
@@ -30,31 +30,29 @@ public class ObraReservada extends JFrame {
     private JPanel panel;
 
     public ObraReservada() {
+        super.crearVentana();
 
         $fecha = new JLabel("Fecha:");
         fecha = new JTextField(15);
-        tabla = new JTable();
         confirmar = new JButton("Confirmar");
+        tabla = new JTable();
         panel = new JPanel();
         panel.add($fecha);
         panel.add(fecha);
         panel.add(confirmar);
-
-        /* Ventana */
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(950, 300);
-        setResizable(false);
-        setLocationRelativeTo(null);
+        add(panel, BorderLayout.NORTH);
+        add(new JScrollPane(tabla), BorderLayout.CENTER);
 
         confirmar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                fechar(fecha.getText());
+                if(ejemplaresReservados().size() == 0 ) {
+                    JOptionPane.showMessageDialog(null,
+                        "¡ No hay reservas a partir de esa fecha !", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+                armarTabla();
             }
         });
-
-        setLayout(new FlowLayout());
-        add(panel, BorderLayout.NORTH);
-        add(new JScrollPane(tabla), BorderLayout.CENTER);
     }
 
     public List<Ejemplar> ejemplaresReservados() {
@@ -62,7 +60,12 @@ public class ObraReservada extends JFrame {
         for (int i = 0; i < Biblioteca.obras().size(); i++) {
             for (int j = 0; j < Biblioteca.obras().get(i).getEjemplar().size(); j++) {
                 if (Biblioteca.obras().get(i).getEjemplar().get(j).getReservaEjemplar() != null) {
-                    resultado.add(Biblioteca.obras().get(i).getEjemplar().get(j));
+                    LocalDate fechaParseada = Biblioteca.parsearFecha(
+                            Biblioteca.obras().get(i).getEjemplar().get(j).getReservaEjemplar().getFechaReserva());
+                    if (Biblioteca.parsearFecha(fecha.getText()).isBefore(fechaParseada)
+                            || Biblioteca.parsearFecha(fecha.getText()).isEqual(fechaParseada)) {
+                        resultado.add(Biblioteca.obras().get(i).getEjemplar().get(j));
+                    }
                 }
             }
         }
@@ -70,24 +73,9 @@ public class ObraReservada extends JFrame {
         return resultado;
     }
 
-    public void fechar(String fecha) {
-        String s = Biblioteca.fechaYHoraActual();
-        String str = s.substring(0, 10);
-        LocalDate fechaActualParseada = Biblioteca.parsearFecha(str);
-        if (Biblioteca.parsearFecha(fecha).isBefore(fechaActualParseada)) {
-            JOptionPane.showMessageDialog(null,
-                    "Fecha incorrecta", "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        }else {
-            armarTabla();
-        }
-    }
-
     public void armarTabla() {
         modelo = new ModeloTablaObraReservada(ejemplaresReservados().size(), ejemplaresReservados());
         tabla.setModel(modelo);
-        tabla.setRowHeight(30);
-        validate();
-        repaint();
+        super.armarTabla(tabla);
     }
 }

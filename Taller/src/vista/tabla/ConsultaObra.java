@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
 
-public class ConsultaObra extends JFrame implements ActionListener, ItemListener {
+public class ConsultaObra extends VentanaTabla implements ActionListener, ItemListener {
 
     private List<Obra> areas;
     private ModeloTabla modelo;   
@@ -31,12 +31,22 @@ public class ConsultaObra extends JFrame implements ActionListener, ItemListener
 
  
     public ConsultaObra() {
+        super.crearVentana();
 
         buscar = new JButton("Buscar");
 
         combo = new JComboBox<String>();
         combo.addItem("Matemática");
         combo.addItem("Programación");
+        combo.addItem("AutoAyuda");
+        combo.addItem("Administración");
+        combo.addItem("Algebra");
+        combo.addItem("Arquitectura");
+        combo.addItem("Contabilidad");
+        combo.addItem("Redes");
+        combo.addItem("Turismo");
+        combo.addItem("Tecnologia");
+
         combo.addItemListener(this);
 
         tabla = new JTable();
@@ -51,11 +61,7 @@ public class ConsultaObra extends JFrame implements ActionListener, ItemListener
         tabla.addMouseListener(listener);
     
 
-        /* Ventana */
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(950, 300);
-        setResizable(false);
-        setLocationRelativeTo(null);
+    
 
     }
 
@@ -87,13 +93,9 @@ public class ConsultaObra extends JFrame implements ActionListener, ItemListener
     private void armarTabla() {
         areas = buscarObra(seleccionado);
         modelo = new ModeloTabla(areas.size(), areas, this);
-        tabla.setDefaultRenderer(Object.class, new RenderizarTabla());
         tabla.setModel(modelo);
-        tabla.setRowHeight(30);
         listener = new JTableButtonMouseListener(tabla);
-        validate();
-        repaint();
-
+        super.armarTabla(tabla);
     }
 
 }

@@ -16,20 +16,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Deudor extends JFrame{
+public class Deudor extends VentanaTabla{
 
     private ModeloTablaDeuda modelo;
     private JTable tabla;
 
     public Deudor() {
+        super.crearVentana();
 
         tabla = new JTable();
         
-        /* Ventana */
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(950, 300);
-        setResizable(false);
-        setLocationRelativeTo(null);
         
         add(new JScrollPane(tabla), BorderLayout.CENTER);
     
@@ -67,11 +63,8 @@ public class Deudor extends JFrame{
     }
 
     public void tablaDeuda() {
-        modelo = new ModeloTablaDeuda(deudores().size(), deudores());
-        tabla.setDefaultRenderer(Object.class, new RenderizarTabla(deudores()));
+        modelo = new ModeloTablaDeuda(deudores().size(), deudores(), this.tabla);
         tabla.setModel(modelo);
-        tabla.setRowHeight(30);
-        validate();
-        repaint();
+        super.armarTabla(tabla);
     }
 }

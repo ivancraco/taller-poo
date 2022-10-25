@@ -1,23 +1,40 @@
 package modelo;
 
 import java.util.List;
-
 import javax.swing.table.AbstractTableModel;
 
+/**
+ * Clase modelo que representa una tabla y muestra ingormacion de
+ * obras dada una editorial
+ * 
+ * @author Ivan craco
+ */
 public class ModeloTablaObraEditorial extends AbstractTableModel {
 
+    /**
+     * Array de nombres de las columnas de la tabla
+     */
     private static final String[] NOMBRE_COLUMNAS = new String[] {
             "Autor", "Título", "Pais", "Edición", "Año", "Idioma" };
 
+    /**
+     * Array de objetos que representa el tipo de objeto de cada columna
+     */
     private static final Class<?>[] TIPO_COLUMNAS = new Class<?>[] {
             String.class, String.class, String.class, String.class, String.class, String.class };
 
     private int filas;
-    private List<Obra> ejemplares;
+    private List<Obra> obras;
 
-    public ModeloTablaObraEditorial(int filas, List<Obra> ejemplares) {
+    /**
+     * Constructor parametrizado
+     * 
+     * @param filas cantidad de filas de la tabla
+     * @param obras lista de obras
+     */
+    public ModeloTablaObraEditorial(int filas, List<Obra> obras) {
         this.filas = filas;
-        this.ejemplares = ejemplares;
+        this.obras = obras;
     }
 
     @Override
@@ -42,20 +59,21 @@ public class ModeloTablaObraEditorial extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        switch(columnIndex) {
+        switch (columnIndex) {
             case 0:
-               return ejemplares.get(rowIndex).getPrimerAutor();
-            case 1: 
-               return ejemplares.get(rowIndex).getTitulo();
+                return obras.get(rowIndex).getPrimerAutor();
+            case 1:
+                return obras.get(rowIndex).getTitulo();
             case 2:
-               return ejemplares.get(rowIndex).getEdicion().getPaisEdicion();
+                return obras.get(rowIndex).getEdicion().getPaisEdicion();
             case 3:
-               return ejemplares.get(rowIndex).getEdicion().getNumeroEdicion();
+                return obras.get(rowIndex).getEdicion().getNumeroEdicion();
             case 4:
-               return ejemplares.get(rowIndex).getEdicion().getAnio();
+                return obras.get(rowIndex).getEdicion().getAnio();
             case 5:
-               return ejemplares.get(rowIndex).getEdicion().getIdioma();
-            default: return "";
+                return obras.get(rowIndex).getEdicion().getIdioma();
+            default:
+                return "";
         }
     }
 

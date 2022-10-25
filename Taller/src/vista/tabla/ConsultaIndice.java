@@ -18,7 +18,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConsultaIndice extends JFrame implements ActionListener {
+public class ConsultaIndice extends VentanaTabla implements ActionListener {
 
     private ModeloTabla modelo;
     private List<Obra> areas;
@@ -30,6 +30,8 @@ public class ConsultaIndice extends JFrame implements ActionListener {
     private JTableButtonMouseListener listener;
 
     public ConsultaIndice() {
+        super.crearVentana();
+
         $indice = new JLabel("Buscar por Índice: ");
         indice = new JTextField(15);
         buscar = new JButton("Buscar");
@@ -42,14 +44,9 @@ public class ConsultaIndice extends JFrame implements ActionListener {
         tabla.addMouseListener(listener);
         buscar.addActionListener(this);
 
-        /* Ventana */
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(950, 300);
-        setResizable(false);
-        setLocationRelativeTo(null);
-
         add(panel, BorderLayout.NORTH);
         add(new JScrollPane(tabla), BorderLayout.CENTER);
+    
     }
 
     @Override
@@ -75,13 +72,9 @@ public class ConsultaIndice extends JFrame implements ActionListener {
     private void armarTabla() {
         areas = buscarObra(indice.getText());
         modelo = new ModeloTabla(areas.size(), areas, this);
-        tabla.setDefaultRenderer(Object.class, new RenderizarTabla());
         tabla.setModel(modelo);
-        tabla.setRowHeight(30);
         listener = new JTableButtonMouseListener(tabla);
-        validate();
-        repaint();
-
+        super.armarTabla(tabla);
     }
 
 }

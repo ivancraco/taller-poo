@@ -61,6 +61,12 @@ public class VerificarLector extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Lector lector = existeLector(Biblioteca.lectores(), dni.getText());
         if (lector != null) {
+            if (accion.equals(ModeloTabla.DEVOLUCION)) {
+                DevolucionObra dev = new DevolucionObra(lector);
+                dev.setVisible(true);
+                this.dispose();
+                return;
+            }
             if (tieneMultas(lector)) {
                 JOptionPane.showMessageDialog(null,
                         "El lector debe libros", "Error",
@@ -80,24 +86,11 @@ public class VerificarLector extends JFrame implements ActionListener {
                 PrestamoEjemplar registrar = new PrestamoEjemplar(lector, ejemplar);
                 registrar.setVisible(true);
                 this.dispose();
+                return;
             }
             if (accion.equals(ModeloTabla.RESERVA)) {
-                Reserva reserva = new Reserva();
-                reserva.setLector(lector);
-                reserva.setEjemplar(ejemplar);
-                reserva.setFechaReserva(Biblioteca.fechaString(reserva.getEjemplar()
-                        .getPrestamoEjemplar().getFechaDevolucion()));
-                reserva.getLector().getReservaLector().add(reserva);
-                reserva.getEjemplar().setReservaEjemplar(reserva);
-                JOptionPane.showMessageDialog(null,
-                    " wao ", "Error",
-                    JOptionPane.ERROR_MESSAGE);
-                this.dispose();
-            }
-            if (accion.equals(ModeloTabla.DEVOLUCION)) {
-                DevolucionObra dev = new DevolucionObra(lector);
-                dev.setVisible(true);
-                this.dispose();
+                realizarReserva(lector);
+                return;
             }
         } else {
             JOptionPane.showMessageDialog(null,
@@ -127,6 +120,20 @@ public class VerificarLector extends JFrame implements ActionListener {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         local = local.plusDays(plazo);
         return local.format(formato);
+    }
+
+    public void realizarReserva(Lector lector) {
+        Reserva reserva = new Reserva();
+        reserva.setLector(lector);
+        reserva.setEjemplar(ejemplar);
+        reserva.setFechaReserva(Biblioteca.fechaString(reserva.getEjemplar()
+                .getPrestamoEjemplar().getFechaDevolucion()));
+        reserva.getLector().getReservaLector().add(reserva);
+        reserva.getEjemplar().setReservaEjemplar(reserva);
+        JOptionPane.showMessageDialog(null,
+                "¡ Reserva realizada con éxito !", "Error",
+                JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
     }
 
     public LocalDate fechaActual(Lector lector) {

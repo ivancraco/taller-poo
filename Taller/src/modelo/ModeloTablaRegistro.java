@@ -13,24 +13,43 @@ import vista.BajaEjemplar;
 import vista.VerificarLector;
 import vista.tabla.Registro;
 
+/**
+ * Clase que representa un modelo de tabla para mostrar informacion
+ * acerca del registro de prestamo o devolucion.
+ * 
+ * @author Ivan Craco
+ */
 public class ModeloTablaRegistro extends AbstractTableModel {
 
+    /**
+     * Array de nombres de las columnas de la tabla
+     */
     private static final String[] NOMBRE_COLUMNAS = new String[] {
             "ID", "Pasillo", "Estantería", "Fila", "Identificador Ejemplar", "", "" };
 
+    /**
+     * Array de objetos que representa el tipo de objeto de cada columna
+     */
     private static final Class<?>[] TIPO_COLUMNAS = new Class<?>[] {
             String.class, String.class, String.class, String.class, String.class, Object.class, Object.class };
 
-    private Integer filas;
+    private int filas;
     private List<Ejemplar> ejemplares;
     private String accion;
-    private Registro t;
+    private Registro registo;
 
-    public ModeloTablaRegistro(Integer filas, List<Ejemplar> ejemplares, String accion, Registro t) {
+    /**
+     * Constructor parametrizado
+     * @param filas cantidad de filas de la tabla
+     * @param ejemplares listado de ejemplares
+     * @param accion String accion a realizar
+     * @param t objeto Registro
+     */
+    public ModeloTablaRegistro(int filas, List<Ejemplar> ejemplares, String accion, Registro registo) {
         this.filas = filas;
         this.ejemplares = ejemplares;
         this.accion = accion;
-        this.t = t;
+        this.registo = registo;
     }
 
     @Override
@@ -117,7 +136,7 @@ public class ModeloTablaRegistro extends AbstractTableModel {
                 public void actionPerformed(ActionEvent arg0) {
                     VerificarLector verificar = new VerificarLector(ejemplares.get(indice), accion);
                     verificar.setVisible(true);
-                    t.dispose();
+                    registo.dispose();
                 }
             });
         }
@@ -138,14 +157,14 @@ public class ModeloTablaRegistro extends AbstractTableModel {
 
     public JButton btnBaja(int indice) {
         JButton button = new JButton("Aceptar");
-        button.addActionListener(new ActionListener(){
+        button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(ejemplares.get(indice).getPrestamoEjemplar() == null){
+                if (ejemplares.get(indice).getPrestamoEjemplar() == null) {
                     BajaEjemplar be = new BajaEjemplar(ejemplares, indice);
                     be.setVisible(true);
-                    t.dispose();
-                }else {
+                    registo.dispose();
+                } else {
                     JOptionPane.showMessageDialog(null,
                             "El ejemplar está en préstamo", "",
                             JOptionPane.ERROR_MESSAGE);

@@ -18,7 +18,7 @@ import modelo.RenderizarTabla;
 
 import java.awt.*;
 
-public class RankingMulta extends JFrame {
+public class RankingMulta extends VentanaTabla {
 
     private ModeloTablaMulta modelo;
     private JTable tabla;
@@ -26,16 +26,12 @@ public class RankingMulta extends JFrame {
     private JLabel titulo;
 
     public RankingMulta() {
+        super.crearVentana();
+
         tabla = new JTable();
         titulo = new JLabel("pepe");
         panel = new JPanel();
         panel.add(titulo);
-
-        /* Ventana */
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(800, 300);
-        setResizable(false);
-        setLocationRelativeTo(null);
 
         setLayout(new GridLayout(1,1));
         // add(panel, BorderLayout.NORTH);
@@ -49,7 +45,7 @@ public class RankingMulta extends JFrame {
         List<Lector> lectores = new ArrayList<Lector>();
 
         Lectores.ordenar();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             if(Biblioteca.lectores().get(i).getMulta() != null){
                 lectores.add(Biblioteca.lectores().get(i));
             }
@@ -61,10 +57,7 @@ public class RankingMulta extends JFrame {
     public void armarTabla(){
         modelo = new ModeloTablaMulta(RankingLectoresMultados().size(),
         RankingLectoresMultados(), ModeloTablaMulta.RANKING_MULTA);
-        tabla.setDefaultRenderer(Object.class, new RenderizarTabla());
         tabla.setModel(modelo);
-        tabla.setRowHeight(30);
-        validate();
-        repaint();
+        super.armarTabla(tabla);
     }
 }

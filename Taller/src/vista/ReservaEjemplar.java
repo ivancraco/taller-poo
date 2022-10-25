@@ -62,7 +62,7 @@ public class ReservaEjemplar extends JFrame implements ActionListener {
         dispose();
 
         JOptionPane.showMessageDialog(null,
-                "Reserva realizada con éxito", "Operación exitosa",
+                "¡ Reserva realizada con éxito !", "Operación exitosa",
                 JOptionPane.INFORMATION_MESSAGE);
     }
 

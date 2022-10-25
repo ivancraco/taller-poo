@@ -12,20 +12,34 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Clase que permite mediante un metodo estático
+ * generar los códigos de barra de todos los ejemplares de
+ * la biblioteca.
+ * 
+ * @author Ivan Craco
+ */
 public class CodigoDeBarra {
 
-    public void generarCodigo(List<Obra> o) {
+    /**
+     * Genera un archivo pdf con todos los códigos de barra
+     * de los ejemplares de la biblioteca.
+     * @param obras listado con todas las obras.
+     * @exception FileNotFoundException si no encuentra el archivo pdf.
+     * @exception DocumentException si no puede generar el documento.
+     */
+    public void generarCodigo(List<Obra> obras) {
         try {
 
             Document doc = new Document();
             PdfWriter pdf = PdfWriter.getInstance(doc, new FileOutputStream("codigo.pdf"));
             doc.open();
 
-            for (int i = 0; i < o.size(); i++) {
-                for (int j = 0; j < o.get(i).getEjemplar().size(); j++) {
+            for (int i = 0; i < obras.size(); i++) {
+                for (int j = 0; j < obras.get(i).getEjemplar().size(); j++) {
                     Barcode128 codigo = new Barcode128();
-                    String IdEjemplar = (o.get(i).getEjemplar().get(j).getIDUbicacion());
-                    String codigoDeBarra = (o.get(i).getEjemplar().get(j).getCodigoDeBarra());
+                    String IdEjemplar = (obras.get(i).getEjemplar().get(j).getIDUbicacion());
+                    String codigoDeBarra = (obras.get(i).getEjemplar().get(j).getCodigoDeBarra());
                     codigo.setCode(IdEjemplar + codigoDeBarra);
                     Image img = codigo.createImageWithBarcode(pdf.getDirectContent(), BaseColor.BLACK, BaseColor.BLACK);
                     img.scalePercent(200);
