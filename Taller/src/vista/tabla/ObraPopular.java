@@ -15,7 +15,7 @@ import modelo.Obras;
  * Clase que permite mostrar en un JTable las obras mas 
  * solicitadas por alumnos y docentes y publico en general.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class ObraPopular extends VentanaTabla {
 

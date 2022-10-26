@@ -7,7 +7,7 @@ import java.util.List;
  * Clase que hereda de la clase Lector y representa
  * un tipo de lector por parte de la biblioteca.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Docente extends Lector{
     

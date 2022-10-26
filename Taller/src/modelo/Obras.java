@@ -8,7 +8,7 @@ import java.util.List;
  * Clase que mantiene en una lista la cantidad
  * de obras disponibles en la biblioteca.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Obras {
 
@@ -32,6 +32,19 @@ public class Obras {
                 obras.add(obra11());
                 obras.add(obra12());
                 obras.add(obra13());
+                obras.add(obra14());
+                obras.add(obra15());
+                obras.add(obra16());
+                obras.add(obra17());
+                obras.add(obra18());
+                obras.add(obra19());
+                obras.add(obra20());
+                obras.add(obra21());
+                obras.add(obra22());
+                obras.add(obra23());
+                obras.add(obra24());
+                obras.add(obra25());
+                obras.add(obra26());
         }
 
         public List<Obra> getObras() {
@@ -669,6 +682,820 @@ public class Obras {
                 ejemplares.get(2).setObra(obra);
                 ejemplares.get(3).setObra(obra);
                 ejemplares.get(4).setObra(obra);
+                return obra;
+
+        }
+
+        public Obra obra14() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Funcion Lineal");
+                indices.add("Funcion Cuadratica");
+                indices.add("Funcion Exponencial");
+                indices.add("Funcion Racional");
+
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-10-13"), "Compra",
+                                "4632895", "", "632046");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-10-13"), "Compra",
+                                "4632894", "", "496573");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-10-13"), "Compra",
+                                "4632893", "", "865352");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-10-13"), "Compra",
+                                "4632892", "", "596482");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-10-13"), "Compra",
+                                "4632891", "", "456592");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+
+                Obra obra = new Obra("Matemática", "Funciones", "Analisis Matematico I", "Calculo I",
+                                "Jose L.Ponte", "", "", Genero.DIDACTICO, "Manuales",
+                                "966-573-37-5956-5", indices, new Edicion("TroyaBabbel",
+                                "Argentina", 1, 2013, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                return obra;
+
+        }
+        
+        public Obra obra15() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Sistemas de control");
+                indices.add("Sistemas Financieros");
+                indices.add("Sistemas Compras");
+                indices.add("Sistemas de Almacenamiento");
+
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-10-20"), "Compra",
+                                "4765576", "", "342372");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-10-20"), "Compra",
+                                "4765577", "", "456201");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-10-20"), "Compra",
+                                "4765578", "", "854292");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-10-20"), "Compra",
+                                "4765579", "", "358915");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-10-20"), "Compra",
+                                "4765570", "", "765253");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-10-20"), "Compra",
+                                "4765571", "", "385462");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-10-20"), "Compra",
+                                "4765572", "", "374465");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+
+                Obra obra = new Obra("Administración", "Empresas", "Los Sistemas dentro de la Empresa", "",
+                                "Fabian Tisocco", "", "", Genero.DIDACTICO, "Manuales",
+                                "476-857-48-8456-2", indices, new Edicion("TroyaBabbel",
+                                "Argentina", 1, 2022, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                
+                return obra;
+
+        }
+        
+        public Obra obra16() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Que es un Algoritmo");
+                indices.add("Tipo de Datos");
+                indices.add("Bucles");
+                indices.add("Deciciones");
+
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3877567", "", "928452");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3877566", "", "387246");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "38775635", "", "395732");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3877564", "", "832462");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3877563", "", "935398");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3877562", "", "437638");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3877561", "", "284764");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+
+                Obra obra = new Obra("Programación", "algoritmos", "Programacion para principiantes I", "",
+                                "Thiago Perez", "", "", Genero.DIDACTICO, "Manuales",
+                                "476-857-48-8456-2", indices, new Edicion("Marfil Industria",
+                                "Argentina", 1, 2010, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                return obra;
+
+        }
+        
+        public Obra obra17() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Que es POO");
+                indices.add("Clases");
+                indices.add("Metodos");
+                indices.add("Herencia");
+                indices.add("Polimorfismo");
+
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "7454538", "", "624582");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "7454537", "", "478653");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "7454536", "", "389571");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "7454535", "", "387212");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "7454534", "", "846329");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "7454533", "", "378952");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "7454532", "", "737448");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+
+                Obra obra = new Obra("Programación", "Objetos", "Programacion Orientada a Objetos", "Modelo de la Vida",
+                                "Martin Neruda", "", "", Genero.DIDACTICO, "Manuales",
+                                "286-836-95-4663-3", indices, new Edicion("TroyaBabbel",
+                                "Argentina", 1, 2010, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                return obra;
+
+        }
+        
+        public Obra obra18() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Arrays");
+                indices.add("Matrices");
+                indices.add("Listas");
+                indices.add("Pilas");
+                indices.add("Arboles");
+
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3765397", "", "573678");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3765396", "", "673452");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3765395", "", "724687");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3765394", "", "354385");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3765393", "", "636745");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3765392", "", "874634");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-05-01"), "Compra",
+                                "3765391", "", "457362");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+
+                Obra obra = new Obra("Programación", "algoritmos", "Programacion para principiantes II", "",
+                                "Thiago Perez", "", "", Genero.DIDACTICO, "Manuales",
+                                "726-389-94-2462-7", indices, new Edicion("Marfil Industria",
+                                "Argentina", 1, 2010, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                return obra;
+        }
+        
+        public Obra obra19() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Remitos");
+                indices.add("Cheques Endosados");
+                indices.add("Cuentas");
+                indices.add("Libro Diario");
+                indices.add("Debe y Haber");
+
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-05-26"), "Compra",
+                                "3276647", "", "734637");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-05-26"), "Compra",
+                                "3276646", "", "985387");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-05-26"), "Compra",
+                                "3276645", "", "427485");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-05-26"), "Compra",
+                                "3276644", "", "735353");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-05-26"), "Compra",
+                                "3276643", "", "478357");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-05-26"), "Compra",
+                                "3276642", "", "875375");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-05-26"), "Compra",
+                                "3276641", "", "354634");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+
+                Obra obra = new Obra("Contabilidad", "", "Contabilidad de Costos", "",
+                                "Mariela j.Nuñez", "", "", Genero.DIDACTICO, "Manuales",
+                                "357-874-63-8657-2", indices, new Edicion("Eudecor",
+                                "Argentina", 1, 2010, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                return obra;
+
+        }
+        
+        public Obra obra20() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Seguridad Informatica");
+                indices.add("Haking Etico");
+                indices.add("Medidas de Seguridad");
+               
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "5376583", "", "785426");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "5376584", "", "783567");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "5376585", "", "732632");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "5376586", "", "782476");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "5376587", "", "457628");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "5376588", "", "762472");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "5376589", "", "723482");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+
+                Obra obra = new Obra("Programación", "Hackeo", "Hackers", "",
+                                "Isaias Stele", "", "", Genero.DIDACTICO, "Manuales",
+                                "847-465-84-4763-7", indices, new Edicion("Eudecor",
+                                "Argentina", 1, 2010, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                return obra;
+
+        }
+        
+        public Obra obra21() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Corriente Continua y Alterna");
+                indices.add("Voltaje");
+                indices.add("Componentes Electronicos");
+               
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7624233", "", "732576");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7624234", "", "476432");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7624235", "", "749452");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7624236", "", "484722");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7624237", "", "875321");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7624238", "", "387532");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7624239", "", "358787");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+
+                Obra obra = new Obra("Arquitectura", "Electronica", "Tecnicas Digitales", "",
+                                "Emanuel Benitez", "Lucas Mandala", "", Genero.DIDACTICO, "Manuales",
+                                "265-877-63-4762-9", indices, new Edicion("Eudecor",
+                                "Argentina", 1, 2010, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                return obra;
+
+        }
+        
+        public Obra obra22() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Relacion");
+                indices.add("Amigos");
+                indices.add("Influencia");
+               
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8274983", "", "782476");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8274984", "", "276467");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8274985", "", "375476");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8274986", "", "872765");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8274987", "", "783521");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8274988", "", "897352");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8274989", "", "473785");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+
+                Obra obra = new Obra("Autoayuda", "Ayuda", "Como hacer amigos e influir en las personas", "",
+                                "Angel Gonzalez", "", "", Genero.DIDACTICO, "Manuales",
+                                "394-395-75-7096-4", indices, new Edicion("Eudecor",
+                                "Argentina", 1, 2010, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                return obra;
+
+        }
+        public Obra obra23() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Clases de Empresas");
+                indices.add("Organos y Areas de la actividad Empresarial");
+                indices.add("La Actividad Economica");
+                indices.add("El Contexto");
+                indices.add("Responsabilidad social");
+        
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7856321", "", "628745");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7856322", "", "365922");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7856323", "", "873563");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7856324", "", "376563");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7856325", "", "786587");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7856326", "", "365453");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "7856327", "", "387524");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+
+                Obra obra = new Obra("Administración", "Empresas", "Actividad Economica: Empresa y Contexto", "",
+                                "Fabian Tisocco", "", "", Genero.DIDACTICO, "Manuales",
+                                "735-287-92-3250-7", indices, new Edicion("Americana",
+                                "Argentina", 1, 2010, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                return obra;
+
+        }
+        
+        public Obra obra24() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Derivadas");
+                indices.add("Primitivas");
+                indices.add("Metodos de Integracion");
+                indices.add("Raices reales");
+                indices.add("Integrales Definidas");
+        
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8737853", "", "873573");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8737854", "", "875362");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8737855", "", "738965");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8737856", "", "547642");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8737857", "", "893535");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8737858", "", "875632");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8737859", "", "897352");
+                
+                Ejemplar e8 = new Ejemplar(LocalDate.parse("2012-03-10"), "Compra",
+                                "8737850", "", "387587");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+                ejemplares.add(e8);
+
+                Obra obra = new Obra("Matemática", "calculo", "Analisis Matematico II", "",
+                                "Gerardo Mandala", "", "", Genero.DIDACTICO, "Manuales",
+                                "734-479-47-8742-5", indices, new Edicion("Eudecor",
+                                "Argentina", 1, 2010, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                ejemplares.get(7).setObra(obra);
+                return obra;
+
+        }
+        
+        public Obra obra25() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Introduccion a la Informatica");
+                indices.add("Programacion Operativos");
+                indices.add("Diseño Grafico");
+                indices.add("Introduccion al Desarrollo web");
+                indices.add("Redes de Datos");
+        
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "3875623", "", "687428");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "3875624", "", "284724");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "3875625", "", "764272");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "3875626", "", "376567");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "3875627", "", "476234");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "3875628", "", "378762");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "3875629", "", "893584");
+                
+                Ejemplar e8 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "3875620", "", "376852");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+                ejemplares.add(e8);
+
+                Obra obra = new Obra("Programación", "WEB", "Desarrollo Web", "",
+                                "Ignacio Pacifico", "", "", Genero.DIDACTICO, "Manuales",
+                                "384-468-95-9653-3", indices, new Edicion("Eudecor",
+                                "Argentina", 1, 2010, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                ejemplares.get(7).setObra(obra);
+                return obra;
+
+        }
+        
+        public Obra obra26() {
+
+                List<Ejemplar> ejemplares = new ArrayList<Ejemplar>();
+
+                List<String> indices = new ArrayList<String>();
+                indices.add("Teorema del Turismo");
+                indices.add("Sociologia Del Turismo");
+                indices.add("Calidad Turistica");
+                indices.add("Planificacion Turistica");
+                indices.add("Marketing Turistico");
+        
+                Ejemplar e1 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "7824658", "", "837653");
+
+                Ejemplar e2 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "7824657", "", "873538");
+
+                Ejemplar e3 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "7824656", "", "387561");
+
+                Ejemplar e4 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "7824655", "", "785362");
+
+                Ejemplar e5 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "7824654", "", "753621");
+                
+                Ejemplar e6 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "7824653", "", "465245");
+                
+                Ejemplar e7 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "7824652", "", "387656");
+                
+                Ejemplar e8 = new Ejemplar(LocalDate.parse("2012-04-20"), "Compra",
+                                "7824651", "", "728456");
+
+                ejemplares.add(e1);
+                ejemplares.add(e2);
+                ejemplares.add(e3);
+                ejemplares.add(e4);
+                ejemplares.add(e5);
+                ejemplares.add(e6);
+                ejemplares.add(e7);
+                ejemplares.add(e8);
+
+                Obra obra = new Obra("Turismo", "Turismo", "Un Buen Turismo", "",
+                                "Marisa Martinez", "", "", Genero.DIDACTICO, "Manuales",
+                                "821-685-57-7352-6", indices, new Edicion("Eudecor",
+                                "Argentina", 1, 2010, 50, 350, "Español", "papel"),
+                                ejemplares);
+
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+                obra.setSolicitadasAlumnosDocentes(obra.getSolicitadasAlumnosDocentes() + 1);
+
+                ejemplares.get(0).setObra(obra);
+                ejemplares.get(1).setObra(obra);
+                ejemplares.get(2).setObra(obra);
+                ejemplares.get(3).setObra(obra);
+                ejemplares.get(4).setObra(obra);
+                ejemplares.get(5).setObra(obra);
+                ejemplares.get(6).setObra(obra);
+                ejemplares.get(7).setObra(obra);
                 return obra;
 
         }

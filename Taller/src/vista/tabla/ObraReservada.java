@@ -23,7 +23,7 @@ import modelo.TablaObraReservada;
  * Clase que muestar en un JTable las obras reservadas
  * a partir de una fecha ingresada.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class ObraReservada extends VentanaTabla {
 

@@ -1,18 +1,10 @@
-## Getting Started
+La clase Main contiene el método main y permite ejecutar la aplicación. También genera los códigos de barras
+de todos los ejemplares generando un archivo "codigo.pdf" en el directorio principal.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Java version con que se realizó el proyecto:
+openjdk 17.0.4.1 2022-08-12
+OpenJDK Runtime Environment Temurin-17.0.4.1+1 (build 17.0.4.1+1)
+OpenJDK 64-Bit Server VM Temurin-17.0.4.1+1 (build 17.0.4.1+1, mixed mode, sharing)
 
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Libreria que se utilizó para generar los códigos de barras:
+https://github.com/itext/itextpdf/releases/tag/5.5.11

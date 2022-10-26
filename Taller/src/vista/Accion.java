@@ -1,139 +1,268 @@
 package vista;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import modelo.TablaRegistro;
-import vista.tabla.ConsultaIndice;
-import vista.tabla.ConsultaObra;
-import vista.tabla.ObraReservada;
-import vista.tabla.PeriodoMulta;
-import vista.tabla.RankingMulta;
-import vista.tabla.Deudor;
-import vista.tabla.ObraEditorial;
-import vista.tabla.ObraPopular;
 
-import java.awt.Container;
-import java.awt.*;
 import java.awt.event.*;
 
-public class Accion extends JFrame {
+import vista.tabla.*;
+// import modelo.ModeloTabla;
 
-    private JButton consultaObra;
-    private JButton consultaIndice;
-    private JButton devolucion;
-    private JButton sindevolver;
-    private JButton masSolicitadosAD;
-    private JButton masSolicitadosPG;
-    private JButton reservados;
-    private JButton obraEditorial;
-    private JButton periodoMulta;
-    private JButton rankingMulta;
 
-    public Accion() {
+public class Accion extends JFrame{
+    
+    private javax.swing.JLabel jLabelBG;
+    private javax.swing.JButton jButtonEjeDevolver;
+    private javax.swing.JButton jButtonEjeReservados;
+    private javax.swing.JButton jButtonEjeSinDevolver;
+    private javax.swing.JButton jButtonLectorMasMultado;
+    private javax.swing.JButton jButtonLectorMultaPeriodo;
+    private javax.swing.JButton jButtonObrasEditorial;
+    private javax.swing.JButton jButtonObrasIndice;
+    private javax.swing.JButton jButtonObrasPopularesAD;
+    private javax.swing.JButton jButtonObrasPopularesPG;
+    private javax.swing.JButton jButtonObrasTematica;
+    
 
-        consultaObra = new JButton("Consultar por Obra");
-        consultaObra.setFocusPainted(false);
-        consultaIndice = new JButton("Consultar por Índice");
-        consultaIndice.setFocusPainted(false);
-        devolucion = new JButton("Devolución");
-        devolucion.setFocusPainted(false);
-        sindevolver = new JButton("Sin devolver");
-        masSolicitadosAD = new JButton("Solicitados por Alumnos y Docentes");
-        masSolicitadosPG = new JButton("Solicitados por P.General");
-        reservados = new JButton("reservados");
-        obraEditorial = new JButton("Obras de editorial");
-        periodoMulta = new JButton("Periodo Multa");
-        rankingMulta = new JButton("Ranking Multa");
 
-        /* Ventana */
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(250, 350);
+
+
+    public Accion(){
+
+        super("Menú Biblioteca");
+        initComponents();
+    }
+
+    private void initComponents() {
+
+        jLabelBG = new javax.swing.JLabel();
+        jButtonEjeDevolver = new javax.swing.JButton();
+        jButtonEjeSinDevolver = new javax.swing.JButton();
+        jButtonEjeReservados = new javax.swing.JButton();
+        jButtonObrasTematica = new javax.swing.JButton();
+        jButtonObrasIndice = new javax.swing.JButton();
+        jButtonObrasEditorial = new javax.swing.JButton();
+        jButtonObrasPopularesAD = new javax.swing.JButton();
+        jButtonObrasPopularesPG = new javax.swing.JButton();
+        jButtonLectorMultaPeriodo = new javax.swing.JButton();
+        jButtonLectorMasMultado = new javax.swing.JButton();
+        
+        //Ventana
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
         setResizable(false);
-        setLocationRelativeTo(null);
+        setSize(966, 539);
 
-        consultaObra.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ConsultaObra o = new ConsultaObra();
-                o.setVisible(true);
+        //Backgronf
+        jLabelBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("w3.png")));
+        jLabelBG.setBounds(0, 0, 950, 500);
+        jLabelBG.setLayout(null);
+
+
+        //Botones
+        jButtonEjeDevolver.setBackground(new java.awt.Color(13, 124, 200));
+        jButtonEjeDevolver.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButtonEjeDevolver.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEjeDevolver.setText("DEVOLVER");
+        jButtonEjeDevolver.setBorder(null);
+        jButtonEjeDevolver.setFocusPainted(false);
+        jButtonEjeDevolver.setBounds(160, 62, 150, 40);
+        jButtonEjeDevolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEjeDevolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEjeDevolverMouseClicked(evt);
             }
-        });
 
-        consultaIndice.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ConsultaIndice o = new ConsultaIndice();
-                o.setVisible(true);
-            }
-        });
-
-        devolucion.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            private void jButtonEjeDevolverMouseClicked(MouseEvent evt) {
                 VerificarLector o = new VerificarLector(null, TablaRegistro.DEVOLUCION);
                 o.setVisible(true);
             }
         });
+        jLabelBG.add(jButtonEjeDevolver);
 
-        sindevolver.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        jButtonEjeSinDevolver.setBackground(new java.awt.Color(13, 124, 200));
+        jButtonEjeSinDevolver.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButtonEjeSinDevolver.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEjeSinDevolver.setText("SIN DEVOLVER");
+        jButtonEjeSinDevolver.setBorder(null);
+        jButtonEjeSinDevolver.setFocusPainted(false);
+        jButtonEjeSinDevolver.setBounds(160, 120, 150, 40);
+        jButtonEjeSinDevolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEjeSinDevolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEjeSinDevolverMouseClicked(evt);
+            }
+
+            private void jButtonEjeSinDevolverMouseClicked(MouseEvent evt) {
                 Deudor o = new Deudor();
                 o.setVisible(true);
             }
         });
+        jLabelBG.add(jButtonEjeSinDevolver);
 
-        masSolicitadosAD.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ObraPopular o = new ObraPopular("AD");
-                o.setVisible(true);
+        jButtonEjeReservados.setBackground(new java.awt.Color(13, 124, 200));
+        jButtonEjeReservados.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButtonEjeReservados.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEjeReservados.setText("RESERVADOS");
+        jButtonEjeReservados.setBorder(null);
+        jButtonEjeReservados.setFocusPainted(false);
+        jButtonEjeReservados.setBounds(160, 178, 150, 40);
+        jButtonEjeReservados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEjeReservados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonEjeReservadosMouseClicked(evt);
             }
-        });
 
-        masSolicitadosPG.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ObraPopular o = new ObraPopular("PG");
-                o.setVisible(true);
-            }
-        });
-
-        reservados.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            private void jButtonEjeReservadosMouseClicked(MouseEvent evt) {
                 ObraReservada o = new ObraReservada();
                 o.setVisible(true);
             }
         });
+        jLabelBG.add(jButtonEjeReservados);
 
-        obraEditorial.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        jButtonObrasTematica.setBackground(new java.awt.Color(90, 205, 245));
+        jButtonObrasTematica.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButtonObrasTematica.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonObrasTematica.setText("TEMÁTICA");
+        jButtonObrasTematica.setBorder(null);
+        jButtonObrasTematica.setFocusPainted(false);
+        jButtonObrasTematica.setBounds(640, 113, 150, 40);
+        jButtonObrasTematica.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonObrasTematica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonObrasTematicaMouseClicked(evt);
+            }
+
+            private void jButtonObrasTematicaMouseClicked(MouseEvent evt) {
+                ConsultaObra o = new ConsultaObra();
+                o.setVisible(true);
+            }
+        });
+        jLabelBG.add(jButtonObrasTematica);
+
+        jButtonObrasIndice.setBackground(new java.awt.Color(90, 205, 245));
+        jButtonObrasIndice.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButtonObrasIndice.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonObrasIndice.setText("ÍNDICE");
+        jButtonObrasIndice.setBorder(null);
+        jButtonObrasIndice.setFocusPainted(false);
+        jButtonObrasIndice.setBounds(640, 170, 150, 40);
+        jButtonObrasIndice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonObrasIndice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonObrasIndiceMouseClicked(evt);
+            }
+
+            private void jButtonObrasIndiceMouseClicked(MouseEvent evt) {
+                ConsultaIndice o = new ConsultaIndice();
+                o.setVisible(true);
+            }
+        });
+        jLabelBG.add(jButtonObrasIndice);
+
+        jButtonObrasEditorial.setBackground(new java.awt.Color(90, 205, 245));
+        jButtonObrasEditorial.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButtonObrasEditorial.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonObrasEditorial.setText("EDITORIAL");
+        jButtonObrasEditorial.setBorder(null);
+        jButtonObrasEditorial.setFocusPainted(false);
+        jButtonObrasEditorial.setBounds(640, 227, 150, 40);
+        jButtonObrasEditorial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonObrasEditorial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonObrasEditorialMouseClicked(evt);
+            }
+
+            private void jButtonObrasEditorialMouseClicked(MouseEvent evt) {
                 ObraEditorial o = new ObraEditorial();
                 o.setVisible(true);
             }
         });
+        jLabelBG.add(jButtonObrasEditorial);
 
-        periodoMulta.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        jButtonObrasPopularesAD.setBackground(new java.awt.Color(90, 205, 245));
+        jButtonObrasPopularesAD.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButtonObrasPopularesAD.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonObrasPopularesAD.setText("DOCENTES Y ALU.");
+        jButtonObrasPopularesAD.setBorder(null);
+        jButtonObrasPopularesAD.setFocusPainted(false);
+        jButtonObrasPopularesAD.setBounds(640, 329, 150, 40);
+        jButtonObrasPopularesAD.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonObrasPopularesAD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonObrasPopularesADMouseClicked(evt);
+            }
+
+            private void jButtonObrasPopularesADMouseClicked(MouseEvent evt) {
+                ObraPopular o = new ObraPopular("AD");
+                o.setVisible(true);
+            }
+        });
+        jLabelBG.add(jButtonObrasPopularesAD);
+
+        jButtonObrasPopularesPG.setBackground(new java.awt.Color(90, 205, 245));
+        jButtonObrasPopularesPG.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButtonObrasPopularesPG.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonObrasPopularesPG.setText("PÚBLICO GRAL.");
+        jButtonObrasPopularesPG.setBorder(null);
+        jButtonObrasPopularesPG.setFocusPainted(false);
+        jButtonObrasPopularesPG.setBounds(640, 386, 150, 40);
+        jButtonObrasPopularesPG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonObrasPopularesPG.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonObrasPopularesPGMouseClicked(evt);
+            }
+
+            private void jButtonObrasPopularesPGMouseClicked(MouseEvent evt) {
+                ObraPopular o = new ObraPopular("PG");
+                o.setVisible(true);
+            }
+        });
+        jLabelBG.add(jButtonObrasPopularesPG);
+
+        jButtonLectorMultaPeriodo.setBackground(new java.awt.Color(65, 186, 179));
+        jButtonLectorMultaPeriodo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButtonLectorMultaPeriodo.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonLectorMultaPeriodo.setText("PERIODO MULTA");
+        jButtonLectorMultaPeriodo.setBorder(null);
+        jButtonLectorMultaPeriodo.setFocusPainted(false);
+        jButtonLectorMultaPeriodo.setBounds(160, 316, 150, 40);
+        jButtonLectorMultaPeriodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonLectorMultaPeriodo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonLectorMultaPeriodoMouseClicked(evt);
+            }
+
+            private void jButtonLectorMultaPeriodoMouseClicked(MouseEvent evt) {
                 PeriodoMulta o = new PeriodoMulta();
                 o.setVisible(true);
             }
         });
-        
-        rankingMulta.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        jLabelBG.add(jButtonLectorMultaPeriodo);
+
+        jButtonLectorMasMultado.setBackground(new java.awt.Color(65, 186, 179));
+        jButtonLectorMasMultado.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButtonLectorMasMultado.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonLectorMasMultado.setText("RANKING MULTAS");
+        jButtonLectorMasMultado.setBorder(null);
+        jButtonLectorMasMultado.setFocusPainted(false);
+        jButtonLectorMasMultado.setBounds(160, 370, 150, 40);
+        jButtonLectorMasMultado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonLectorMasMultado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonLectorMasMultadoMouseClicked(evt);
+            }
+
+            private void jButtonLectorMasMultadoMouseClicked(MouseEvent evt) {
                 RankingMulta o = new RankingMulta();
                 o.setVisible(true);
             }
         });
-
-        Container container = getContentPane();
-        container.setLayout(new FlowLayout());
-        container.add(consultaObra);
-        container.add(consultaIndice);
-        container.add(devolucion);
-        container.add(sindevolver);
-        container.add(masSolicitadosAD);
-        container.add(masSolicitadosPG);
-        container.add(reservados);
-        container.add(obraEditorial);
-        container.add(periodoMulta);
-        container.add(rankingMulta);
+        jLabelBG.add(jButtonLectorMasMultado);
+        
+        add(jLabelBG);
 
     }
+    
 }

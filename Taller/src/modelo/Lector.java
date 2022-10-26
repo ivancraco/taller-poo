@@ -3,6 +3,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que representa un lector de la biblioteca.
+ * 
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
+ */
 public class Lector {
     
     private String nombre;

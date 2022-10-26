@@ -6,7 +6,7 @@ import java.util.List;
  * Clase que extiende de Obra y que representa una
  * colección de la misma con su nombre e ISBN propio.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Coleccion extends Obra{
     

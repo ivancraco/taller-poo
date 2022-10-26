@@ -6,7 +6,7 @@ import java.time.LocalDate;
  * Clase que se utiliza cuando un lector se lleva un libro
  * de la biblioteca y permite almacenar informacion consisa.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Prestamo {
 

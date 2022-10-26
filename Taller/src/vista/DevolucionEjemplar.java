@@ -19,7 +19,7 @@ import java.awt.*;
  * Clase que permite registrar la devolucion de un ejemplar
  * por interfaz de usuario.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class DevolucionEjemplar extends JFrame implements ActionListener {
 

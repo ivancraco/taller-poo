@@ -1,18 +1,17 @@
-//import modelo.Biblioteca;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import modelo.Biblioteca;
 import modelo.CodigoDeBarra;
-import vista.Accion;
-// import vista.ConsultaObra;
-// import vista.VerificarLector;
 import vista.Login;
 
+/**
+ * Clase principal para ejecutar la aplicacion.
+ * 
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
+ */
 public class Main {
     public static void main(String[] args) {
-        Accion biblioteca = new Accion();
+        CodigoDeBarra codigo = new CodigoDeBarra();
+        codigo.generarCodigo(Biblioteca.obras());
+        Login biblioteca = new Login();
         biblioteca.setVisible(true);
     }
 }

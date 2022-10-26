@@ -19,7 +19,7 @@ import modelo.TipoLector;
 /**
  * Clase que permite registrar un prestamo por interfaz de usuario.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class PrestamoEjemplar extends JFrame implements ActionListener, ItemListener {
 
@@ -113,15 +113,16 @@ public class PrestamoEjemplar extends JFrame implements ActionListener, ItemList
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (!plazo.getText().matches("[1-"+Prestamo.PLAZOMAXIMO+"]{1}")){
-            JOptionPane.showMessageDialog(null,
-                    "¡ Se espera un número del 1 al 4 !",
-                    null,
-                    JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
 
-        // Registra el presatamo
+            if (!plazo.getText().matches("[0-"+Prestamo.PLAZOMAXIMO+"]{1}")){
+                JOptionPane.showMessageDialog(null,
+                        "¡ Se espera un número del 1 al 4 !",
+                        null,
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+        // Registra el prestamo
         prestamo.setFechaYHoraPrestamo(Biblioteca.fechaYHoraActual());
         prestamo.setFuncionario(funcionario.getText());
         prestamo.setPlazoDevolucion(Integer.parseInt(plazo.getText()));

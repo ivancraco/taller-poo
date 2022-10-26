@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
  * Clase modelo que representa una tabla y muestra ingormacion de
  * obras dada una editorial
  * 
- * @author Ivan craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class TablaObraEditorial extends AbstractTableModel {
 

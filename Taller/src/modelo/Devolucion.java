@@ -4,7 +4,7 @@ package modelo;
  * Clase asociada a la devolución de un ejemplar 
  * por parte de un lector.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Devolucion {
 

@@ -21,7 +21,7 @@ import java.awt.*;
  * Clase que permite consultar obras por area tematica y muestra la informacion
  * en un JTable con los valores que encuentra.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class ConsultaObra extends VentanaTabla implements ActionListener, ItemListener {
 
@@ -112,6 +112,7 @@ public class ConsultaObra extends VentanaTabla implements ActionListener, ItemLi
         modelo = new TablaRegistro(areas.size(), areas, this);
         tabla.setModel(modelo);
         listener = new BotonAdapter(tabla);
+        tabla.getColumnModel().getColumn(0).setPreferredWidth(150);
         super.armarTabla(tabla);
     }
 

@@ -9,7 +9,7 @@ import modelo.RenderizarBoton;
  * Clase que crea una ventana con valores por defecto para
  * mantener el mismo ancho y alto de las tablas como de la ventana.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  * 
  */
 public class VentanaTabla extends JFrame {

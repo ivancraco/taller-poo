@@ -5,7 +5,7 @@ import java.time.LocalDate;
  * Clase que representa un ejemplar de una obra
  * en particular
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Ejemplar {
     

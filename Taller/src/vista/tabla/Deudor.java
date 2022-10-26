@@ -16,7 +16,7 @@ import java.util.List;
  * Clase que muestra en un JTable la informacion de los lectores que
  * deben obras.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Deudor extends VentanaTabla{
 
@@ -54,21 +54,6 @@ public class Deudor extends VentanaTabla{
        return resultado;
     }
 
-    // public LocalDate fechaActual() {
-    //     String fecha = fechaYHoraActual();
-    //     String str = fecha.substring(0, 10);
-    //     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    //     LocalDate fechaParseada = LocalDate.parse(str, formato);
-    //     return fechaParseada;
-    // }
-
-    // public String fechaYHoraActual() {
-    //     LocalDateTime fechaActual = LocalDateTime.now();
-    //     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm a");
-    //     String nuevoFormato = fechaActual.format(formato);
-    //     return nuevoFormato;
-    // }
-
     /**
      * Arma la tabla con los valores correspondientes
      * a la busqueda de deudores.
@@ -79,6 +64,7 @@ public class Deudor extends VentanaTabla{
         // super.armarTabla(tabla);
         tabla.setDefaultRenderer(String[].class, new RenderizarLista());
         tabla.setRowHeight(100);
-        tabla.getColumnModel().getColumn(5).setPreferredWidth(350);
+        tabla.getColumnModel().getColumn(5).setPreferredWidth(250);
+        tabla.getColumnModel().getColumn(2).setPreferredWidth(100);
     }
 }

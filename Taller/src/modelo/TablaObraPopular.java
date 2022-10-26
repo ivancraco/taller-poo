@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
  * Clase que representa un modelo de tabla para mostrar informacion de
  * obras populares.
  * 
- * @author Ivan craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class TablaObraPopular extends AbstractTableModel {
 

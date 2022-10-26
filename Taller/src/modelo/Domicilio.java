@@ -3,7 +3,7 @@ package modelo;
 /**
  * Clase que hace referencia al domicilio del lector.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Domicilio {
     

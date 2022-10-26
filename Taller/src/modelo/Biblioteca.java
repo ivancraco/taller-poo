@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import vista.Login;
 
 /**
  * La clase biblioteca representa la clase principal
@@ -14,7 +13,7 @@ import vista.Login;
  * Tambien contiene métodos estaticos para obtener la fecha y hora
  * actual.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  * 
  */
 public class Biblioteca {
@@ -31,14 +30,7 @@ public class Biblioteca {
          */
         private static Lectores lectores = new Lectores();
 
-        /**
-         * Ventana principal
-         */
-        private Login funcionario;
-
-        public Biblioteca() {
-                funcionario = new Login();
-        }
+       
 
         /**
          * Retorna la fecha y hora actual del sistema en formato cadena.
@@ -98,12 +90,6 @@ public class Biblioteca {
                 return local.format(formato);
         }
 
-        /**
-         * Hace visible la ventana principal
-         */
-        public void setVisible() {
-                funcionario.setVisible(true);
-        }
 
         /**
          * @return listado de obras de la biblioteca
@@ -119,20 +105,6 @@ public class Biblioteca {
                 return lectores.getLectores();
         }
 
-        /**
-         * 
-         * @return ventana Login
-         */
-        public Login getFuncionario() {
-                return funcionario;
-        }
-
-        /**
-         * 
-         * @param funcionario establece un nuevo objeto Login
-         */
-        public void setFuncionario(Login funcionario) {
-                this.funcionario = funcionario;
-        }
+       
 
 }

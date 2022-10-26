@@ -8,7 +8,7 @@ import javax.swing.table.AbstractTableModel;
  * muestra informacion relacionada con la multas de una lista
  * de lectores
  * 
- * @author ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class TablaMulta extends AbstractTableModel {
 

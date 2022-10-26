@@ -3,7 +3,7 @@ package modelo;
 /**
  * Enumeracion para identificar el tipo de lector.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public enum TipoLector {
     ALUMNO,

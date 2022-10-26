@@ -14,7 +14,7 @@ import modelo.TablaUbicacion;
  * Clase que permite mostrar informacion de las obras y poder
  * realizar un prestamo, una reserva, o dar de baja un ejemplar.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Registro extends VentanaTabla {
 

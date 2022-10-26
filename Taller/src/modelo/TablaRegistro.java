@@ -18,7 +18,7 @@ import java.util.List;
  * Clase que representa el modelo de tabla para las ventanas
  * de consulta por area tematica y por indice de obra.
  * 
- * @author Ivan craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class TablaRegistro extends AbstractTableModel {
 

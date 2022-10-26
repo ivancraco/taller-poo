@@ -20,7 +20,7 @@ import java.util.List;
  * Clase que permite mostrar en un JTable las obras dada
  * una editorial.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class ObraEditorial extends VentanaTabla {
 

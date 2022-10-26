@@ -1,11 +1,10 @@
 package vista;
 
-
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-public class Login extends JFrame implements ActionListener{
+public class Login extends JFrame implements ActionListener {
 
     private final String USER = "admin";
     private final String PASS = "123456";
@@ -22,9 +21,8 @@ public class Login extends JFrame implements ActionListener{
     private javax.swing.JSeparator separadorUsuario;
     private javax.swing.JLabel usuario;
     private javax.swing.JLabel jLabelLogoUNER;
-    
 
-    public Login(){
+    public Login() {
 
         super("Inicio de Sesión");
         initComponents();
@@ -34,7 +32,6 @@ public class Login extends JFrame implements ActionListener{
      * 
      */
     private void initComponents() {
-
 
         BackGround = new javax.swing.JPanel();
         inicioSesion = new javax.swing.JLabel();
@@ -53,20 +50,19 @@ public class Login extends JFrame implements ActionListener{
         setLocationByPlatform(true);
         setResizable(false);
         setSize(950, 400);
-        //setSize(950, 500);
+        // setSize(950, 500);
 
-        BackGround.setBackground(new Color(255,255,255));
+        BackGround.setBackground(new Color(255, 255, 255));
         BackGround.setMinimumSize(new java.awt.Dimension(950, 500));
         BackGround.setLayout(null);
 
-        jLabelBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("BIBLIOTECA.png")));
+        jLabelBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("w1.png")));
         jLabelBG.setBounds(630, 0, 320, 500);
         BackGround.add(jLabelBG);
 
-        jLabelLogoUNER.setIcon(new javax.swing.ImageIcon(getClass().getResource("LogoUner.png")));
+        jLabelLogoUNER.setIcon(new javax.swing.ImageIcon(getClass().getResource("w2.png")));
         jLabelLogoUNER.setBounds(0, 430, 120, 64);
         BackGround.add(jLabelLogoUNER);
-        
 
         inicioSesion.setBackground(new java.awt.Color(255, 255, 255));
         inicioSesion.setFont(new java.awt.Font("Segoe UI Black", 1, 30)); // NOI18N
@@ -93,7 +89,6 @@ public class Login extends JFrame implements ActionListener{
                 ingresoUsuarioMousePressed(evt);
             }
 
-            
         });
         ingresoUsuario.setBounds(20, 170, 420, 20);
         BackGround.add(ingresoUsuario);
@@ -113,6 +108,11 @@ public class Login extends JFrame implements ActionListener{
         ingresoContrasenia.setForeground(new java.awt.Color(204, 204, 204));
         ingresoContrasenia.setText("********");
         ingresoContrasenia.setBorder(null);
+        ingresoUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ingresoUsuarioFocusGained(evt);
+            }
+        });
         ingresoContrasenia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 ingresoContraseniaMousePressed(evt);
@@ -136,9 +136,11 @@ public class Login extends JFrame implements ActionListener{
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonIngresoTxtMouseClicked(evt);
             }
+
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonIngresoTxtMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 botonIngresoTxtMouseExited(evt);
             }
@@ -147,63 +149,63 @@ public class Login extends JFrame implements ActionListener{
         javax.swing.GroupLayout botonIngresoLayout = new javax.swing.GroupLayout(botonIngreso);
         botonIngreso.setLayout(botonIngresoLayout);
         botonIngresoLayout.setHorizontalGroup(
-            botonIngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(botonIngresoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-        );
+                botonIngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(botonIngresoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE));
         botonIngresoLayout.setVerticalGroup(
-            botonIngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(botonIngresoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
+                botonIngresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(botonIngresoTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE));
 
         botonIngreso.setBounds(20, 320, 150, 40);
         BackGround.add(botonIngreso);
 
-
-
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
 
         add(BackGround);
 
     }
-   
 
-
-    protected void ingresoUsuarioMousePressed(MouseEvent evt) {
-        if (ingresoUsuario.getText().equals("Ingrese su Usuario")){
+    protected void ingresoUsuarioFocusGained(FocusEvent evt) {
+        if (ingresoUsuario.getText().equals("Ingrese su Usuario")) {
             ingresoUsuario.setText("");
             ingresoUsuario.setForeground(Color.black);
         }
-        if (String.valueOf(ingresoContrasenia.getPassword()).isEmpty()){
+    }
+
+    protected void ingresoUsuarioMousePressed(MouseEvent evt) {
+        if (ingresoUsuario.getText().equals("Ingrese su Usuario")) {
+            ingresoUsuario.setText("");
+            ingresoUsuario.setForeground(Color.black);
+        }
+        if (String.valueOf(ingresoContrasenia.getPassword()).isEmpty()) {
             ingresoContrasenia.setText("********");
             ingresoContrasenia.setForeground(Color.gray);
         }
     }
 
     protected void ingresoContraseniaMousePressed(MouseEvent evt) {
-        if (ingresoUsuario.getText().isEmpty()){
+        if (ingresoUsuario.getText().isEmpty()) {
             ingresoUsuario.setText("Ingrese su Usuario");
             ingresoUsuario.setForeground(Color.gray);
         }
-        if (String.valueOf(ingresoContrasenia.getPassword()).equals("********")){
+        if (String.valueOf(ingresoContrasenia.getPassword()).equals("********")) {
             ingresoContrasenia.setText("");
             ingresoContrasenia.setForeground(Color.black);
         }
     }
 
     protected void botonIngresoTxtMouseExited(MouseEvent evt) {
-        botonIngreso.setBackground(new Color(114,201,229));
+        botonIngreso.setBackground(new Color(114, 201, 229));
     }
 
     protected void botonIngresoTxtMouseEntered(MouseEvent evt) {
@@ -217,25 +219,24 @@ public class Login extends JFrame implements ActionListener{
         if (ingresoUsuario.getText().equals(USER) && strPass.equals(PASS)) {
             new Accion().setVisible(true);
             // JOptionPane.showMessageDialog(this,
-            //         "Usuario: " + ingresoUsuario.getText()+ " " + 
-            //         "Contrasenia: " + String.valueOf(ingresoContrasenia.getPassword()));
+            // "Usuario: " + ingresoUsuario.getText()+ " " +
+            // "Contrasenia: " + String.valueOf(ingresoContrasenia.getPassword()));
             this.dispose();
         } else
             JOptionPane.showMessageDialog(null,
                     "Datos inválidos", "Error message",
                     JOptionPane.ERROR_MESSAGE);
 
-            ingresoUsuario.setText("Ingrese su Usuario");
-            ingresoUsuario.setForeground(Color.gray);
+        ingresoUsuario.setText("Ingrese su Usuario");
+        ingresoUsuario.setForeground(Color.gray);
 
-            ingresoContrasenia.setText("********");
-            ingresoContrasenia.setForeground(Color.gray);
+        ingresoContrasenia.setText("********");
+        ingresoContrasenia.setForeground(Color.gray);
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 }

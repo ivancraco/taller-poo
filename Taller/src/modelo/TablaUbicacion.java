@@ -17,7 +17,7 @@ import vista.tabla.Registro;
  * Clase que representa un modelo de tabla para mostrar informacion
  * acerca del registro de prestamo o devolucion.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class TablaUbicacion extends AbstractTableModel {
 
@@ -36,20 +36,20 @@ public class TablaUbicacion extends AbstractTableModel {
     private int filas;
     private List<Ejemplar> ejemplares;
     private String accion;
-    private Registro registo;
+    private Registro registro;
 
     /**
      * Constructor parametrizado
      * @param filas cantidad de filas de la tabla
      * @param ejemplares listado de ejemplares
      * @param accion String accion a realizar
-     * @param t objeto Registro
+     * @param registro registro
      */
-    public TablaUbicacion(int filas, List<Ejemplar> ejemplares, String accion, Registro registo) {
+    public TablaUbicacion(int filas, List<Ejemplar> ejemplares, String accion, Registro registro) {
         this.filas = filas;
         this.ejemplares = ejemplares;
         this.accion = accion;
-        this.registo = registo;
+        this.registro = registro;
     }
 
     @Override
@@ -146,7 +146,7 @@ public class TablaUbicacion extends AbstractTableModel {
                 public void actionPerformed(ActionEvent arg0) {
                     VerificarLector verificar = new VerificarLector(ejemplares.get(indice), accion);
                     verificar.setVisible(true);
-                    registo.dispose();
+                    registro.dispose();
                 }
             });
         }
@@ -187,7 +187,7 @@ public class TablaUbicacion extends AbstractTableModel {
                 if (ejemplares.get(indice).getPrestamoEjemplar() == null) {
                     BajaEjemplar be = new BajaEjemplar(ejemplares, indice);
                     be.setVisible(true);
-                    registo.dispose();
+                    registro.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null,
                             "El ejemplar está en préstamo", "",

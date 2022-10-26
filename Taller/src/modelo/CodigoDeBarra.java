@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * generar los códigos de barra de todos los ejemplares de
  * la biblioteca.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class CodigoDeBarra {
 

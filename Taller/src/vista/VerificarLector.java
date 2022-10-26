@@ -19,18 +19,25 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.awt.*;
 
+/**
+ * Clase que permite verificar si un lector existe en la
+ * bilioteca y a partir de ahi realizar las diferentes acciones.
+ * 
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
+ */
 public class VerificarLector extends JFrame implements ActionListener {
 
     private JLabel tituloDni;
     private JTextField dni;
     private JButton confirmar;
-    // private JButton consultaObra;
-    // private JButton consultaIndice;
-    // private JButton devolucion;
-    // private JPanel acciones;
     private Ejemplar ejemplar;
     private String accion;
 
+    /**
+     * Constructor parametrizado.
+     * @param ejemplar ejemplar para realizar prestamo y reserva.
+     * @param accion accion a realizar
+     */
     public VerificarLector(Ejemplar ejemplar, String accion) {
 
         this.accion = accion;
@@ -99,6 +106,12 @@ public class VerificarLector extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Retorna el lector si coincide con el dni
+     * @param lectores listado de lectores de la biblioteca
+     * @param dni String dni ingresado por interfaz de usuario
+     * @return lector o nulo
+     */
     public Lector existeLector(List<Lector> lectores, String dni) {
         for (Lector lector : lectores) {
             if (lector.getDocumento().equals(dni)) {
@@ -108,12 +121,25 @@ public class VerificarLector extends JFrame implements ActionListener {
         return null;
     }
 
+    /**
+     * Retorna un boolean para determinar si un lector
+     * esta multado o no.
+     * 
+     * @param lector lector
+     * @return boolean
+     */
     public boolean tieneMultas(Lector lector) {
         if (lector.getMulta() == null)
             return false;
         return lector.getMulta().isMultado();
     }
 
+   /**
+    * Retorna la fecha maxima de multa para el lector.
+    * El mismo no puede retirar libros hasta que se cumpla el plazo.
+    * @param lector lector
+    * @return String fecha multa
+    */
     public String multas(Lector lector) {
         LocalDate local = fechaActual(lector);
         int plazo = lector.getMulta().getCantidad() * lector.getMulta().getPlazo();
@@ -122,6 +148,12 @@ public class VerificarLector extends JFrame implements ActionListener {
         return local.format(formato);
     }
 
+    /**
+     * Permite realizar una reserva si el lector existe 
+     * y el ejemplar esta en prestamo.
+     * 
+     * @param lector lector
+     */
     public void realizarReserva(Lector lector) {
         Reserva reserva = new Reserva();
         reserva.setLector(lector);
@@ -136,6 +168,13 @@ public class VerificarLector extends JFrame implements ActionListener {
         this.dispose();
     }
 
+    /**
+     * Retorna la fecha de devolucion del ejemplar
+     * con la multa aplicada al lector que lo devuelve.
+     * 
+     * @param lector lector
+     * @return LocalDate fecha devolucion
+     */
     public LocalDate fechaActual(Lector lector) {
         String fecha = lector.getMulta().getDevolucion().getFechaYHoraDevolucion();
         String str = fecha.substring(0, 10);

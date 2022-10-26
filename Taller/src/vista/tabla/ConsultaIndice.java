@@ -21,7 +21,7 @@ import java.util.List;
  * Clas que perimte consultar obras por indice y muestra
  * la informacion en un JTable.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class ConsultaIndice extends VentanaTabla implements ActionListener {
 
@@ -41,7 +41,7 @@ public class ConsultaIndice extends VentanaTabla implements ActionListener {
     public ConsultaIndice() {
         super.crearVentana();
 
-        $indice = new JLabel("Buscar por Índice: ");
+        $indice = new JLabel("Buscar por Indice: ");
         indice = new JTextField(15);
         buscar = new JButton("Buscar");
         panel = new JPanel();
@@ -93,6 +93,7 @@ public class ConsultaIndice extends VentanaTabla implements ActionListener {
         modelo = new TablaRegistro(areas.size(), areas, this);
         tabla.setModel(modelo);
         listener = new BotonAdapter(tabla);
+        tabla.getColumnModel().getColumn(0).setPreferredWidth(100);
         super.armarTabla(tabla);
     }
 

@@ -20,7 +20,7 @@ import java.awt.*;
  * Clase que muestra en un JTable el ranking de lectores
  * por cantidad de multas aplicadas.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class RankingMulta extends VentanaTabla {
 

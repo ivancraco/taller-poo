@@ -4,7 +4,7 @@ package modelo;
  * Clase para generar una multa a un lector cuando realiza
  * una devolucion de un ejemplar fuera del plazo de devolucion.
  * 
- * @author Ivan craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Multa {
     

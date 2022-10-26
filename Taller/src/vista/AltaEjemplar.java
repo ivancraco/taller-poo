@@ -17,7 +17,7 @@ import modelo.Ejemplar;
 /**
  * Clase que permite dar de alta un ejemplar.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class AltaEjemplar extends JFrame {
 

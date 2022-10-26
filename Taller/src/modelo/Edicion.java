@@ -3,7 +3,7 @@ package modelo;
 /**
  * Clase que representa la edicion de una obra en particular
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Edicion {
     

@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
  * Clase que representa el modelo de tabla para mostrar informacion
  * referida a obras que se encuentran reservadas.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class TablaObraReservada extends AbstractTableModel {
 

@@ -22,7 +22,7 @@ import java.util.List;
  * Clase que permite buscar entre dos fechas que lectores se encuentran
  * multados.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class PeriodoMulta extends VentanaTabla {
 

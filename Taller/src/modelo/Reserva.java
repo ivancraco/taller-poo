@@ -4,7 +4,7 @@ package modelo;
  * Clase que permite registrar una reserva por parte
  * de un lector respecto a un ejemplar.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Reserva {
     

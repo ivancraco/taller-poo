@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 /**
  * Clase que permite renderizar un boton en un JTable.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class RenderizarBoton extends DefaultTableCellRenderer {
 

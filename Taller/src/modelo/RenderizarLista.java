@@ -10,7 +10,7 @@ import javax.swing.table.TableCellRenderer;
 /**
  * Clase que permite renderizar una lista de elemntos en un JTable.
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class RenderizarLista extends JList<String> implements TableCellRenderer{
 

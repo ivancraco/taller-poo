@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
  * Clase modelo de una ventana que representa una tabla y muestra
  * la informacion de los lectores en deuda
  * 
- * @author Ivan Craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class TablaDeuda extends AbstractTableModel {
 
@@ -31,7 +31,6 @@ public class TablaDeuda extends AbstractTableModel {
      * 
      * @param filas cantidad de filas
      * @param lectores lista de lectores
-     * @param tabla objeto Jtable
      */
     public TablaDeuda(int filas, List<Lector> lectores) {
         this.filas = filas;
@@ -89,7 +88,7 @@ public class TablaDeuda extends AbstractTableModel {
         String[] combo = new String[contador];
         for(int i = 0; i < lector.getPrestamoLector().size(); i++){
             if(Biblioteca.fechaActual().isAfter(lector.getPrestamoLector().get(i).getFechaDevolucion())){
-                combo[i] = lector.getPrestamoLector().get(i).getEjemplar().getCodigoDeBarra();
+                combo[i] = lector.getPrestamoLector().get(i).getEjemplar().getObra().getTitulo();
             }
         }
         return combo;

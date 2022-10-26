@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Clase que representa una obra dentro de la biblioteca
  * 
- * @author Ivan craco
+ * @author Ivan Craco, Emanuel Bozzo, Emilio Loggio Said, Jesus Casabillanos
  */
 public class Obra{
 
